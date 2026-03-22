@@ -12,7 +12,7 @@ background: linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1c92d2);
 
 background-size:400% 400%;
 
-animation: gradient 12s ease infinite;
+animation: gradient 10s ease infinite;
 
 color:white;
 
@@ -35,16 +35,12 @@ padding:60px 20px;
 
 header h1{
 
-font-size:48px;
-font-weight:700;
-letter-spacing:2px;
+font-size:45px;
 
 }
 
 header p{
 
-margin-top:10px;
-font-size:18px;
 opacity:0.8;
 
 }
@@ -53,7 +49,7 @@ opacity:0.8;
 
 display:grid;
 
-grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
 
 gap:30px;
 
@@ -73,25 +69,21 @@ padding:25px;
 
 text-align:center;
 
-transition:0.3s;
-
 box-shadow:0 10px 25px rgba(0,0,0,0.3);
+
+transition:0.3s;
 
 }
 
 .subject:hover{
 
-transform: translateY(-10px) scale(1.03);
-
-background:rgba(255,255,255,0.2);
+transform:translateY(-10px);
 
 }
 
 .subject h2{
 
 margin-bottom:20px;
-
-font-weight:500;
 
 }
 
@@ -111,15 +103,97 @@ background:linear-gradient(135deg,#00c6ff,#0072ff);
 
 color:white;
 
-font-weight:500;
-
-transition:0.3s;
-
 }
 
 .subject a:hover{
 
 background:linear-gradient(135deg,#ff9966,#ff5e62);
+
+}
+
+#pdfViewer{
+
+width:90%;
+
+height:600px;
+
+margin:auto;
+
+display:none;
+
+padding-bottom:40px;
+
+}
+
+#pdfFrame{
+
+width:100%;
+
+height:100%;
+
+border:none;
+
+border-radius:10px;
+
+}
+
+.reviews{
+
+text-align:center;
+
+padding:40px;
+
+}
+
+.star{
+
+font-size:35px;
+
+cursor:pointer;
+
+color:gray;
+
+}
+
+.star:hover{
+
+color:gold;
+
+}
+
+input,textarea{
+
+width:60%;
+
+padding:10px;
+
+margin:10px;
+
+border-radius:6px;
+
+border:none;
+
+}
+
+button{
+
+padding:10px 20px;
+
+background:#00c6ff;
+
+border:none;
+
+color:white;
+
+cursor:pointer;
+
+border-radius:6px;
+
+}
+
+#reviewList{
+
+margin-top:20px;
 
 }
 
@@ -130,5 +204,15 @@ text-align:center;
 padding:20px;
 
 opacity:0.7;
+
+}
+
+@media(max-width:600px){
+
+input,textarea{
+
+width:90%;
+
+}
 
 }
