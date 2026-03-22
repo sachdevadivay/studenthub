@@ -28,61 +28,96 @@
 <section class="subjects">
 
 <div class="subject">
-<h2>📊 DSA</h2>
+<h2>DSA</h2>
+<a onclick="openPDF('notes/dsa.pdf')">Notes</a>
+<a href="#">PYQ</a>
+</div>
+
+<div class="subject">
+<h2>AIML</h2>
 <a href="#">Notes</a>
 <a href="#">PYQ</a>
 </div>
 
 <div class="subject">
-<h2>🤖 AIML</h2>
+<h2>AEM 1</h2>
 <a href="#">Notes</a>
 <a href="#">PYQ</a>
 </div>
 
 <div class="subject">
-<h2>⚡ AEM 1</h2>
+<h2>AEM 2</h2>
 <a href="#">Notes</a>
 <a href="#">PYQ</a>
 </div>
 
 <div class="subject">
-<h2>⚡ AEM 2</h2>
+<h2>Python</h2>
 <a href="#">Notes</a>
 <a href="#">PYQ</a>
 </div>
 
 <div class="subject">
-<h2>🐍 Python</h2>
+<h2>Physics</h2>
 <a href="#">Notes</a>
 <a href="#">PYQ</a>
 </div>
 
 <div class="subject">
-<h2>🔬 Physics</h2>
+<h2>Digital Electronics</h2>
 <a href="#">Notes</a>
 <a href="#">PYQ</a>
 </div>
 
 <div class="subject">
-<h2>💡 Digital Electronics</h2>
-<a href="#">Notes</a>
-<a href="#">PYQ</a>
-</div>
-
-<div class="subject">
-<h2>💻 C Programming</h2>
+<h2>C Programming</h2>
 <a href="#">Notes</a>
 </div>
 
 <div class="subject">
-<h2>🧠 Problem Solving</h2>
+<h2>Problem Solving</h2>
 <a href="#">Notes</a>
 </div>
 
 <div class="subject">
-<h2>🌍 EVS</h2>
+<h2>EVS</h2>
 <a href="#">Notes</a>
 </div>
+
+</section>
+
+
+<section id="pdfViewer">
+
+<iframe id="pdfFrame"></iframe>
+
+</section>
+
+
+<section class="reviews">
+
+<h2>⭐ Rate Our Website</h2>
+
+<div class="rating">
+
+<span class="star" onclick="rate(1)">★</span>
+<span class="star" onclick="rate(2)">★</span>
+<span class="star" onclick="rate(3)">★</span>
+<span class="star" onclick="rate(4)">★</span>
+<span class="star" onclick="rate(5)">★</span>
+
+</div>
+
+
+<h3>Leave a Review</h3>
+
+<input id="name" placeholder="Your name">
+
+<textarea id="review" placeholder="Write your review"></textarea>
+
+<button onclick="addReview()">Submit</button>
+
+<div id="reviewList"></div>
 
 </section>
 
@@ -92,6 +127,9 @@
 <p>© 2026 NoteVerse | Built for Students</p>
 
 </footer>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>
