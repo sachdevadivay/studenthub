@@ -28,6 +28,35 @@
             <span class="close-menu" onclick="toggleMenu()">✖</span>
             <li><a href="#" onclick="toggleMenu()">Home</a></li>
             <li><a href="#subjects" onclick="toggleMenu()">Subjects</a></li>
+            
+            <li class="dropdown">
+                <a href="#" class="dropdown-btn" onclick="toggleSubMenu('notesSubmenu', event)">Notes ▼</a>
+                <ul class="submenu" id="notesSubmenu">
+                    <li><a href="#" onclick="toggleMenu()">Semester 1</a></li>
+                    <li><a href="#" onclick="toggleMenu()">Semester 2</a></li>
+                    <li><a href="#" onclick="toggleMenu()">Semester 3</a></li>
+                    <li><a href="#" onclick="toggleMenu()">Semester 4</a></li>
+                    <li><a href="#" onclick="toggleMenu()">Semester 5</a></li>
+                    <li><a href="#" onclick="toggleMenu()">Semester 6</a></li>
+                    <li><a href="#" onclick="toggleMenu()">Semester 7</a></li>
+                    <li><a href="#" onclick="toggleMenu()">Semester 8</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-btn" onclick="toggleSubMenu('pyqSubmenu', event)">PYQs ▼</a>
+                <ul class="submenu" id="pyqSubmenu">
+                    <li><a href="#" onclick="toggleMenu()">Semester 1</a></li>
+                    <li><a href="#" onclick="toggleMenu()">Semester 2</a></li>
+                    <li><a href="#" onclick="toggleMenu()">Semester 3</a></li>
+                    <li><a href="#" onclick="toggleMenu()">Semester 4</a></li>
+                    <li><a href="#" onclick="toggleMenu()">Semester 5</a></li>
+                    <li><a href="#" onclick="toggleMenu()">Semester 6</a></li>
+                    <li><a href="#" onclick="toggleMenu()">Semester 7</a></li>
+                    <li><a href="#" onclick="toggleMenu()">Semester 8</a></li>
+                </ul>
+            </li>
+
             <li><a href="#" onclick="openAbout(); toggleMenu()">About</a></li>
             <li><a href="#reviews" onclick="toggleMenu()">Reviews</a></li>
         </ul>
@@ -114,15 +143,5 @@
         <p>© 2026 NoteVerse | Built for Students</p>
     </footer>
 
-    <div id="aboutPanel" class="about-panel">
-        <span class="close-btn" onclick="closeAbout()">✖</span>
-        <h2>About NoteVerse</h2>
-        <p>NoteVerse is a student-focused platform designed to make studying easier by providing organized notes and previous year question papers in one place.</p>
-        <p>Students can easily access subjects like DSA, AIML, Python, Physics, Digital Electronics and more without searching multiple websites.</p>
-        <p>Our mission is to simplify studying and help students learn faster through accessible academic resources.</p>
-    </div>
-
-    <script src="script.js"></script>
-
-</body>
-</html>
+    <div id="aboutPanel" class
+        
