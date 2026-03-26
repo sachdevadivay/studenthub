@@ -96,7 +96,7 @@ body::before {
     position: fixed;
     top: 0;
     right: -300px; /* Hidden off-screen by default */
-    width: 250px;
+    width: 280px; 
     height: 100vh;
     background: rgba(13, 17, 23, 0.95); /* Deep dark frosted glass */
     backdrop-filter: blur(25px);
@@ -107,12 +107,14 @@ body::before {
     flex-direction: column;
     justify-content: flex-start;
     padding-top: 100px;
-    gap: 30px;
+    padding-bottom: 50px;
+    gap: 25px;
     list-style: none;
     
     transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     z-index: 1001; /* Stays above everything */
     box-shadow: -10px 0 40px rgba(0,0,0,0.7);
+    overflow-y: auto; /* Allows scrolling if menu gets too long */
 }
 
 /* The class we will trigger with JavaScript to slide it in */
@@ -127,6 +129,7 @@ body::before {
     font-weight: 500;
     margin-left: 30px;
     transition: color 0.3s;
+    display: block;
 }
 
 .navbar a:hover {
@@ -147,6 +150,38 @@ body::before {
 .close-menu:hover {
     color: #00d4ff;
     transform: rotate(90deg);
+}
+
+/* --- Navigation Dropdowns (Notes & PYQs) --- */
+.submenu {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+    margin-left: 45px; /* Indent the folders */
+    padding-left: 15px;
+    list-style: none;
+    border-left: 2px solid rgba(0, 212, 255, 0.3); /* Blue flame tree-line */
+}
+
+/* Class triggered by JavaScript to show the folders */
+.submenu.active {
+    display: flex;
+}
+
+.submenu a {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.5); /* Slightly dimmer text for sub-items */
+    margin-left: 0;
+}
+
+.submenu a:hover {
+    color: #00d4ff;
+}
+
+.dropdown-btn {
+    cursor: pointer;
+    user-select: none;
 }
 
 /* --- Hero Section --- */
@@ -170,7 +205,7 @@ body::before {
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* --- Subject Cards Grid --- */
+/* --- Subject Cards Grid (Kept for future use) --- */
 .subjects {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -387,5 +422,8 @@ footer {
     #pdfViewer {
         width: 95%;
         height: 500px;
+    }
+    .navbar ul {
+        width: 250px; /* Slightly narrower on mobile */
     }
 }

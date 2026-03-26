@@ -3,7 +3,6 @@ function openPDF(file) {
     document.getElementById("pdfViewer").style.display = "block";
     document.getElementById("pdfFrame").src = file;
     
-    // Smooth scroll down to the PDF viewer
     window.scrollTo({
         top: document.getElementById("pdfViewer").offsetTop,
         behavior: "smooth"
@@ -26,19 +25,15 @@ function addReview() {
     }
 
     const reviewList = document.getElementById("reviewList");
-    
-    // Create elements safely to prevent code injection
     const newReview = document.createElement("p");
     const nameTag = document.createElement("b");
     
-    // Use textContent/append instead of innerHTML
     nameTag.textContent = name;
     newReview.appendChild(nameTag);
     newReview.append(": " + review);
 
     reviewList.appendChild(newReview);
 
-    // Clear the input fields after submitting
     document.getElementById("name").value = "";
     document.getElementById("review").value = "";
 }
@@ -56,4 +51,12 @@ function closeAbout() {
 function toggleMenu() {
     const navLinks = document.getElementById("navLinks");
     navLinks.classList.toggle("active");
+}
+
+/* --- Submenu Toggle (For Notes & PYQs) --- */
+function toggleSubMenu(menuId, event) {
+    // Prevent the page from jumping to the top when clicked
+    event.preventDefault(); 
+    const submenu = document.getElementById(menuId);
+    submenu.classList.toggle("active");
 }
