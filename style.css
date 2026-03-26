@@ -78,21 +78,75 @@ body::before {
     z-index: 100;
 }
 
+/* --- Hamburger Icon --- */
+.menu-icon {
+    font-size: 28px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+    user-select: none;
+}
+
+.menu-icon:hover {
+    color: #00d4ff; /* Blue flame hover */
+}
+
+/* --- Navigation Menu Drawer --- */
 .navbar ul {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Hidden off-screen by default */
+    width: 250px;
+    height: 100vh;
+    background: rgba(13, 17, 23, 0.95); /* Deep dark frosted glass */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-left: 1px solid rgba(0, 212, 255, 0.2);
+    
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 100px;
     gap: 30px;
     list-style: none;
+    
+    transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1001; /* Stays above everything */
+    box-shadow: -10px 0 40px rgba(0,0,0,0.7);
+}
+
+/* The class we will trigger with JavaScript to slide it in */
+.navbar ul.active {
+    right: 0;
 }
 
 .navbar a {
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
+    font-size: 18px;
     font-weight: 500;
+    margin-left: 30px;
     transition: color 0.3s;
 }
 
 .navbar a:hover {
     color: #00d4ff;
+}
+
+/* Close button inside the menu */
+.close-menu {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    font-size: 24px;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.5);
+    transition: 0.3s;
+}
+
+.close-menu:hover {
+    color: #00d4ff;
+    transform: rotate(90deg);
 }
 
 /* --- Hero Section --- */
@@ -105,7 +159,10 @@ body::before {
     font-size: 48px;
     font-weight: 600;
     margin-bottom: 15px;
-    color: #e6f1ff; /* Light, bright blue-white */
+    /* Blue Flame Gradient Text */
+    background: linear-gradient(90deg, #00d4ff, #005ae0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero p {
@@ -135,6 +192,7 @@ body::before {
     
     /* The Glass Edge and Shadow */
     border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Light hitting the top edge */
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     transition: all 0.4s ease;
 }
@@ -143,6 +201,7 @@ body::before {
     margin-bottom: 20px;
     font-size: 22px;
     font-weight: 500;
+    color: #e6f1ff; /* Light, bright blue-white */
 }
 
 .subject:hover {
@@ -166,10 +225,12 @@ button {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
 }
 
 button:hover {
     transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(0, 212, 255, 0.6); /* Flame glows brighter */
     filter: brightness(1.1);
 }
 
@@ -183,7 +244,7 @@ button:hover {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.2);
 }
 
 #pdfFrame {
@@ -223,7 +284,7 @@ input, textarea {
     display: block;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    background: rgba(255, 255, 255, 0.03); /* Inset frosted glass */
+    background: rgba(10, 25, 47, 0.4); /* Inset frosted glass */
     backdrop-filter: blur(10px);
     color: white;
     font-family: 'Poppins', sans-serif;
@@ -237,7 +298,7 @@ input::placeholder, textarea::placeholder {
 input:focus, textarea:focus {
     outline: none;
     border: 1px solid #00d4ff;
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(10, 25, 47, 0.7);
     box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
 }
 
@@ -278,7 +339,7 @@ footer {
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 1px solid rgba(0, 212, 255, 0.2);
     padding: 40px 30px;
     transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     z-index: 1000;
