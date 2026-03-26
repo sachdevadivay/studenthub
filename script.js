@@ -1,3 +1,15 @@
+        // Basic markdown-like code block formatting for the bot
+        let formattedText = text;
+        if (text.includes("```")) {
+            // Replaces markdown ticks with styled HTML <pre> blocks
+            formattedText = text.replace(/
+http://googleusercontent.com/immersive_entry_chip/0
+
+### Here is the full, perfectly clean `script.js` file
+
+To make sure you don't have any hidden errors, copy and paste this entire block over your `script.js` file:
+
+```javascript
 /* =========================================
    PDF VIEWER
    ========================================= */
@@ -100,12 +112,7 @@ function addInlineChatMessage(text, sender) {
         if (text.includes("```")) {
             // Replaces markdown ticks with styled HTML <pre> blocks
             formattedText = text.replace(/
-                (.*?)/gs, "<pre style='background
-}
-msgDiv.innerHTML = <strong>NoteVerse AI</strong><p>${formattedText}</p>;
-chatHistory.appendChild(msgDiv);
-}
-// Auto-scroll the chat down when a new message appears
-chatHistory.scrollTop = chatHistory.scrollHeight;
-}
-                
+http://googleusercontent.com/immersive_entry_chip/1
+
+Once you paste this in, your website should load perfectly without any JavaScript errors! Are you ready to test it out in your browser?
+   
