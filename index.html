@@ -5,67 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NoteVerse</title>
 
-    <link rel="stylesheet" href="style.css">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
     <h2>📚 NoteVerse</h2>
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
-    <ul id="navLinks">
-        <li><a href="#">Home</a></li>
+    <a href="#">🏠 Home</a>
+    <a href="#" onclick="toggleSubMenu('notesMenu', event)">📘 Notes</a>
+    <div class="submenu" id="notesMenu">
+        <a href="#">Semester 1</a>
+        <a href="#">Semester 2</a>
+    </div>
 
-        <li class="dropdown">
-            <div class="dropdown-header">
-                <a href="#" onclick="toggleSubMenu('notesSubmenu', event)">Notes ▼</a>
-                <span onclick="openUploadModal('Notes', event)">+</span>
-            </div>
-            <ul class="submenu" id="notesSubmenu">
-                <li><a href="#">Semester 1</a></li>
-                <li><a href="#">Semester 2</a></li>
-                <li><a href="#">Semester 3</a></li>
-                <li><a href="#">Semester 4</a></li>
-            </ul>
-        </li>
+    <a href="#" onclick="toggleSubMenu('pyqMenu', event)">📄 PYQs</a>
+    <div class="submenu" id="pyqMenu">
+        <a href="#">Semester 1</a>
+        <a href="#">Semester 2</a>
+    </div>
 
-        <li class="dropdown">
-            <div class="dropdown-header">
-                <a href="#" onclick="toggleSubMenu('pyqSubmenu', event)">PYQs ▼</a>
-                <span onclick="openUploadModal('PYQs', event)">+</span>
-            </div>
-            <ul class="submenu" id="pyqSubmenu">
-                <li><a href="#">Semester 1</a></li>
-                <li><a href="#">Semester 2</a></li>
-                <li><a href="#">Semester 3</a></li>
-                <li><a href="#">Semester 4</a></li>
-            </ul>
-        </li>
+    <a href="#" onclick="openAbout()">ℹ️ About</a>
+</div>
 
-        <li><a href="#" onclick="openAbout()">About</a></li>
-    </ul>
-</nav>
+<!-- TOP BAR -->
+<div class="topbar">
+    <span class="menu-btn" onclick="toggleSidebar()">☰</span>
+    <h3>NoteVerse</h3>
+</div>
 
-<!-- HERO -->
-<header class="hero">
-    <h1>All Your Notes & PYQs in One Place</h1>
-    <p>Free academic resources for students</p>
-    <button onclick="openAbout()">Explore</button>
-</header>
+<!-- MAIN CONTENT -->
+<div class="main">
 
-<!-- PDF VIEWER -->
-<section id="pdfViewer">
-    <iframe id="pdfFrame"></iframe>
-</section>
+    <section class="hero">
+        <h1>All Your Notes & PYQs in One Place</h1>
+        <p>Free academic resources for students</p>
+    </section>
 
-<!-- FOOTER -->
-<footer>
-    <p>© 2026 NoteVerse</p>
-</footer>
+    <section id="pdfViewer">
+        <iframe id="pdfFrame"></iframe>
+    </section>
+
+</div>
 
 <!-- ABOUT PANEL -->
 <div id="aboutPanel" class="about-panel">
@@ -74,24 +60,7 @@
     <p>NoteVerse helps students access notes and PYQs easily.</p>
 </div>
 
-<!-- UPLOAD MODAL -->
-<div id="uploadModal" class="modal-overlay">
-    <div class="modal-content">
-        <span onclick="closeUploadModal()">✖</span>
-        <h2 id="uploadTitle">Upload</h2>
-
-        <input type="text" placeholder="Subject">
-        <select>
-            <option>Select Semester</option>
-            <option>1</option>
-            <option>2</option>
-        </select>
-
-        <input type="file">
-        <button onclick="simulateUpload()">Upload</button>
-    </div>
-</div>
-
 <script src="script.js"></script>
+
 </body>
 </html>
