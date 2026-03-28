@@ -5,19 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NoteVerse</title>
 
-    <!-- Stylish Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
-    <h2>📚 NoteVerse</h2>
+    <h2>NoteVerse</h2>
 
-    <a href="#">🏠 Home</a>
+    <a href="#" onclick="toggleSidebar(); location.reload();">🏠 Home</a>
 
     <a href="#" onclick="toggleSubMenu('notesMenu', event)">📘 Notes</a>
     <div class="submenu" id="notesMenu">
@@ -25,6 +24,10 @@
         <a href="#">Semester 2</a>
         <a href="#">Semester 3</a>
         <a href="#">Semester 4</a>
+        <a href="#">Semester 5</a>
+        <a href="#">Semester 6</a>
+        <a href="#">Semester 7</a>
+        <a href="#">Semester 8</a>
     </div>
 
     <a href="#" onclick="toggleSubMenu('pyqMenu', event)">📄 PYQs</a>
@@ -33,18 +36,21 @@
         <a href="#">Semester 2</a>
         <a href="#">Semester 3</a>
         <a href="#">Semester 4</a>
+        <a href="#">Semester 5</a>
+        <a href="#">Semester 6</a>
+        <a href="#">Semester 7</a>
+        <a href="#">Semester 8</a>
     </div>
 
     <a href="#" onclick="openAbout()">ℹ️ About</a>
 </div>
 
-<!-- TOPBAR -->
 <div class="topbar">
     <span class="menu-btn" onclick="toggleSidebar()">☰</span>
     <h3>NoteVerse</h3>
-</div>
+    
+    </div>
 
-<!-- MAIN -->
 <div class="main">
 
     <section class="hero">
@@ -56,44 +62,9 @@
         <iframe id="pdfFrame"></iframe>
     </section>
 
-</div>
-
-<!-- ABOUT PANEL -->
-<div id="aboutPanel" class="about-panel">
-    <span onclick="closeAbout()">✖</span>
-
-    <h2>About NoteVerse</h2>
-
-    <p>
-        NoteVerse is a smart academic platform designed to simplify the way students access study materials.
-        Instead of searching multiple websites, everything you need is available in one place.
-    </p>
-
-    <p>
-        This platform provides structured notes and previous year question papers (PYQs)
-        organized semester-wise, helping students save time and focus more on learning.
-    </p>
-
-    <p>
-        Whether you are preparing for exams, revising concepts, or exploring new subjects,
-        NoteVerse ensures a smooth and distraction-free experience.
-    </p>
-
-    <p>
-        🔥 Features:
-        <br>• Semester-wise Notes  
-        <br>• Previous Year Question Papers  
-        <br>• Clean & Simple UI  
-        <br>• Fast Navigation  
-        <br>• Student-Friendly Design  
-    </p>
-
-    <p>
-        Our mission is to make studying easier, faster, and more efficient for every student.
-    </p>
-</div>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+    <section class="upload-section" id="uploadSection">
+        <h2>🚀 Contribute to NoteVerse</h2>
+        <p>Help the community by sharing your study materials.</p>
+        
+        <form id="uploadForm" onsubmit="handleUpload(event)">
+            <input
