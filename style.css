@@ -4,16 +4,23 @@
     box-sizing: border-box;
 }
 
+/* STRICT LOCK: Prevents the horizontal "slider" glitch entirely */
+html, body {
+    max-width: 100vw;
+    overflow-x: hidden; 
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    /* Cosmic Background */
+    /* Cosmic Background using your Gargantua image */
     background: #0d1117 url('IMG_20260326_212648.png') no-repeat center center fixed;
     background-size: cover;
     color: white;
-    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
 }
 
-/* --- Ambient Light Effects --- */
+/* --- The Ambient Light Effects --- */
 body::after, body::before {
     content: '';
     position: fixed;
@@ -25,10 +32,22 @@ body::after, body::before {
     z-index: -1; 
     pointer-events: none;
 }
-body::after { background: radial-gradient(circle, #00d4ff 0%, #005ae0 100%); top: 10%; right: 10%; }
-body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); top: 40%; left: 5%; width: 250px; height: 250px; }
 
-/* --- Custom Scrollbar --- */
+body::after {
+    background: radial-gradient(circle, #00d4ff 0%, #005ae0 100%);
+    top: 10%;
+    right: 10%;
+}
+
+body::before {
+    background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%);
+    top: 40%;
+    left: 5%;
+    width: 250px;
+    height: 250px;
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: rgba(13, 17, 23, 0.8); }
 ::-webkit-scrollbar-thumb { background: #00d4ff; border-radius: 10px; }
@@ -40,28 +59,41 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
     display: flex;
     align-items: center;
     padding: 15px 25px;
-    background: rgba(13, 17, 23, 0.8);
+    background: rgba(13, 17, 23, 0.4);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 100;
 }
 
 .topbar h3 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 30px;
+    font-family: 'Great Vibes', cursive; /* Elegant Font */
+    font-size: 32px;
+    font-weight: 400;
     color: #00d4ff;
-    margin-left: 15px;
-    text-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.4); 
 }
 
-.menu-btn { font-size: 28px; cursor: pointer; color: #00d4ff; transition: 0.3s; display: flex; align-items: center; }
-.menu-btn:hover { color: #e6f1ff; }
+.menu-btn {
+    font-size: 28px;
+    cursor: pointer;
+    margin-right: 20px;
+    color: #00d4ff;
+    transition: 0.3s;
+    user-select: none;
+    display: flex; align-items: center; /* Center icon */
+}
+
+.menu-btn:hover {
+    color: #e6f1ff;
+}
 
 /* =========================================
-   SIDEBAR
+   SIDEBAR (Fixed on Desktop, Hidden on Mobile)
    ========================================= */
 .sidebar {
     position: fixed;
@@ -69,36 +101,37 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
     top: 0;
     width: 280px;
     height: 100%;
-    background: rgba(13, 17, 23, 0.95); /* Deep frosted glass */
+    background: rgba(13, 17, 23, 0.85); /* Darker frosted glass */
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     border-right: 1px solid rgba(0, 212, 255, 0.2);
+    box-shadow: 10px 0 40px rgba(0,0,0,0.7);
     padding: 40px 20px 20px 20px;
     transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    z-index: 1000;
+    z-index: 1001; /* Above topbar */
     overflow-y: auto;
-    box-shadow: 10px 0 40px rgba(0,0,0,0.8);
 }
 
-/* Slide-in magic class */
 .sidebar.active {
-    left: 0; 
+    left: 0;
 }
 
 .sidebar h2 {
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Great Vibes', cursive; /* Elegant Font */
     font-size: 42px;
+    font-weight: 400;
     color: #00d4ff;
-    text-align: center;
+    letter-spacing: 2px;
     margin-bottom: 30px;
     text-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+    text-align: center;
 }
 
-/* NEW: Icon & Text Alignment */
+/* Icon & Text Alignment (Modern style) */
 .sidebar a {
     display: flex;
     align-items: center; 
-    gap: 12px; /* Perfect spacing between icon and text */
+    gap: 12px; /* Spaces the icon from the text */
     padding: 12px 15px;
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
@@ -110,7 +143,7 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 }
 
 .sidebar a i {
-    font-size: 22px; /* Makes the Phosphor icons crisp and slightly larger */
+    font-size: 22px; /* Makes the icons crisp */
 }
 
 .sidebar a:hover {
@@ -131,15 +164,17 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
    MAIN CONTENT AREA
    ========================================= */
 .main {
-    padding: 40px 20px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Centers elements */
 }
 
+/* HERO */
 .hero {
     text-align: center;
-    background: rgba(13, 17, 23, 0.5);
+    margin-top: 60px;
+    background: rgba(13, 17, 23, 0.5); /* Frosted Glass */
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     padding: 50px 30px;
@@ -148,25 +183,195 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
     box-shadow: 0 10px 40px rgba(0,0,0,0.5);
     max-width: 800px;
     width: 100%;
-    margin-top: 20px;
 }
 
-.hero h1 { 
-    font-size: 2.8rem; 
-    background: linear-gradient(90deg, #00d4ff, #005ae0); 
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent; 
-    margin-bottom: 15px; 
+.hero h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    /* Blue Flame Gradient Text */
+    background: linear-gradient(90deg, #00d4ff, #005ae0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
+
 .hero p { font-size: 1.1rem; color: rgba(255, 255, 255, 0.8); }
 
+/* SEMESTER LISTS (Styled to look academic) */
+.semester-lists {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 50px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.list-card {
+    background: rgba(13, 17, 23, 0.5); /* Frosted Glass */
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    flex: 1;
+    text-align: center;
+}
+
+.list-card h3 {
+    display: flex; align-items: center; justify-content: center; gap: 10px; /* Center icon and text */
+    color: #00d4ff; font-size: 22px; margin-bottom: 20px;
+}
+
+.list-card ul { list-style: none; padding-left: 0; }
+.list-card ul li { margin-bottom: 10px; }
+.list-card ul li a {
+    color: rgba(255, 255, 255, 0.7); text-decoration: none; font-size: 16px; transition: 0.3s;
+}
+.list-card ul li a:hover { color: #00d4ff; text-decoration: underline; }
+
 /* --- PDF VIEWER --- */
-#pdfViewer { display: none; margin-top: 40px; width: 100%; max-width: 1000px; height: 700px; border-radius: 15px; border: 1px solid rgba(0, 212, 255, 0.3); overflow: hidden; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8); }
+#pdfViewer {
+    display: none;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 1000px;
+    height: 700px;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
 #pdfFrame { width: 100%; height: 100%; border: none; background: white; }
 
-/* --- UPLOAD SECTION --- */
-.upload-section { margin-top: 60px; margin-bottom: 50px; background: rgba(13, 17, 23, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 40px; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); width: 100%; max-width: 700px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-.upload-section h2 { color: #00d4ff; margin-bottom: 10px; font-size: 28px; }
-.upload-section p { color: rgba(255, 255, 255, 0.7); margin-bottom: 25px; }
-#uploadForm { display: flex; flex-direction: column; gap: 15px; }
-.upload-
+/* =========================================
+   UPLOAD SECTION (Styled to match Image 3)
+   ========================================= */
+.upload-section {
+    margin-top: 60px;
+    margin-bottom: 50px;
+    background: rgba(13, 17, 23, 0.6); /* Darker frosted glass */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+.upload-section h2 {
+    color: #00d4ff;
+    margin-bottom: 10px;
+    font-size: 28px;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+.upload-section p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+
+#uploadForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.upload-row { display: flex; gap: 15px; }
+
+/* Styled Inputs & Selects */
+.upload-input {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05); /* Very subtle background */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: white; /* All text is white */
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.upload-input:focus {
+    border-color: #00d4ff;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+}
+
+/* Style for select options */
+.upload-input option {
+    background: #0d1117;
+    color: white;
+}
+
+.file-input {
+    padding: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+}
+
+/* The Save Button */
+.upload-btn {
+    padding: 16px;
+    background: linear-gradient(45deg, #00d4ff, #005ae0);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+}
+
+.upload-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+}
+
+/* =========================================
+   ABOUT PANEL
+   ========================================= */
+.about-panel {
+    position: fixed;
+    right: -400px; 
+    top: 0;
+    width: 350px;
+    height: 100%;
+    background: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-left: 1px solid rgba(0, 212, 255, 0.2);
+    padding: 40px 30px;
+    transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow-y: auto;
+    z-index: 1002; /* Ensure it floats above everything */
+    box-shadow: -10px 0 40px rgba(0,0,0,0.8);
+}
+
+.about-panel h2 { color: #00d4ff; margin-bottom: 20px; }
+.about-panel p { color: rgba(255, 255, 255, 0.8); margin-bottom: 15px; line-height: 1.6; font-size: 15px; }
+
+.close-about {
+    position: absolute; top: 20px; right: 25px; font-size: 24px; cursor: pointer; color: rgba(255,255,255,0.5); transition: 0.3s;
+}
+.close-about:hover { color: #00d4ff; transform: rotate(90deg); }
+
+/* =========================================
+   MOBILE RESPONSIVE RULES
+   ========================================= */
+@media(max-width: 768px) {
+    .sidebar { left: -300px; } /* Hides sidebar */
+    .sidebar.active { left: 0; } /* Shows sidebar */
+    .topbar { padding: 15px 20px; }
+    .main { padding: 20px; }
+    
+    .semester-lists { flex-direction: column; gap: 20px; } /* Stack lists vertically */
+    .upload-row { flex-direction: column; } /* Stacks dropdowns */
+}
