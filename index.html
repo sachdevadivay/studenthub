@@ -4,71 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NoteVerse</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="sidebar" id="sidebar">
     <span onclick="toggleSidebar()" class="close-sidebar"><i class="ph ph-x"></i></span>
-
     <h2>NoteVerse</h2>
-
-    <a href="#" onclick="toggleSidebar(); location.reload();">
-        <i class="ph ph-house"></i> Home
-    </a>
-
-    <a href="#" onclick="toggleSubMenu('notesMenu', event)">
-        <i class="ph ph-book-open-text"></i> Notes
-    </a>
+    <a href="#" onclick="toggleSidebar(); location.reload();"><i class="ph ph-house"></i> Home</a>
+    <a href="#" onclick="toggleSubMenu('notesMenu', event)"><i class="ph ph-book-open-text"></i> Notes</a>
     <div class="submenu" id="notesMenu">
-        <a href="#">Semester 1</a>
-        <a href="#">Semester 2</a>
-        <a href="#">Semester 3</a>
-        <a href="#">Semester 4</a>
-        <a href="#">Semester 5</a>
-        <a href="#">Semester 6</a>
-        <a href="#">Semester 7</a>
-        <a href="#">Semester 8</a>
+        <a href="#">Semester 1</a><a href="#">Semester 2</a>
     </div>
-
-    <a href="#" onclick="toggleSubMenu('pyqMenu', event)">
-        <i class="ph ph-file-text"></i> PYQs
-    </a>
+    <a href="#" onclick="toggleSubMenu('pyqMenu', event)"><i class="ph ph-file-text"></i> PYQs</a>
     <div class="submenu" id="pyqMenu">
-        <a href="#">Semester 1</a>
-        <a href="#">Semester 2</a>
-        <a href="#">Semester 3</a>
-        <a href="#">Semester 4</a>
-        <a href="#">Semester 5</a>
-        <a href="#">Semester 6</a>
-        <a href="#">Semester 7</a>
-        <a href="#">Semester 8</a>
+        <a href="#">Semester 1</a><a href="#">Semester 2</a>
     </div>
-
-    <a href="#" onclick="toggleSubMenu('resourcesMenu', event)">
-        <i class="ph ph-cube"></i> Resources
-    </a>
+    <a href="#" onclick="toggleSubMenu('resourcesMenu', event)"><i class="ph ph-cube"></i> Resources</a>
     <div class="submenu" id="resourcesMenu">
-        <a href="#">Semester 1</a>
-        <a href="#">Semester 2</a>
-        <a href="#">Semester 3</a>
-        <a href="#">Semester 4</a>
-        <a href="#">Semester 5</a>
-        <a href="#">Semester 6</a>
-        <a href="#">Semester 7</a>
-        <a href="#">Semester 8</a>
+        <a href="#">Semester 1</a><a href="#">Semester 2</a>
     </div>
-
-    <a href="#" onclick="openAbout()">
-        <i class="ph ph-info"></i> About
-    </a>
+    <a href="#" onclick="openAbout()"><i class="ph ph-info"></i> About</a>
 </div>
 
 <div class="topbar">
@@ -77,7 +36,6 @@
 </div>
 
 <div class="main">
-
     <section class="hero">
         <h1>All Your Notes & PYQs in One Place</h1>
         <p>Free academic resources for students</p>
@@ -87,70 +45,50 @@
         <iframe id="pdfFrame"></iframe>
     </section>
 
-    <section class="upload-section" id="uploadSection">
+    <section class="upload-section">
         <h2>Contribute to NoteVerse</h2>
-        <p>Help the community by sharing your study materials.</p>
-        
         <form id="uploadForm">
-            <input type="text" id="fileName" class="upload-input" placeholder="File Name (e.g., Physics Unit 1)" required>
-            
+            <input type="text" id="fileName" class="upload-input" placeholder="File Name" required>
             <div class="upload-row">
                 <select id="fileCategory" class="upload-input" required>
-                    <option value="" disabled selected>Select Category</option>
+                    <option value="" disabled selected>Category</option>
                     <option value="notes">Notes</option>
                     <option value="pyq">PYQs</option>
                     <option value="resources">Resources</option>
                 </select>
-
                 <select id="fileSemester" class="upload-input" required>
-                    <option value="" disabled selected>Select Semester</option>
-                    <option value="1">Semester 1</option>
-                    <option value="2">Semester 2</option>
-                    <option value="3">Semester 3</option>
-                    <option value="4">Semester 4</option>
-                    <option value="5">Semester 5</option>
-                    <option value="6">Semester 6</option>
-                    <option value="7">Semester 7</option>
-                    <option value="8">Semester 8</option>
+                    <option value="" disabled selected>Semester</option>
+                    <option value="1">Sem 1</option><option value="2">Sem 2</option>
                 </select>
             </div>
-
-            <input type="file" id="fileInput" class="upload-input file-input" accept=".pdf,.doc,.docx" required>
-            
+            <input type="file" id="fileInput" class="upload-input" required>
             <button type="submit" class="upload-btn">Upload & Save File</button>
         </form>
     </section>
-
 </div>
 
 <div id="aboutPanel" class="about-panel">
     <span onclick="closeAbout()" class="close-about"><i class="ph ph-x"></i></span>
     <h2>About NoteVerse</h2>
-    <p>NoteVerse is a smart academic platform designed to simplify the way students access study materials.</p>
-    <p>This platform provides structured notes, previous year question papers (PYQs), and additional resources organized semester-wise.</p>
-    <p>Our mission is to make studying easier, faster, and more efficient for every student.</p>
+    <p>Your content here...</p>
 </div>
 
 <script>
-    function toggleSidebar() {
-        document.getElementById("sidebar").classList.toggle("active");
-    }
-
+    function toggleSidebar() { document.getElementById("sidebar").classList.toggle("active"); }
     function toggleSubMenu(id, event) {
-        event.preventDefault(); 
-        document.querySelectorAll(".submenu").forEach(menu => {
-            if (menu.id !== id) menu.classList.remove("active");
-        });
+        event.preventDefault();
+        document.querySelectorAll(".submenu").forEach(m => { if(m.id !== id) m.classList.remove("active"); });
         document.getElementById(id).classList.toggle("active");
     }
-
-    function openAbout() {
-        document.getElementById("aboutPanel").style.right = "0";
-    }
-
-    function closeAbout() {
-        document.getElementById("aboutPanel").style.right = "-400px"; 
-    }
-
+    function openAbout() { document.getElementById("aboutPanel").style.right = "0"; }
+    function closeAbout() { document.getElementById("aboutPanel").style.right = "-400px"; }
     function openPDF(file) {
-        const viewer = document.
+        const viewer = document.getElementById("pdfViewer");
+        viewer.style.display = "block";
+        document.getElementById("pdfFrame").src = file;
+        window.scrollTo({ top: viewer.offsetTop - 100, behavior: "smooth" });
+    }
+</script>
+
+</body>
+</html>
