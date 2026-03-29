@@ -27,7 +27,6 @@ body::after, body::before {
 body::after { background: radial-gradient(circle, #00d4ff 0%, #005ae0 100%); top: 10%; right: 10%; }
 body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); top: 40%; left: 5%; }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: rgba(13, 17, 23, 0.8); }
 ::-webkit-scrollbar-thumb { background: #00d4ff; border-radius: 10px; }
@@ -46,16 +45,7 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
     z-index: 2500; 
     pointer-events: none; 
 }
-
-.topbar h3 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 38px;
-    color: #00d4ff;
-    text-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
-    pointer-events: auto; 
-    transition: 0.3s;
-}
-
+.topbar h3 { font-family: 'Great Vibes', cursive; font-size: 38px; color: #00d4ff; text-shadow: 0 0 15px rgba(0, 212, 255, 0.4); pointer-events: auto; transition: 0.3s; }
 .topbar h3:hover { color: white; }
 .menu-btn { font-size: 32px; cursor: pointer; color: #00d4ff; transition: 0.3s; pointer-events: auto; z-index: 2600; }
 .menu-btn:hover { color: #e6f1ff; transform: scale(1.1); }
@@ -64,18 +54,11 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
    SIDEBAR
    ========================================= */
 .sidebar {
-    position: fixed;
-    right: -300px; 
-    top: 0; width: 280px; height: 100%;
-    background: rgba(13, 17, 23, 0.98); 
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border-left: 1px solid rgba(0, 212, 255, 0.2);
-    padding: 80px 20px 20px 20px;
-    transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    z-index: 3000; overflow-y: auto;
+    position: fixed; right: -300px; top: 0; width: 280px; height: 100%;
+    background: rgba(13, 17, 23, 0.98); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+    border-left: 1px solid rgba(0, 212, 255, 0.2); padding: 80px 20px 20px 20px;
+    transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); z-index: 3000; overflow-y: auto;
 }
-
 .sidebar.active { right: 0; }
 .sidebar h2 { font-family: 'Great Vibes', cursive; font-size: 42px; color: #00d4ff; text-align: center; margin-bottom: 30px; }
 .sidebar a { display: flex; align-items: center; gap: 12px; padding: 12px 15px; color: white; text-decoration: none; border-radius: 8px; margin-bottom: 5px; transition: 0.3s; }
@@ -89,31 +72,16 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 /* =========================================
    MAIN CONTENT AREA
    ========================================= */
-.main {
-    padding-top: 140px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
+.main { padding-top: 140px; display: flex; flex-direction: column; align-items: center; width: 100%; }
 
 /* =========================================
    HERO SECTION (HOME)
    ========================================= */
 .hero {
-    text-align: center;
-    background: rgba(13, 17, 23, 0.5); 
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    padding: 50px 40px;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 212, 255, 0.2);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-    max-width: 800px;
-    width: 90%;
-    margin-bottom: 60px;
+    text-align: center; background: rgba(13, 17, 23, 0.5); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    padding: 50px 40px; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    max-width: 800px; width: 90%; margin-bottom: 60px;
 }
-
 .hero-badge { display: inline-block; padding: 8px 20px; margin-bottom: 25px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 50px; font-size: 14px; color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.05); }
 .hero h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 20px; color: white; line-height: 1.3; }
 .hero h1 .highlight { background: linear-gradient(90deg, #00d4ff, #005ae0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -129,153 +97,47 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 .subject-card { background: rgba(13, 17, 23, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 15px; padding: 30px; text-align: left; transition: transform 0.3s ease; }
 .subject-card:hover { transform: translateY(-5px); border-color: rgba(0, 212, 255, 0.4); }
 .subject-card h3 { color: #00d4ff; font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 12px; }
-.coming-soon { color: rgba(255, 255, 255, 0.4); font-size: 0.95rem; font-style: italic; padding-left: 35px; }
+.subject-card ul { list-style: none; display: flex; flex-direction: column; gap: 15px; }
+.subject-card li { display: flex; justify-content: space-between; align-items: center; color: rgba(255, 255, 255, 0.85); font-size: 1rem; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.subject-card li:last-child { border-bottom: none; padding-bottom: 0; }
+.list-left { display: flex; align-items: center; gap: 12px; }
+.list-left i { color: rgba(255, 255, 255, 0.3); font-size: 1.2rem; }
+.subject-card li a { color: rgba(255, 255, 255, 0.5); text-decoration: none; font-size: 1.4rem; transition: 0.3s; display: flex; align-items: center; }
+.subject-card li a:hover { color: #00d4ff; transform: scale(1.1); }
 
 /* =========================================
-   PLACEMENT ROADMAP SECTION (TAB-FREE, INTEGRATED STYLE)
+   PLACEMENT ROADMAP SECTION (FROSTED BOXES)
    ========================================= */
-.roadmap-section {
-    width: 90%;
-    max-width: 900px;
-    margin: 0 auto 60px auto;
-}
+.roadmap-section { width: 90%; max-width: 900px; margin: 0 auto 60px auto; }
+.roadmap-header { text-align: center; background: rgba(13, 17, 23, 0.5); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); padding: 30px; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); margin-bottom: 40px; }
+.roadmap-header h1 { font-size: 2.8rem; margin-bottom: 10px; color: white; }
+.roadmap-header .highlight { background: linear-gradient(90deg, #00d4ff, #005ae0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.roadmap-header p { color: rgba(255, 255, 255, 0.7); font-size: 1.1rem; }
 
-/* Header matches hero style but is scaled down */
-.roadmap-header {
-    text-align: center;
-    background: rgba(13, 17, 23, 0.5); 
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    padding: 30px;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 212, 255, 0.2);
-    margin-bottom: 40px;
-}
+.roadmap-cards { display: flex; flex-direction: column; gap: 30px; }
 
-.roadmap-header h1 {
-    font-size: 2.8rem;
-    margin-bottom: 10px;
-    color: white;
-}
-
-.roadmap-header .highlight {
-    background: linear-gradient(90deg, #00d4ff, #005ae0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.roadmap-header p {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 1.1rem;
-}
-
-/* Container for all Stage Cards */
-.roadmap-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 30px; /* Vertical spacing between stages */
-}
-
-/* THE MAGIC CLASS: Same Frosted Glass Style as other cards */
+/* The Frosted Stage Cards */
 .roadmap-card {
-    background: rgba(13, 17, 23, 0.6); /* Frosted Background */
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 212, 255, 0.2); /* Cyan Border */
-    border-radius: 20px;
-    padding: 40px;
-    text-align: left; /* Text aligns left */
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    background: rgba(13, 17, 23, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 20px; padding: 40px; text-align: left; box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
+.roadmap-card h2 { color: white; margin-bottom: 10px; font-size: 1.8rem; display: flex; align-items: center; gap: 12px; }
+.roadmap-card h2 .highlight { background: linear-gradient(90deg, #00d4ff, #005ae0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.main-desc { color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; font-weight: 500; margin-bottom: 25px; line-height: 1.6; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
+.stage-only-desc { color: rgba(255, 255, 255, 0.85); font-size: 1rem; line-height: 1.8; }
 
-.roadmap-card h2 {
-    color: white;
-    margin-bottom: 10px;
-    font-size: 1.8rem;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
+/* Indented Lists for Roadmap */
+.indented-list { list-style: none; display: flex; flex-direction: column; gap: 20px; padding-left: 15px; }
+.list-item { position: relative; padding-left: 20px; }
+.list-item::before { content: ''; position: absolute; left: -10px; top: 8px; width: 8px; height: 8px; background-color: #00d4ff; border-radius: 50%; }
+.list-item h4 { color: white; font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+.list-item h4 i { color: rgba(255,255,255,0.5); font-size: 1rem; }
+.list-item p { color: rgba(255, 255, 255, 0.7); font-size: 0.95rem; line-height: 1.6; }
 
-/* Gradient highlight ONLY on the actual subject matter text */
-.roadmap-card h2 .highlight {
-    background: linear-gradient(90deg, #00d4ff, #005ae0);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.main-desc {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 25px;
-    line-height: 1.6;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 20px;
-}
-
-.stage-only-desc {
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 1rem;
-    line-height: 1.8;
-}
-
-/* --- THE STRUCTURED LIST (Indented format from your screenshot) --- */
-.indented-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding-left: 15px; /* Slight indentation */
-}
-
-.list-item {
-    position: relative;
-    padding-left: 20px; /* Indent for marker */
-}
-
-/* The vertical marker line/dot from your screenshot */
-.list-item::before {
-    content: '';
-    position: absolute;
-    left: -10px;
-    top: 8px; /* Centers dot with first line of text */
-    width: 8px;
-    height: 8px;
-    background-color: #00d4ff; /* Cyan dot marker */
-    border-radius: 50%;
-}
-
-.list-item h4 {
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.list-item h4 i {
-    color: rgba(255,255,255,0.5);
-    font-size: 1rem;
-}
-
-.list-item p {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-/* Simpler list for Stage 3 (Subjects) */
-.simple-list .list-item {
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.simple-list .list-item h4 {
-    margin-bottom: 0;
-    color: rgba(255,255,255,0.8);
-}
+/* Simpler list for Stage 3 */
+.simple-list .list-item { padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.simple-list .list-item h4 { margin-bottom: 0; color: rgba(255,255,255,0.8); }
+.simple-list .list-item p { margin-top: 5px; color: rgba(255, 255, 255, 0.5); }
 
 /* =========================================
    GHOST BOX FIX (PDF Viewer)
@@ -284,7 +146,7 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 #pdfFrame { width: 100%; height: 100%; border: none; background: white; }
 
 /* =========================================
-   UPLOAD SECTION (Style reference for Roadmap)
+   UPLOAD SECTION
    ========================================= */
 .upload-section { background: rgba(13, 17, 23, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 40px; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); width: 90%; max-width: 700px; text-align: center; margin-bottom: 80px; }
 .upload-section h2 { color: #00d4ff; margin-bottom: 15px; }
@@ -311,14 +173,13 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 @media(max-width: 768px) {
     .topbar { padding: 15px 20px; }
     .topbar h3 { font-size: 28px; }
-    
     .hero h1 { font-size: 2rem; }
     .core-subjects h2 { font-size: 2rem; }
     .roadmap-header h1 { font-size: 2.2rem; }
-    
     .roadmap-card { padding: 25px; }
     .roadmap-card h2 { font-size: 1.5rem; }
     .main-desc { font-size: 1rem; }
-    
     .upload-row { flex-direction: column; }
+    .subject-card li { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .subject-card li a { align-self: flex-end; }
 }
