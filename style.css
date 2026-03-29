@@ -27,6 +27,7 @@ body::after, body::before {
 body::after { background: radial-gradient(circle, #00d4ff 0%, #005ae0 100%); top: 10%; right: 10%; }
 body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); top: 40%; left: 5%; }
 
+/* Custom Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: rgba(13, 17, 23, 0.8); }
 ::-webkit-scrollbar-thumb { background: #00d4ff; border-radius: 10px; }
@@ -97,7 +98,7 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 }
 
 /* =========================================
-   HERO SECTION
+   HERO SECTION (HOME)
    ========================================= */
 .hero {
     text-align: center;
@@ -113,16 +114,13 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
     margin-bottom: 60px;
 }
 
-.hero-badge {
-    display: inline-block; padding: 8px 20px; margin-bottom: 25px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 50px; font-size: 14px; color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.05);
-}
-
+.hero-badge { display: inline-block; padding: 8px 20px; margin-bottom: 25px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 50px; font-size: 14px; color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.05); }
 .hero h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 20px; color: white; line-height: 1.3; }
 .hero h1 .highlight { background: linear-gradient(90deg, #00d4ff, #005ae0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .hero p { font-size: 1.1rem; color: rgba(255, 255, 255, 0.8); line-height: 1.6; max-width: 650px; margin: 0 auto; }
 
 /* =========================================
-   CSE CORE SUBJECTS CARDS
+   CSE CORE SUBJECTS CARDS (HOME)
    ========================================= */
 .core-subjects { width: 90%; max-width: 800px; margin: 0 auto 60px auto; text-align: center; }
 .core-subjects h2 { font-size: 2.5rem; color: white; margin-bottom: 15px; line-height: 1.2; }
@@ -134,121 +132,159 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 .coming-soon { color: rgba(255, 255, 255, 0.4); font-size: 0.95rem; font-style: italic; padding-left: 35px; }
 
 /* =========================================
-   PLACEMENT ROADMAP SECTION (TABBED)
+   PLACEMENT ROADMAP SECTION (TAB-FREE, INTEGRATED STYLE)
    ========================================= */
 .roadmap-section {
     width: 90%;
     max-width: 900px;
     margin: 0 auto 60px auto;
+}
+
+/* Header matches hero style but is scaled down */
+.roadmap-header {
+    text-align: center;
+    background: rgba(13, 17, 23, 0.5); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    margin-bottom: 40px;
+}
+
+.roadmap-header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
     color: white;
 }
 
-.roadmap-header { text-align: center; margin-bottom: 40px; }
-.roadmap-header h1 { font-size: 3rem; margin-bottom: 10px; color: white; }
-.roadmap-header .highlight { background: linear-gradient(90deg, #00d4ff, #005ae0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.roadmap-header p { color: rgba(255, 255, 255, 0.7); font-size: 1.1rem; }
+.roadmap-header .highlight {
+    background: linear-gradient(90deg, #00d4ff, #005ae0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-/* Tabs Navigation Buttons */
-.roadmap-tabs {
+.roadmap-header p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+}
+
+/* Container for all Stage Cards */
+.roadmap-cards {
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 30px; /* Vertical spacing between stages */
 }
 
-.tab-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 12px 30px;
-    border-radius: 50px;
-    color: white;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-.tab-btn:hover { background: rgba(255, 255, 255, 0.1); }
-
-.tab-btn.active {
-    background: linear-gradient(45deg, #00d4ff, #005ae0);
-    border-color: transparent;
-    box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
-}
-
-/* Tab Content Areas */
-.tab-content {
-    display: none; /* Hidden by default */
-    background: rgba(13, 17, 23, 0.6);
+/* THE MAGIC CLASS: Same Frosted Glass Style as other cards */
+.roadmap-card {
+    background: rgba(13, 17, 23, 0.6); /* Frosted Background */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 212, 255, 0.2);
+    border: 1px solid rgba(0, 212, 255, 0.2); /* Cyan Border */
     border-radius: 20px;
     padding: 40px;
+    text-align: left; /* Text aligns left */
     box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-    animation: fadeIn 0.4s ease forwards;
 }
 
-.tab-content.active {
-    display: block; /* Shown when active */
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.tab-content h2 {
-    color: #00d4ff;
+.roadmap-card h2 {
+    color: white;
     margin-bottom: 10px;
     font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.stage-desc {
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 30px;
-    font-size: 1.05rem;
+/* Gradient highlight ONLY on the actual subject matter text */
+.roadmap-card h2 .highlight {
+    background: linear-gradient(90deg, #00d4ff, #005ae0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* Internal Cards inside the Tabs */
-.tab-grid {
+.main-desc {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 20px;
+}
+
+.stage-only-desc {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* --- THE STRUCTURED LIST (Indented format from your screenshot) --- */
+.indented-list {
+    list-style: none;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding-left: 15px; /* Slight indentation */
 }
 
-.tab-card {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
-    padding: 25px;
-    border-left: 4px solid #00d4ff;
+.list-item {
+    position: relative;
+    padding-left: 20px; /* Indent for marker */
 }
 
-.tab-card h4 {
+/* The vertical marker line/dot from your screenshot */
+.list-item::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 8px; /* Centers dot with first line of text */
+    width: 8px;
+    height: 8px;
+    background-color: #00d4ff; /* Cyan dot marker */
+    border-radius: 50%;
+}
+
+.list-item h4 {
     color: white;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.tab-card p {
-    color: rgba(255, 255, 255, 0.65);
+.list-item h4 i {
+    color: rgba(255,255,255,0.5);
+    font-size: 1rem;
+}
+
+.list-item p {
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.95rem;
     line-height: 1.6;
 }
 
+/* Simpler list for Stage 3 (Subjects) */
+.simple-list .list-item {
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.simple-list .list-item h4 {
+    margin-bottom: 0;
+    color: rgba(255,255,255,0.8);
+}
+
 /* =========================================
-   GHOST BOX FIX
+   GHOST BOX FIX (PDF Viewer)
    ========================================= */
-#pdfViewer { display: none; margin-bottom: 60px; width: 90%; max-width: 1000px; height: 600px; border-radius: 15px; border: 1px solid rgba(0, 212, 255, 0.3); overflow: hidden; }
+#pdfViewer { display: none; margin-bottom: 60px; width: 90%; max-width: 1000px; height: 600px; border-radius: 15px; border: 1px solid rgba(0, 212, 255, 0.3); overflow: hidden; z-index: 100;}
 #pdfFrame { width: 100%; height: 100%; border: none; background: white; }
 
 /* =========================================
-   UPLOAD SECTION
+   UPLOAD SECTION (Style reference for Roadmap)
    ========================================= */
 .upload-section { background: rgba(13, 17, 23, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 40px; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); width: 90%; max-width: 700px; text-align: center; margin-bottom: 80px; }
 .upload-section h2 { color: #00d4ff; margin-bottom: 15px; }
@@ -280,6 +316,9 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
     .core-subjects h2 { font-size: 2rem; }
     .roadmap-header h1 { font-size: 2.2rem; }
     
+    .roadmap-card { padding: 25px; }
+    .roadmap-card h2 { font-size: 1.5rem; }
+    .main-desc { font-size: 1rem; }
+    
     .upload-row { flex-direction: column; }
-    .tab-content { padding: 25px; }
 }
