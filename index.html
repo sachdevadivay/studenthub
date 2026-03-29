@@ -15,11 +15,6 @@
 
 <body>
 
-<div class="topbar">
-    <h3>NoteVerse</h3>
-    <span class="menu-btn" onclick="toggleSidebar()"><i class="ph ph-list"></i></span>
-</div>
-
 <div class="sidebar" id="sidebar">
     <span onclick="toggleSidebar()" class="close-sidebar"><i class="ph ph-x"></i></span>
 
@@ -76,12 +71,118 @@
     </a>
 </div>
 
+<div class="topbar">
+    <h3>NoteVerse</h3>
+    <span class="menu-btn" onclick="toggleSidebar()"><i class="ph ph-list"></i></span>
+</div>
+
 <div class="main">
 
     <section class="hero">
         <div class="hero-badge">Your Gateway to Academic Excellence</div>
+        
         <h1>Master your studies with <span class="highlight">curated</span> resources and roadmaps</h1>
+        
         <p>Unlock your potential with comprehensive guides, notes, and expert-designed learning paths for every step of your academic journey.</p>
+    </section>
+
+    <section class="core-subjects">
+        <h2>CSE Core Fundamental Subjects</h2>
+        <p class="core-subtext">Mastering these subjects is crucial for building a strong foundation and acing technical interviews.</p>
+
+        <div class="subject-cards">
+            
+            <div class="subject-card">
+                <h3><i class="ph ph-arrow-left"></i> Database Management System (DBMS)</h3>
+                <ul>
+                    <li>
+                        <span class="list-left"><i class="ph ph-circle"></i> Gate Smashers DBMS Playlist (Most Recommended)</span>
+                        <a href="#" target="_blank"><i class="ph ph-arrow-up-right"></i></a>
+                    </li>
+                    <li>
+                        <span class="list-left"><i class="ph ph-circle"></i> Knowledge Gate DBMS Playlist</span>
+                        <a href="#" target="_blank"><i class="ph ph-arrow-up-right"></i></a>
+                    </li>
+                    <li>
+                        <span class="list-left"><i class="ph ph-circle"></i> Neso Academy DBMS Playlist</span>
+                        <a href="#" target="_blank"><i class="ph ph-arrow-up-right"></i></a>
+                    </li>
+                    <li>
+                        <span class="list-left"><i class="ph ph-circle"></i> Sudhakar Atchala DBMS Playlist</span>
+                        <a href="#" target="_blank"><i class="ph ph-arrow-up-right"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="subject-card">
+                <h3><i class="ph ph-arrow-left"></i> Operating System (OS)</h3>
+                <ul>
+                    <li>
+                        <span class="list-left"><i class="ph ph-circle"></i> Gate Smashers OS Playlist (Most Recommended)</span>
+                        <a href="#" target="_blank"><i class="ph ph-arrow-up-right"></i></a>
+                    </li>
+                    <li>
+                        <span class="list-left"><i class="ph ph-circle"></i> Knowledge Gate OS Playlist</span>
+                        <a href="#" target="_blank"><i class="ph ph-arrow-up-right"></i></a>
+                    </li>
+                    <li>
+                        <span class="list-left"><i class="ph ph-circle"></i> Sudhakar Atchala OS Playlist</span>
+                        <a href="#" target="_blank"><i class="ph ph-arrow-up-right"></i></a>
+                    </li>
+                    <li>
+                        <span class="list-left"><i class="ph ph-circle"></i> Neso Academy OS Playlist</span>
+                        <a href="#" target="_blank"><i class="ph ph-arrow-up-right"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="subject-card">
+                <h3><i class="ph ph-arrow-left"></i> Computer Networks</h3>
+                <ul>
+                    <li>
+                        <span class="list-left"><i class="ph ph-circle"></i> Gate Smashers CN Playlist (Most Recommended)</span>
+                        <a href="#" target="_blank"><i class="ph ph-arrow-up-right"></i></a>
+                    </li>
+                    <li>
+                        <span class="list-left"><i class="ph ph-circle"></i> Knowledge Gate CN Playlist</span>
+                        <a href="#" target="_blank"><i class="ph ph-arrow-up-right"></i></a>
+                    </li>
+                    <li>
+                        <span class="list-left"><i class="ph ph-circle"></i> Sudhakar Atchala CN Playlist</span>
+                        <a href="#" target="_blank"><i class="ph ph-arrow-up-right"></i></a>
+                    </li>
+                    <li>
+                        <span class="list-left"><i class="ph ph-circle"></i> Neso Academy CN Playlist</span>
+                        <a href="#" target="_blank"><i class="ph ph-arrow-up-right"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="subject-card">
+                <h3><i class="ph ph-arrow-left"></i> Object-Oriented Programming (OOP)</h3>
+                <ul>
+                    <li>
+                        <span class="list-left"><i class="ph ph-circle"></i> Telusko OOPs Playlist (Java)</span>
+                        <a href="#" target="_blank"><i class="ph ph-arrow-up-right"></i></a>
+                    </li>
+                    <li>
+                        <span class="list-left"><i class="ph ph-circle"></i> Coder Army OOPs Playlist (C++)</span>
+                        <a href="#" target="_blank"><i class="ph ph-arrow-up-right"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="subject-card">
+                <h3><i class="ph ph-arrow-left"></i> Aptitude & Reasoning</h3>
+                <ul>
+                    <li>
+                        <span class="list-left"><i class="ph ph-circle"></i> One Stop Solution (Most Recommended)</span>
+                        <a href="#" target="_blank"><i class="ph ph-arrow-up-right"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
     </section>
 
     <section id="pdfViewer">
@@ -117,6 +218,7 @@
             </div>
 
             <input type="file" id="fileInput" class="upload-input file-input" accept=".pdf,.doc,.docx" required>
+            
             <button type="submit" class="upload-btn">Upload & Save File</button>
         </form>
     </section>
@@ -132,10 +234,13 @@
 </div>
 
 <script>
+    /* SIDEBAR TOGGLE */
     function toggleSidebar() {
-        document.getElementById("sidebar").classList.toggle("active");
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("active");
     }
 
+    /* SUBMENU ACCORDION */
     function toggleSubMenu(id, event) {
         event.preventDefault(); 
         document.querySelectorAll(".submenu").forEach(menu => {
@@ -144,6 +249,7 @@
         document.getElementById(id).classList.toggle("active");
     }
 
+    /* ABOUT PANEL */
     function openAbout() {
         document.getElementById("aboutPanel").style.right = "0";
     }
@@ -152,11 +258,15 @@
         document.getElementById("aboutPanel").style.right = "-400px"; 
     }
 
+    /* PDF VIEWER */
     function openPDF(file) {
         const viewer = document.getElementById("pdfViewer");
-        viewer.style.display = "block";
+        viewer.style.display = "block"; // Shows the box ONLY when a file is opened
         document.getElementById("pdfFrame").src = file;
-        window.scrollTo({ top: viewer.offsetTop - 120, behavior: "smooth" });
+        window.scrollTo({
+            top: viewer.offsetTop - 120,
+            behavior: "smooth"
+        });
     }
 </script>
 
@@ -199,11 +309,16 @@
             const downloadURL = await getDownloadURL(snapshot.ref);
 
             await addDoc(collection(db, "study_materials"), {
-                title: fileName, category: category, semester: semester, fileUrl: downloadURL, uploadedAt: serverTimestamp() 
+                title: fileName,
+                category: category,
+                semester: semester,
+                fileUrl: downloadURL,
+                uploadedAt: serverTimestamp() 
             });
 
             alert(`Success! "${fileName}" uploaded!`);
             uploadForm.reset();
+
         } catch (error) {
             console.error(error);
             alert("Upload Error: Link your actual Firebase keys to enable storage.");
