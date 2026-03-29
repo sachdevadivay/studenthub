@@ -144,90 +144,71 @@
         </section>
     </div>
 
-    <div id="roadmapView" style="display: none;">
+    <div id="roadmapView" style="display: none; width: 100%;">
         <section class="roadmap-section">
             <div class="roadmap-header">
                 <h1>Placement <span class="highlight">Roadmap</span></h1>
                 <p>A comprehensive guide to navigate your career path, from fundamentals to specialized roles.</p>
             </div>
 
-            <div class="timeline">
-                
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h2>Stage 1: CGPA and Communication Skills</h2>
-                        <p class="stage-desc">Master the essentials to build a strong base for your career.</p>
-                        
-                        <div class="sub-timeline">
-                            <div class="sub-item">
-                                <div class="sub-dot"></div>
-                                <h4>CGPA Without Any Active Backlogs</h4>
-                                <p>Keep your CGPA as high as possible (preferably above 9.0) and avoid any active backlogs. Most companies—on-campus or off-campus—set CGPA as the first shortlisting criteria, though cutoffs vary. A strong CGPA keeps you eligible for the maximum number of opportunities.</p>
-                            </div>
-                            <div class="sub-item">
-                                <div class="sub-dot"></div>
-                                <h4>Communication Skills</h4>
-                                <p>You only need to express your thoughts clearly and concisely. Focus on explaining your code in simple English and ensuring smooth communication with the interviewer. For this you don't have to join any clubs, you will learn all on your own.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h2>Stage 2: Data Structure and Algorithm (Most Important)</h2>
-                        <p>Pick a language (C++ or Java) and start learning DSA. Practice as many problems as you can on platforms like LeetCode, Codeforces, and CodeChef. Most companies—both on-campus and off-campus—ask DSA for SDE roles. Focus on DSA and LeetCode; if you’re interested in competitive programming (CP), pursue that too, as it can help you crack top companies like Google, Meta, or Tower Research Capital.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h2><i class="ph ph-briefcase"></i> Stage 3: CSE CORE SUBJECTS</h2>
-                        <p class="stage-desc">All the Subjects given in the CSE CORE Sections</p>
-                        
-                        <div class="sub-timeline">
-                            <div class="sub-item">
-                                <div class="sub-dot"></div>
-                                <h4>DBMS</h4>
-                                <p>Data Base Management System</p>
-                            </div>
-                            <div class="sub-item">
-                                <div class="sub-dot"></div>
-                                <h4>SQL</h4>
-                                <p>Must Know SQL using MYSQL</p>
-                            </div>
-                            <div class="sub-item">
-                                <div class="sub-dot"></div>
-                                <h4>OS</h4>
-                                <p>Operating System</p>
-                            </div>
-                            <div class="sub-item">
-                                <div class="sub-dot"></div>
-                                <h4>CN</h4>
-                                <p>Computer Networks</p>
-                            </div>
-                            <div class="sub-item">
-                                <div class="sub-dot"></div>
-                                <h4>OOPs</h4>
-                                <p>Object Oriented Programming Systems</p>
-                            </div>
-                            <div class="sub-item">
-                                <div class="sub-dot"></div>
-                                <h4>System Design</h4>
-                                <p>Both LLD and HLD</p>
-                            </div>
-                            <div class="sub-item">
-                                <div class="sub-dot"></div>
-                                <h4>Aptitude</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="roadmap-tabs">
+                <button class="tab-btn active" onclick="openTab('stage1', this)">Stage 1</button>
+                <button class="tab-btn" onclick="openTab('stage2', this)">Stage 2</button>
+                <button class="tab-btn" onclick="openTab('stage3', this)">Stage 3</button>
             </div>
+
+            <div id="stage1" class="tab-content active">
+                <h2>Stage 1: CGPA & Communication</h2>
+                <p class="stage-desc">Master the essentials to build a strong base for your career.</p>
+                
+                <div class="tab-grid">
+                    <div class="tab-card">
+                        <h4><i class="ph ph-student"></i> CGPA Without Any Active Backlogs</h4>
+                        <p>Keep your CGPA as high as possible (preferably above 9.0) and avoid any active backlogs. Most companies—on-campus or off-campus—set CGPA as the first shortlisting criteria. A strong CGPA keeps you eligible for the maximum number of opportunities.</p>
+                    </div>
+                    <div class="tab-card">
+                        <h4><i class="ph ph-chats"></i> Communication Skills</h4>
+                        <p>You only need to express your thoughts clearly and concisely. Focus on explaining your code in simple English and ensuring smooth communication with the interviewer. You don't have to join any clubs, you will learn all on your own.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="stage2" class="tab-content">
+                <h2>Stage 2: Data Structures & Algorithms</h2>
+                <p class="stage-desc">The most important stage for cracking technical rounds.</p>
+                
+                <div class="tab-grid">
+                    <div class="tab-card">
+                        <h4><i class="ph ph-code"></i> Pick a Language & Practice</h4>
+                        <p>Pick a language (C++ or Java) and start learning DSA. Practice as many problems as you can on platforms like LeetCode, Codeforces, and CodeChef. Most companies—both on-campus and off-campus—ask DSA for SDE roles.</p>
+                    </div>
+                    <div class="tab-card">
+                        <h4><i class="ph ph-trophy"></i> Competitive Programming (Optional)</h4>
+                        <p>Focus primarily on DSA and LeetCode. If you’re interested in competitive programming (CP), pursue that too, as it can help you crack top tier companies like Google, Meta, or Tower Research Capital.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="stage3" class="tab-content">
+                <h2>Stage 3: CSE Core Subjects</h2>
+                <p class="stage-desc">Crucial subjects for acing the technical interview questions.</p>
+                
+                <div class="tab-grid">
+                    <div class="tab-card">
+                        <h4><i class="ph ph-database"></i> DBMS & SQL</h4>
+                        <p><strong>Database Management System:</strong> Understand normalization, transactions, and ACID properties.<br><strong>SQL:</strong> Must know SQL using MySQL (Joins, queries, indexing).</p>
+                    </div>
+                    <div class="tab-card">
+                        <h4><i class="ph ph-cpu"></i> OS & Computer Networks</h4>
+                        <p><strong>Operating System:</strong> Threads, processes, deadlocks, and memory management.<br><strong>Computer Networks:</strong> OSI model, TCP/IP, HTTP/HTTPS, and routing.</p>
+                    </div>
+                    <div class="tab-card">
+                        <h4><i class="ph ph-desktop"></i> OOPs & System Design</h4>
+                        <p><strong>Object Oriented Programming:</strong> Abstraction, encapsulation, inheritance, polymorphism.<br><strong>System Design:</strong> Both Low-Level Design (LLD) and High-Level Design (HLD).</p>
+                    </div>
+                </div>
+            </div>
+
         </section>
     </div>
 
@@ -237,15 +218,11 @@
     <span onclick="closeAbout()" class="close-about"><i class="ph ph-x"></i></span>
     <h2>About NoteVerse</h2>
     <p>NoteVerse is a smart academic platform designed to simplify the way students access study materials.</p>
-    <p>This platform provides structured notes, previous year question papers (PYQs), and additional resources organized semester-wise.</p>
-    <p>Our mission is to make studying easier, faster, and more efficient for every student.</p>
 </div>
 
 <script>
-    function toggleSidebar() {
-        document.getElementById("sidebar").classList.toggle("active");
-    }
-
+    function toggleSidebar() { document.getElementById("sidebar").classList.toggle("active"); }
+    
     function toggleSubMenu(id, event) {
         event.preventDefault(); 
         document.querySelectorAll(".submenu").forEach(menu => {
@@ -254,13 +231,8 @@
         document.getElementById(id).classList.toggle("active");
     }
 
-    function openAbout() {
-        document.getElementById("aboutPanel").style.right = "0";
-    }
-
-    function closeAbout() {
-        document.getElementById("aboutPanel").style.right = "-400px"; 
-    }
+    function openAbout() { document.getElementById("aboutPanel").style.right = "0"; }
+    function closeAbout() { document.getElementById("aboutPanel").style.right = "-400px"; }
 
     function openPDF(file) {
         document.getElementById("pdfViewer").style.display = "block"; 
@@ -268,19 +240,37 @@
         window.scrollTo({ top: document.getElementById("pdfViewer").offsetTop - 120, behavior: "smooth" });
     }
 
-    /* --- NEW: VIEW SWITCHER LOGIC --- */
+    /* VIEW SWITCHER LOGIC */
     function showHome() {
         document.getElementById("homeView").style.display = "block";
         document.getElementById("roadmapView").style.display = "none";
-        document.getElementById("sidebar").classList.remove("active"); // Closes sidebar
+        document.getElementById("sidebar").classList.remove("active");
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     function openRoadmap() {
         document.getElementById("homeView").style.display = "none";
         document.getElementById("roadmapView").style.display = "block";
-        document.getElementById("sidebar").classList.remove("active"); // Closes sidebar
+        document.getElementById("sidebar").classList.remove("active");
+        
+        // Reset to Stage 1 whenever opened
+        openTab('stage1', document.querySelector('.tab-btn'));
         window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    /* TABS LOGIC */
+    function openTab(tabId, element) {
+        // Hide all tab contents
+        const contents = document.querySelectorAll('.tab-content');
+        contents.forEach(content => content.classList.remove('active'));
+
+        // Remove active styling from all buttons
+        const buttons = document.querySelectorAll('.tab-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        // Show the clicked tab content and highlight the button
+        document.getElementById(tabId).classList.add('active');
+        element.classList.add('active');
     }
 </script>
 
