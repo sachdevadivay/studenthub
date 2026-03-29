@@ -75,15 +75,13 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 .main { padding-top: 140px; display: flex; flex-direction: column; align-items: center; width: 100%; }
 
 /* =========================================
-   HERO SECTION (HOME) - NO BOX NOW!
+   HERO SECTION (HOME) - Text Floating
    ========================================= */
 .hero {
     text-align: center;
-    max-width: 800px; 
     width: 90%; 
-    margin-bottom: 80px;
-    margin-top: 20px;
-    /* Box properties removed so it floats naturally */
+    max-width: 900px; /* Aligned with all other containers */
+    margin: 20px auto 60px auto;
 }
 .hero-badge { display: inline-block; padding: 8px 20px; margin-bottom: 25px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 50px; font-size: 14px; color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.05); }
 .hero h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 20px; color: white; line-height: 1.3; }
@@ -93,10 +91,22 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 /* =========================================
    CSE CORE SUBJECTS CARDS (HOME)
    ========================================= */
-.core-subjects { width: 90%; max-width: 800px; margin: 0 auto 60px auto; text-align: center; }
+.core-subjects { 
+    width: 90%; 
+    max-width: 900px; /* Aligned vertically with Upload box */
+    margin: 0 auto 60px auto; 
+    text-align: center; 
+}
 .core-subjects h2 { font-size: 2.5rem; color: white; margin-bottom: 15px; line-height: 1.2; }
 .core-subtext { color: rgba(255, 255, 255, 0.7); font-size: 1.1rem; margin-bottom: 40px; line-height: 1.6; }
-.subject-cards { display: flex; flex-direction: column; gap: 20px; }
+
+/* Desktop Grid Layout: Side-by-Side Cards */
+.subject-cards { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+    gap: 25px; 
+}
+
 .subject-card { background: rgba(13, 17, 23, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 15px; padding: 30px; text-align: left; transition: transform 0.3s ease; }
 .subject-card:hover { transform: translateY(-5px); border-color: rgba(0, 212, 255, 0.4); }
 .subject-card h3 { color: #00d4ff; font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 12px; }
@@ -111,8 +121,11 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 /* =========================================
    PLACEMENT ROADMAP SECTION (FROSTED BOXES)
    ========================================= */
-.roadmap-section { width: 90%; max-width: 900px; margin: 0 auto 60px auto; }
-/* Roadmap header also has the box removed to match the home page */
+.roadmap-section { 
+    width: 90%; 
+    max-width: 900px; /* Aligned perfectly */
+    margin: 0 auto 60px auto; 
+}
 .roadmap-header { text-align: center; margin-bottom: 50px; }
 .roadmap-header h1 { font-size: 2.8rem; margin-bottom: 10px; color: white; }
 .roadmap-header .highlight { background: linear-gradient(90deg, #00d4ff, #005ae0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -146,13 +159,24 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 /* =========================================
    GHOST BOX FIX (PDF Viewer)
    ========================================= */
-#pdfViewer { display: none; margin-bottom: 60px; width: 90%; max-width: 1000px; height: 600px; border-radius: 15px; border: 1px solid rgba(0, 212, 255, 0.3); overflow: hidden; z-index: 100;}
+#pdfViewer { display: none; margin-bottom: 60px; width: 90%; max-width: 900px; height: 600px; border-radius: 15px; border: 1px solid rgba(0, 212, 255, 0.3); overflow: hidden; z-index: 100;}
 #pdfFrame { width: 100%; height: 100%; border: none; background: white; }
 
 /* =========================================
    UPLOAD SECTION
    ========================================= */
-.upload-section { background: rgba(13, 17, 23, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 40px; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); width: 90%; max-width: 700px; text-align: center; margin-bottom: 80px; }
+.upload-section { 
+    background: rgba(13, 17, 23, 0.6); 
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px); 
+    padding: 40px; 
+    border-radius: 20px; 
+    border: 1px solid rgba(0, 212, 255, 0.2); 
+    width: 90%; 
+    max-width: 900px; /* MATCHES SUBJECT CARDS EXACTLY */
+    text-align: center; 
+    margin: 0 auto 80px auto; 
+}
 .upload-section h2 { color: #00d4ff; margin-bottom: 15px; }
 #uploadForm { display: flex; flex-direction: column; gap: 15px; }
 .upload-row { display: flex; gap: 15px; }
@@ -180,6 +204,10 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
     .hero h1 { font-size: 2rem; }
     .core-subjects h2 { font-size: 2rem; }
     .roadmap-header h1 { font-size: 2.2rem; }
+    
+    /* Revert to single column stacking on mobile */
+    .subject-cards { grid-template-columns: 1fr; }
+    
     .roadmap-card { padding: 25px; }
     .roadmap-card h2 { font-size: 1.5rem; }
     .main-desc { font-size: 1rem; }
