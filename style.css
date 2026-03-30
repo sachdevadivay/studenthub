@@ -98,31 +98,26 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
     text-align: center;
 }
 
+/* UPDATED: Bigger and bolder heading */
 .top-channels .section-title {
-    font-size: 1.5rem;
+    font-size: 2.2rem; 
     color: #00d4ff;
-    margin-bottom: 25px;
-    font-weight: 600;
+    margin-bottom: 30px;
+    font-weight: 700;
 }
 
+/* UPDATED: Hidden scrollbar */
 .channel-scroll-container {
     display: flex;
     gap: 15px;
     overflow-x: auto;
     padding-bottom: 15px;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 212, 255, 0.5) transparent;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
 }
 
 .channel-scroll-container::-webkit-scrollbar {
-    height: 6px;
-}
-.channel-scroll-container::-webkit-scrollbar-track {
-    background: transparent;
-}
-.channel-scroll-container::-webkit-scrollbar-thumb {
-    background: rgba(0, 212, 255, 0.3);
-    border-radius: 10px;
+    display: none; /* Chrome, Safari and Opera */
 }
 
 .channel-card {
@@ -283,6 +278,8 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
     .hero h1 { font-size: 2rem; }
     .core-subjects h2 { font-size: 2rem; }
     .roadmap-header h1 { font-size: 2.2rem; }
+    
+    .top-channels .section-title { font-size: 1.8rem; } /* Slightly smaller on mobile but still bold */
     
     #coreSubjectCards.open { grid-template-columns: 1fr; }
     
