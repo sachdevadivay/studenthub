@@ -89,6 +89,81 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 .hero p { font-size: 1.1rem; color: rgba(255, 255, 255, 0.8); line-height: 1.6; max-width: 650px; margin: 0 auto; }
 
 /* =========================================
+   TOP YOUTUBE CHANNELS SECTION
+   ========================================= */
+.top-channels {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto 60px auto;
+    text-align: center;
+}
+
+.top-channels .section-title {
+    font-size: 1.5rem;
+    color: #00d4ff;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.channel-scroll-container {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 212, 255, 0.5) transparent;
+}
+
+.channel-scroll-container::-webkit-scrollbar {
+    height: 6px;
+}
+.channel-scroll-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+.channel-scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 212, 255, 0.3);
+    border-radius: 10px;
+}
+
+.channel-card {
+    flex: 0 0 auto; 
+    width: 150px;
+    background: rgba(13, 17, 23, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px 10px;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.channel-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 212, 255, 0.5);
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
+}
+
+.channel-card i {
+    font-size: 2.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.channel-card span {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* =========================================
    CSE CORE SUBJECTS CARDS
    ========================================= */
 .core-subjects { 
@@ -100,77 +175,33 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 .core-subjects h2 { font-size: 2.5rem; color: white; margin-bottom: 15px; line-height: 1.2; }
 .core-subtext { color: rgba(255, 255, 255, 0.7); font-size: 1.1rem; margin-bottom: 30px; line-height: 1.6; }
 
-/* THE BUTTON FIX */
-.toggle-container {
-    text-align: center;
-    width: 100%;
-    margin-bottom: 40px;
-}
+.toggle-container { text-align: center; width: 100%; margin-bottom: 40px; }
 
 .master-toggle-btn {
     background: linear-gradient(45deg, #00d4ff, #005ae0);
-    color: white;
-    border: none;
-    padding: 16px 40px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    transition: 0.3s;
-    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
-    font-family: 'Poppins', sans-serif;
-    outline: none;
+    color: white; border: none; padding: 16px 40px; font-size: 1.1rem; font-weight: 600; border-radius: 50px;
+    cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 12px; transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3); font-family: 'Poppins', sans-serif; outline: none;
 }
 
-.master-toggle-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.6);
-}
+.master-toggle-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 212, 255, 0.6); }
+.master-toggle-btn i { font-size: 1.3rem; }
 
-.master-toggle-btn i {
-    font-size: 1.3rem;
-}
-
-/* THE GRID FIX - Strictly Hidden */
 #coreSubjectCards { 
-    display: none; /* Must stay hidden! */
+    display: none; 
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-    gap: 25px; 
-    align-items: start; 
-    width: 100%;
+    gap: 25px; align-items: start; width: 100%;
 }
 
-/* Shown only when toggled */
-#coreSubjectCards.open {
-    display: grid !important;
-    animation: fadeInGrid 0.4s ease-out forwards;
-}
+#coreSubjectCards.open { display: grid !important; animation: fadeInGrid 0.4s ease-out forwards; }
 
-@keyframes fadeInGrid {
-    from { opacity: 0; transform: translateY(-15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeInGrid { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
 
 .subject-card { 
-    background: rgba(13, 17, 23, 0.6); 
-    backdrop-filter: blur(20px); 
-    -webkit-backdrop-filter: blur(20px); 
-    border: 1px solid rgba(0, 212, 255, 0.2); 
-    border-radius: 15px; 
-    padding: 25px 30px; 
-    text-align: left; 
-    transition: transform 0.3s ease, border-color 0.3s ease; 
+    background: rgba(13, 17, 23, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
+    border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 15px; padding: 25px 30px; text-align: left; transition: transform 0.3s ease, border-color 0.3s ease; 
 }
-
-.subject-card:hover { 
-    transform: translateY(-5px); 
-    border-color: rgba(0, 212, 255, 0.4); 
-}
-
+.subject-card:hover { transform: translateY(-5px); border-color: rgba(0, 212, 255, 0.4); }
 .subject-card h3 { color: #00d4ff; font-size: 1.3rem; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
 .subject-card ul { list-style: none; display: flex; flex-direction: column; gap: 15px; }
 .subject-card li { display: flex; justify-content: space-between; align-items: center; color: rgba(255, 255, 255, 0.85); font-size: 1rem; padding-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
@@ -221,16 +252,9 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
    UPLOAD SECTION
    ========================================= */
 .upload-section { 
-    background: rgba(13, 17, 23, 0.6); 
-    backdrop-filter: blur(20px); 
-    -webkit-backdrop-filter: blur(20px); 
-    padding: 40px; 
-    border-radius: 20px; 
-    border: 1px solid rgba(0, 212, 255, 0.2); 
-    width: 90%; 
-    max-width: 900px; 
-    text-align: center; 
-    margin: 0 auto 80px auto; 
+    background: rgba(13, 17, 23, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
+    padding: 40px; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); 
+    width: 90%; max-width: 900px; text-align: center; margin: 0 auto 80px auto; 
 }
 .upload-section h2 { color: #00d4ff; margin-bottom: 15px; }
 #uploadForm { display: flex; flex-direction: column; gap: 15px; }
@@ -260,7 +284,7 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
     .core-subjects h2 { font-size: 2rem; }
     .roadmap-header h1 { font-size: 2.2rem; }
     
-    #coreSubjectCards.open { grid-template-columns: 1fr; } /* Stack on mobile */
+    #coreSubjectCards.open { grid-template-columns: 1fr; }
     
     .roadmap-card { padding: 25px; }
     .roadmap-card h2 { font-size: 1.5rem; }
