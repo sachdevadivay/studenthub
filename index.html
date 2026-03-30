@@ -89,6 +89,40 @@
             <p>Unlock your potential with comprehensive guides, notes, and expert-designed learning paths for every step of your academic journey.</p>
         </section>
 
+        <section class="top-channels">
+            <h2 class="section-title">Learn from Top Tech YouTube Channels</h2>
+            <div class="channel-scroll-container">
+                <a href="https://www.youtube.com/@striver_79" target="_blank" class="channel-card">
+                    <i class="ph-fill ph-youtube-logo" style="color: #ff0000;"></i>
+                    <span>Striver</span>
+                </a>
+                <a href="https://www.youtube.com/@takeUforward" target="_blank" class="channel-card">
+                    <i class="ph-fill ph-youtube-logo" style="color: #ff0000;"></i>
+                    <span>Take You Forward</span>
+                </a>
+                <a href="https://www.youtube.com/@PriyanshAgarwal" target="_blank" class="channel-card">
+                    <i class="ph-fill ph-youtube-logo" style="color: #ff0000;"></i>
+                    <span>Priyansh Agarwal</span>
+                </a>
+                <a href="https://www.youtube.com/@LuvIsMe" target="_blank" class="channel-card">
+                    <i class="ph-fill ph-youtube-logo" style="color: #ff0000;"></i>
+                    <span>LUV</span>
+                </a>
+                <a href="https://www.youtube.com/@VivekGupta7" target="_blank" class="channel-card">
+                    <i class="ph-fill ph-youtube-logo" style="color: #ff0000;"></i>
+                    <span>Vivek Gupta</span>
+                </a>
+                <a href="https://www.youtube.com/@harkiratsingh" target="_blank" class="channel-card">
+                    <i class="ph-fill ph-youtube-logo" style="color: #ff0000;"></i>
+                    <span>Harkirat Singh</span>
+                </a>
+                <a href="https://www.youtube.com/@ApnaCollegeOfficial" target="_blank" class="channel-card">
+                    <i class="ph-fill ph-youtube-logo" style="color: #a020f0;"></i>
+                    <span>Apna College</span>
+                </a>
+            </div>
+        </section>
+
         <section class="core-subjects">
             <h2>CSE Core Fundamental Subjects</h2>
             <p class="core-subtext">Mastering these subjects is crucial for building a strong foundation and acing technical interviews.</p>
@@ -284,10 +318,8 @@
         const cardsContainer = document.getElementById("coreSubjectCards");
         const btn = document.getElementById("coreToggleBtn");
 
-        // Toggle the 'open' class which shows the grid
         cardsContainer.classList.toggle("open");
         
-        // Update the text and icon
         if (cardsContainer.classList.contains("open")) {
             btn.innerHTML = 'Hide Subjects <i class="ph ph-caret-up"></i>';
         } else {
