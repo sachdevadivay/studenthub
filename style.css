@@ -79,8 +79,8 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
    ========================================= */
 .hero {
     text-align: center;
-    width: 90%; 
-    max-width: 900px; 
+    width: 95%; 
+    max-width: 1100px; /* EXPANDED WIDTH */
     margin: 20px auto 60px auto;
 }
 .hero-badge { display: inline-block; padding: 8px 20px; margin-bottom: 25px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 50px; font-size: 14px; color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.05); }
@@ -92,8 +92,8 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
    TOP YOUTUBE CHANNELS SECTION
    ========================================= */
 .top-channels {
-    width: 90%;
-    max-width: 900px;
+    width: 95%;
+    max-width: 1200px; /* EXPANDED TO FIT ALL 7 CIRCLES */
     margin: 0 auto 60px auto;
     text-align: center;
 }
@@ -115,28 +115,29 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
     -ms-overflow-style: none; /* IE and Edge */
 }
 
+/* On Desktop, center the circles instead of aligning left */
+@media(min-width: 1150px) {
+    .channel-scroll-container {
+        justify-content: center;
+    }
+}
+
 .channel-scroll-container::-webkit-scrollbar {
     display: none; /* Chrome, Safari and Opera */
 }
 
-/* UPDATED: PERFECT FROSTED CIRCLES (Matches Upload Box) */
 .channel-card {
     flex: 0 0 auto; 
     width: 140px;   
     height: 140px;  
     border-radius: 50%; 
-    
-    /* Exact same styling as the Contribute box */
     background: rgba(13, 17, 23, 0.6); 
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(0, 212, 255, 0.2);
-    
     text-align: center;
     text-decoration: none;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    
-    /* Flexbox perfectly centers everything inside the circle */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -152,25 +153,25 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 
 .channel-card i {
     font-size: 2.2rem;
-    background: rgba(255, 255, 255, 0.05); /* Very subtle blend for the icon */
+    background: rgba(255, 255, 255, 0.05);
     padding: 12px;
     border-radius: 50%;
 }
 
 .channel-card span {
     color: white;
-    font-size: 0.8rem; /* Text size slightly reduced for elegant fit */
+    font-size: 0.8rem; 
     font-weight: 500;
     line-height: 1.2;
-    padding: 0 10px; /* Text does not touch Curved edge */
+    padding: 0 10px; 
 }
 
 /* =========================================
    CSE CORE SUBJECTS CARDS
    ========================================= */
 .core-subjects { 
-    width: 90%; 
-    max-width: 900px; 
+    width: 95%; 
+    max-width: 1100px; /* EXPANDED WIDTH */
     margin: 0 auto 60px auto; 
     text-align: center; 
 }
@@ -216,7 +217,7 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 /* =========================================
    PLACEMENT ROADMAP SECTION
    ========================================= */
-.roadmap-section { width: 90%; max-width: 900px; margin: 0 auto 60px auto; }
+.roadmap-section { width: 95%; max-width: 1100px; margin: 0 auto 60px auto; }
 .roadmap-header { text-align: center; margin-bottom: 50px; }
 .roadmap-header h1 { font-size: 2.8rem; margin-bottom: 10px; color: white; }
 .roadmap-header .highlight { background: linear-gradient(90deg, #00d4ff, #005ae0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -247,7 +248,7 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 /* =========================================
    GHOST BOX FIX (PDF Viewer)
    ========================================= */
-#pdfViewer { display: none; margin-bottom: 60px; width: 90%; max-width: 900px; height: 600px; border-radius: 15px; border: 1px solid rgba(0, 212, 255, 0.3); overflow: hidden; z-index: 100;}
+#pdfViewer { display: none; margin-bottom: 60px; width: 95%; max-width: 1100px; height: 600px; border-radius: 15px; border: 1px solid rgba(0, 212, 255, 0.3); overflow: hidden; z-index: 100;}
 #pdfFrame { width: 100%; height: 100%; border: none; background: white; }
 
 /* =========================================
@@ -256,7 +257,8 @@ body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); to
 .upload-section { 
     background: rgba(13, 17, 23, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
     padding: 40px; border-radius: 20px; border: 1px solid rgba(0, 212, 255, 0.2); 
-    width: 90%; max-width: 900px; text-align: center; margin: 0 auto 80px auto; 
+    width: 95%; max-width: 1100px; /* EXPANDED WIDTH */
+    text-align: center; margin: 0 auto 80px auto; 
 }
 .upload-section h2 { color: #00d4ff; margin-bottom: 15px; }
 #uploadForm { display: flex; flex-direction: column; gap: 15px; }
