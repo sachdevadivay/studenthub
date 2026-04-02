@@ -170,7 +170,29 @@ h1, h2, h3, .section-title {
 .list-item p { color: #666; font-size: 0.95rem; line-height: 1.6;}
 
 /* =========================================
-   NEW COMET STYLED UPLOAD SECTION
+   PDF VIEWER (Hidden by default)
+   ========================================= */
+#pdfViewer { 
+    display: none; 
+    margin: 0 auto 60px auto; 
+    width: 90%; 
+    max-width: 1000px; 
+    height: 600px; 
+    border-radius: 16px; 
+    border: 1px solid #eaeaea; 
+    overflow: hidden; 
+    z-index: 100;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.03);
+}
+#pdfFrame { 
+    width: 100%; 
+    height: 100%; 
+    border: none; 
+    background: #ffffff; 
+}
+
+/* =========================================
+   COMET STYLED UPLOAD SECTION
    ========================================= */
 .upload-container {
     width: 90%; max-width: 800px; margin: 0 auto 80px auto; text-align: center;
@@ -178,7 +200,6 @@ h1, h2, h3, .section-title {
 .upload-title { font-size: 2.5rem; margin-bottom: 10px; }
 .upload-subtitle { font-size: 1.1rem; color: #555; margin-bottom: 30px; }
 
-/* The main white card widget */
 .comet-widget {
     background: #ffffff;
     border: 1px solid #e2e8f0;
@@ -188,7 +209,6 @@ h1, h2, h3, .section-title {
     text-align: left;
 }
 
-/* The text input mimicking the search bar */
 .comet-text-input {
     width: 100%;
     border: none;
@@ -201,7 +221,6 @@ h1, h2, h3, .section-title {
 }
 .comet-text-input::placeholder { color: #9ca3af; }
 
-/* The bottom row containing dropdowns and actions */
 .comet-controls {
     display: flex;
     justify-content: space-between;
@@ -210,7 +229,6 @@ h1, h2, h3, .section-title {
     gap: 20px;
 }
 
-/* Left side pill dropdowns */
 .comet-dropdowns {
     display: flex;
     gap: 10px;
@@ -240,10 +258,9 @@ h1, h2, h3, .section-title {
     font-weight: 500;
     color: #334155;
     cursor: pointer;
-    appearance: none; /* Removes default dropdown arrow */
+    appearance: none; 
 }
 
-/* Right side actions (Icon and Submit) */
 .comet-actions {
     display: flex;
     align-items: center;
@@ -259,9 +276,8 @@ h1, h2, h3, .section-title {
 }
 .comet-icon-btn:hover { color: #111; }
 
-/* The Teal Action Button */
 .comet-submit-btn {
-    background: #207e86; /* The exact Perplexity Teal */
+    background: #207e86; 
     color: white;
     border: none;
     border-radius: 12px;
@@ -276,7 +292,6 @@ h1, h2, h3, .section-title {
 }
 .comet-submit-btn:hover { background: #1a656c; transform: scale(1.05); }
 
-/* File name indicator */
 .file-name-display {
     font-size: 0.85rem; color: #555; margin-top: 15px; font-weight: 500; display: flex; align-items: center; gap: 5px;
 }
@@ -293,7 +308,7 @@ h1, h2, h3, .section-title {
 @media(max-width: 768px) {
     .main { padding-top: 100px; }
 
-    .hero, .core-subjects, .roadmap-section, .upload-container, .top-channels {
+    .hero, .core-subjects, .roadmap-section, .upload-container, .top-channels, #pdfViewer {
         width: 90%; 
         max-width: 100%;
         margin-bottom: 50px;
@@ -318,7 +333,6 @@ h1, h2, h3, .section-title {
     .subject-card li { flex-direction: column; align-items: flex-start; gap: 8px; }
     .subject-card li a { align-self: flex-end; }
 
-    /* Fix Comet Widget on Mobile */
     .comet-widget { padding: 20px 15px; }
     .comet-dropdowns { width: 100%; justify-content: space-between; }
     .comet-actions { width: 100%; justify-content: space-between; margin-top: 10px; border-top: 1px solid #f1f5f9; padding-top: 15px;}
@@ -326,4 +340,6 @@ h1, h2, h3, .section-title {
     .roadmap-card { padding: 25px; }
     .roadmap-card h2 { font-size: 1.5rem; }
     .main-desc { font-size: 1rem; }
-    }
+    
+    #pdfViewer { height: 500px; }
+}
