@@ -98,17 +98,17 @@ h1, h2, h3, .section-title {
 .main { padding-top: 130px; display: flex; flex-direction: column; align-items: center; width: 100%; }
 
 /* =========================================
-   HERO SECTION (HOME)
+   HERO SECTION (HOME) - STRETCHED FOR PC
    ========================================= */
 .hero, .core-subjects, .roadmap-section, .upload-container, .top-channels {
-    width: 90%;
-    max-width: 1000px; 
+    width: 96%;
+    max-width: 1800px; /* Removed the 1000px limit to stretch to maximum width */
     text-align: center;
     margin: 0 auto 70px auto;
 }
 
 .hero h1 { font-size: 4.5rem; margin-bottom: 20px; line-height: 1.05; letter-spacing: -1.5px; }
-.hero p { font-size: 1.1rem; color: #555; line-height: 1.6; max-width: 650px; margin: 0 auto; font-weight: 400; }
+.hero p { font-size: 1.1rem; color: #555; line-height: 1.6; max-width: 800px; margin: 0 auto; font-weight: 400; }
 .hero-badge { display: inline-block; padding: 8px 20px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 50px; font-size: 13px; color: #666; background: #fff; font-weight: 500;}
 
 .top-channels .section-title { font-size: 3rem; margin-bottom: 40px; letter-spacing: -1px;}
@@ -145,20 +145,18 @@ h1, h2, h3, .section-title {
 .master-toggle-btn:hover { background: #333333; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); }
 
 /* Subject Grid */
-#coreSubjectCards { display: none; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; width: 100%; }
+#coreSubjectCards { display: none; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; width: 100%; }
 #coreSubjectCards.open { display: grid !important; animation: fadeIn 0.4s; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* THE FIX: MASSIVE INSET SPREAD & HIGH OPACITY
-   Using layered inset shadows with high opacity (0.7, 0.4) and large blur/spread values to force the dark inner rim gradient
-*/
+/* ALL BOXES WITH IVORY COLOR AND FADED INSET GRADIENT */
 .subject-card { 
     background-color: #F9F6EE !important; 
     border: 1px solid rgba(82, 199, 196, 0.4) !important; 
-    border-radius: 12px; padding: 30px; text-align: left; 
+    border-radius: 12px; padding: 35px; text-align: left; 
     box-shadow: 
-        inset 0 0 50px 15px rgba(50, 160, 150, 0.7) !important, /* Primary dark inset glow */
-        inset 0 0 20px 5px rgba(50, 160, 150, 0.4) !important, /* Secondary inner glow */
+        inset 0 0 50px 15px rgba(50, 160, 150, 0.7) !important, 
+        inset 0 0 20px 5px rgba(50, 160, 150, 0.4) !important, 
         0 4px 15px rgba(0,0,0,0.03) !important; 
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
@@ -171,26 +169,26 @@ h1, h2, h3, .section-title {
 }
 .subject-card h3 { font-size: 1.6rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
 .subject-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-.subject-card li { display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem; color: #555; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 10px; }
+.subject-card li { display: flex; justify-content: space-between; align-items: center; font-size: 1.05rem; color: #555; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 12px; }
 .subject-card li:last-child { border-bottom: none; padding-bottom: 0;}
-.subject-card li a { color: #999; font-size: 1.3rem; transition: 0.3s; }
+.subject-card li a { color: #999; font-size: 1.4rem; transition: 0.3s; }
 .subject-card li a:hover { color: #111; }
 .list-left { display: flex; align-items: center; gap: 10px; }
 .list-left i { color: #207e86; } 
 
 /* =========================================
-   ROADMAP (LAYERED HIGH-OPACITY GRADIENT)
+   ROADMAP
    ========================================= */
 .roadmap-card { 
     background-color: #F9F6EE !important; 
     border: 1px solid rgba(82, 199, 196, 0.4) !important; 
     border-radius: 24px; 
-    padding: 40px; 
+    padding: 50px; 
     text-align: left; 
     margin-bottom: 40px; 
     
     box-shadow: 
-        inset 0 0 50px 12px rgba(50, 160, 150, 0.7) !important, /* Deep inner gradient */
+        inset 0 0 50px 12px rgba(50, 160, 150, 0.7) !important, 
         inset 0 0 15px rgba(50, 160, 150, 0.4) !important,          
         0 4px 15px rgba(0, 0, 0, 0.03) !important;          
     
@@ -204,13 +202,13 @@ h1, h2, h3, .section-title {
         0 8px 25px rgba(0, 0, 0, 0.05) !important;
 }
 
-.roadmap-card h2 { font-size: 2rem; margin-bottom: 15px; }
-.main-desc { color: #444; font-size: 1.1rem; margin-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 15px; }
+.roadmap-card h2 { font-size: 2.2rem; margin-bottom: 15px; }
+.main-desc { color: #444; font-size: 1.2rem; margin-bottom: 20px; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 15px; }
 .indented-list { list-style: none; padding-left: 15px; }
 .list-item { margin-bottom: 15px; position: relative; padding-left: 20px; }
 .list-item::before { content: ''; position: absolute; left: -5px; top: 10px; width: 6px; height: 6px; background: #111; border-radius: 50%; }
-.list-item h4 { font-size: 1.2rem; color: #111; margin-bottom: 5px;}
-.list-item p { color: #666; font-size: 0.95rem; line-height: 1.6;}
+.list-item h4 { font-size: 1.3rem; color: #111; margin-bottom: 5px;}
+.list-item p { color: #666; font-size: 1.05rem; line-height: 1.6;}
 
 /* =========================================
    PDF VIEWER 
@@ -218,15 +216,15 @@ h1, h2, h3, .section-title {
 #pdfViewer { 
     display: none; 
     margin: 0 auto 60px auto; 
-    width: 90%; 
-    max-width: 1000px; 
-    height: 600px; 
+    width: 96%; 
+    max-width: 1800px; 
+    height: 700px; 
     border-radius: 16px; 
     border: 1px solid rgba(82, 199, 196, 0.4) !important; 
     overflow: hidden; 
     z-index: 100;
     box-shadow: 
-        inset 0 0 40px 10px rgba(50, 160, 150, 0.7) !important, /* Deep inner gradient */
+        inset 0 0 40px 10px rgba(50, 160, 150, 0.7) !important, 
         0 4px 15px rgba(0,0,0,0.03) !important;
 }
 #pdfFrame { 
@@ -240,18 +238,21 @@ h1, h2, h3, .section-title {
    COMET STYLED UPLOAD SECTION
    ========================================= */
 .upload-container {
-    width: 90%; max-width: 800px; margin: 0 auto 80px auto; text-align: center;
+    width: 96%; 
+    max-width: 1800px; 
+    margin: 0 auto 80px auto; 
+    text-align: center;
 }
-.upload-title { font-size: 2.5rem; margin-bottom: 10px; }
-.upload-subtitle { font-size: 1.1rem; color: #555; margin-bottom: 30px; }
+.upload-title { font-size: 2.8rem; margin-bottom: 10px; }
+.upload-subtitle { font-size: 1.2rem; color: #555; margin-bottom: 30px; }
 
 .comet-widget {
     background-color: #F9F6EE !important;
     border: 1px solid rgba(82, 199, 196, 0.4) !important;
     border-radius: 16px;
-    padding: 24px;
+    padding: 35px;
     box-shadow: 
-        inset 0 0 40px 10px rgba(50, 160, 150, 0.7) !important, /* Deep inner gradient */
+        inset 0 0 40px 10px rgba(50, 160, 150, 0.7) !important, 
         0 10px 30px rgba(0,0,0,0.04) !important;
     text-align: left;
     transition: box-shadow 0.3s ease;
@@ -266,7 +267,7 @@ h1, h2, h3, .section-title {
     width: 100%;
     border: none;
     font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     color: #111;
     background: transparent;
     outline: none;
@@ -284,30 +285,30 @@ h1, h2, h3, .section-title {
 
 .comet-dropdowns {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     flex-wrap: wrap;
 }
 
 .comet-select-wrapper {
     background: #ffffff; 
     border-radius: 50px;
-    padding: 8px 16px;
+    padding: 10px 20px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     color: #475569;
     border: 1px solid #e2e8f0;
     transition: 0.2s;
 }
 .comet-select-wrapper:hover { border-color: #cbd5e1; }
-.comet-select-wrapper i { font-size: 1.1rem; color: #64748b; }
+.comet-select-wrapper i { font-size: 1.2rem; color: #64748b; }
 
 .comet-select {
     background: transparent;
     border: none;
     outline: none;
     font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 500;
     color: #334155;
     cursor: pointer;
@@ -317,12 +318,12 @@ h1, h2, h3, .section-title {
 .comet-actions {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .comet-icon-btn {
     color: #64748b;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     cursor: pointer;
     transition: color 0.2s;
     padding: 5px;
@@ -334,29 +335,29 @@ h1, h2, h3, .section-title {
     color: white;
     border: none;
     border-radius: 12px;
-    width: 44px;
-    height: 44px;
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     cursor: pointer;
     transition: 0.2s ease;
 }
 .comet-submit-btn:hover { background: #1a656c; transform: scale(1.05); }
 
 .file-name-display {
-    font-size: 0.85rem; color: #555; margin-top: 15px; font-weight: 500; display: flex; align-items: center; gap: 5px;
+    font-size: 0.95rem; color: #555; margin-top: 15px; font-weight: 500; display: flex; align-items: center; gap: 5px;
 }
 
-/* ABOUT PANEL (HIGH-OPACITY GRADIENT) */
+/* ABOUT PANEL */
 .about-panel { 
     position: fixed; right: -400px; top: 0; width: 350px; height: 100%; 
     background-color: #F9F6EE !important; 
     padding: 40px 30px; transition: 0.4s; z-index: 4000; 
     border-left: 1px solid rgba(82, 199, 196, 0.4) !important; 
     box-shadow: 
-        inset 0 0 40px 10px rgba(50, 160, 150, 0.7) !important, /* Primary deep gradient */
+        inset 0 0 40px 10px rgba(50, 160, 150, 0.7) !important, 
         -5px 0 25px rgba(0,0,0,0.05) !important;
 }
 .about-panel h2 { margin-bottom: 20px;}
@@ -395,6 +396,7 @@ h1, h2, h3, .section-title {
     .subject-card li a { align-self: flex-end; }
 
     .comet-widget { padding: 20px 15px; }
+    .comet-text-input { font-size: 1.1rem; }
     .comet-dropdowns { width: 100%; justify-content: space-between; }
     .comet-actions { width: 100%; justify-content: space-between; margin-top: 10px; border-top: 1px solid rgba(82, 199, 196, 0.2); padding-top: 15px;}
 
