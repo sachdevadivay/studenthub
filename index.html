@@ -11,7 +11,7 @@
 
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <link rel="stylesheet" href="style.css?v=16">
+    <link rel="stylesheet" href="style.css?v=17">
 </head>
 
 <body>
@@ -33,7 +33,7 @@
     </a>
     <div class="submenu" id="notesMenu">
         <a href="#" onclick="openPDF('sample.pdf')">Semester 1</a>
-        <a href="#">Semester 2</a>
+        <a href="#" onclick="showSemester2('Notes')">Semester 2</a>
         <a href="#">Semester 3</a>
     </div>
 
@@ -42,7 +42,7 @@
     </a>
     <div class="submenu" id="pyqMenu">
         <a href="#">Semester 1</a>
-        <a href="#">Semester 2</a>
+        <a href="#" onclick="showSemester2('PYQs')">Semester 2</a>
         <a href="#">Semester 3</a>
     </div>
 
@@ -51,7 +51,7 @@
     </a>
     <div class="submenu" id="resourcesMenu">
         <a href="#">Semester 1</a>
-        <a href="#">Semester 2</a>
+        <a href="#" onclick="showSemester2('Resources')">Semester 2</a>
         <a href="#">Semester 3</a>
     </div>
 
@@ -323,6 +323,46 @@
         </section>
     </div>
 
+    <div id="semester2View" style="display: none; width: 100%;">
+        <section class="semester-section">
+            <div class="roadmap-header">
+                <h1>Semester 2 <span class="text-gradient" id="sem2TitleType">Notes</span></h1>
+                <p>Select a subject below to view its corresponding materials.</p>
+            </div>
+
+            <div class="vertical-subject-list">
+                <div class="vertical-subject-card" onclick="openPDF('sample.pdf')">
+                    <h3><i class="ph ph-tree-structure"></i> Data Structures and Algorithm</h3>
+                    <i class="ph-bold ph-arrow-right"></i>
+                </div>
+                <div class="vertical-subject-card" onclick="openPDF('sample.pdf')">
+                    <h3><i class="ph ph-atom"></i> Physics</h3>
+                    <i class="ph-bold ph-arrow-right"></i>
+                </div>
+                <div class="vertical-subject-card" onclick="openPDF('sample.pdf')">
+                    <h3><i class="ph ph-calculator"></i> Maths</h3>
+                    <i class="ph-bold ph-arrow-right"></i>
+                </div>
+                <div class="vertical-subject-card" onclick="openPDF('sample.pdf')">
+                    <h3><i class="ph ph-file-code"></i> Python</h3>
+                    <i class="ph-bold ph-arrow-right"></i>
+                </div>
+                <div class="vertical-subject-card" onclick="openPDF('sample.pdf')">
+                    <h3><i class="ph ph-cpu"></i> Digital Electronics</h3>
+                    <i class="ph-bold ph-arrow-right"></i>
+                </div>
+                <div class="vertical-subject-card" onclick="openPDF('sample.pdf')">
+                    <h3><i class="ph ph-brain"></i> AI/ML</h3>
+                    <i class="ph-bold ph-arrow-right"></i>
+                </div>
+                <div class="vertical-subject-card" onclick="openPDF('sample.pdf')">
+                    <h3><i class="ph ph-leaf"></i> EVS</h3>
+                    <i class="ph-bold ph-arrow-right"></i>
+                </div>
+            </div>
+        </section>
+    </div>
+
 </div>
 
 <div id="aboutPanel" class="about-panel">
@@ -333,21 +373,28 @@
 
 <script>
     function toggleSidebar() { document.getElementById("sidebar").classList.toggle("active"); }
+    
     function toggleSubMenu(id, event) {
         event.preventDefault(); 
         document.querySelectorAll(".submenu").forEach(menu => { if (menu.id !== id) menu.classList.remove("active"); });
         document.getElementById(id).classList.toggle("active");
     }
+    
     function openAbout() { document.getElementById("aboutPanel").style.right = "0"; }
     function closeAbout() { document.getElementById("aboutPanel").style.right = "-400px"; }
+    
     function openPDF(file) {
-        const viewer = document.getElementById("pdfViewer"); viewer.style.display = "block"; viewer.querySelector("#pdfFrame").src = file;
+        const viewer = document.getElementById("pdfViewer"); 
+        viewer.style.display = "block"; 
+        viewer.querySelector("#pdfFrame").src = file;
         window.scrollTo({ top: viewer.offsetTop - 120, behavior: "smooth" });
     }
 
     function showHome() {
         document.getElementById("homeView").style.display = "block";
         document.getElementById("roadmapView").style.display = "none";
+        document.getElementById("semester2View").style.display = "none";
+        document.getElementById("pdfViewer").style.display = "none";
         document.getElementById("sidebar").classList.remove("active");
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -355,7 +402,22 @@
     function openRoadmap() {
         document.getElementById("homeView").style.display = "none";
         document.getElementById("roadmapView").style.display = "block";
+        document.getElementById("semester2View").style.display = "none";
+        document.getElementById("pdfViewer").style.display = "none";
         document.getElementById("sidebar").classList.remove("active");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showSemester2(type) {
+        document.getElementById("homeView").style.display = "none";
+        document.getElementById("roadmapView").style.display = "none";
+        document.getElementById("semester2View").style.display = "block";
+        document.getElementById("pdfViewer").style.display = "none";
+        document.getElementById("sidebar").classList.remove("active");
+        
+        // Dynamically change the title (e.g., "Semester 2 Notes", "Semester 2 PYQs")
+        document.getElementById("sem2TitleType").innerText = type;
+        
         window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
