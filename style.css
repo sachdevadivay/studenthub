@@ -31,9 +31,9 @@ h1, h2, h3, .section-title {
     font-weight: 400; 
 }
 
-/* NEW THEME TEXT GRADIENT */
+/* THEME TEXT GRADIENT - FLAME BLUE */
 .text-gradient {
-    background: linear-gradient(to right, #1a5a63, #32a096);
+    background: linear-gradient(to right, #0044cc, #00aaff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -42,7 +42,7 @@ h1, h2, h3, .section-title {
 }
 
 /* =========================================
-   TOPBAR & LOGO STYLES (SMOOTH SCROLLING FIX)
+   TOPBAR & LOGO STYLES 
    ========================================= */
 .topbar {
     display: flex;
@@ -51,24 +51,23 @@ h1, h2, h3, .section-title {
     padding: 30px 40px;
     background: transparent; 
     border-bottom: none; 
-    position: fixed; /* Makes it follow you down the page! */
+    position: fixed; 
     top: 0; left: 0; width: 100%;
     z-index: 2500; 
-    pointer-events: none; /* Prevents invisible parts from blocking clicks */
-    transition: all 0.4s ease; /* The smooth "slow" animation effect */
+    pointer-events: none; 
+    transition: all 0.4s ease; 
 }
 
-/* The style applied when you scroll down */
 .topbar.scrolled {
-    padding: 15px 40px; /* Shrinks slightly */
-    background: rgba(252, 252, 252, 0.85); /* Faint frosted glass so text is readable */
+    padding: 15px 40px; 
+    background: rgba(252, 252, 252, 0.85); 
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     pointer-events: auto;
 }
 
 .logo-container, .menu-btn {
-    pointer-events: auto; /* Ensures the logo and menu button are always clickable */
+    pointer-events: auto; 
 }
 
 .logo-container {
@@ -78,7 +77,6 @@ h1, h2, h3, .section-title {
     cursor: pointer;
 }
 
-/* BULLETPROOF LOGO SIZE FIX */
 .logo-icon {
     width: 40px !important;
     height: 40px !important;
@@ -89,7 +87,7 @@ h1, h2, h3, .section-title {
 }
 
 .topbar h3 { font-family: 'DM Serif Display', serif; font-size: 30px; margin: 0; transition: 0.3s;}
-.topbar.scrolled h3 { font-size: 26px; } /* Shrinks text slightly on scroll */
+.topbar.scrolled h3 { font-size: 26px; } 
 
 .menu-btn { font-size: 32px; cursor: pointer; color: #111; transition: 0.3s; }
 .menu-btn:hover { opacity: 0.7; }
@@ -159,7 +157,7 @@ h1, h2, h3, .section-title {
 .channel-scroll-container::-webkit-scrollbar { display: none; }
 
 /* =========================================
-   YOUTUBE CARDS 
+   YOUTUBE CARDS (FLAME BLUE BORDERS)
    ========================================= */
 .channel-card {
     flex: 0 0 auto; 
@@ -167,7 +165,7 @@ h1, h2, h3, .section-title {
     height: 130px; 
     border-radius: 20px; 
     background-color: #F5F5F5 !important; 
-    border: 1px solid rgba(32, 126, 134, 0.3) !important; 
+    border: 1px solid rgba(0, 102, 255, 0.3) !important; 
     box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important; 
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -178,7 +176,7 @@ h1, h2, h3, .section-title {
 }
 .channel-card i { 
     font-size: 2.8rem; 
-    color: #207e86 !important; 
+    color: #0088ff !important; 
     background: transparent; 
     padding: 0; 
 }
@@ -204,20 +202,20 @@ h1, h2, h3, .section-title {
 .creator-subtext { font-size: 1.1rem; color: #555; margin-bottom: 30px; }
 .creator-box {
     background-color: #F5F5F5 !important;
-    border: 1px solid rgba(32, 126, 134, 0.3) !important;
+    border: 1px solid rgba(0, 102, 255, 0.3) !important;
     border-radius: 12px;
     padding: 30px;
     max-width: 800px;
     margin: 0 auto;
-    box-shadow: inset 0 0 50px 15px rgba(50, 160, 150, 0.7), 0 4px 15px rgba(0,0,0,0.03) !important;
+    box-shadow: inset 0 0 50px 15px rgba(0, 153, 255, 0.5), 0 4px 15px rgba(0,0,0,0.03) !important;
 }
 .creator-content { display: flex; align-items: center; gap: 20px; justify-content: center; }
-.creator-content i { font-size: 2.5rem; color: #207e86; }
+.creator-content i { font-size: 2.5rem; color: #0088ff; }
 .creator-content p { font-size: 1.2rem; color: #333; font-weight: 500; text-align: left; }
 
 
 /* =========================================
-   SUBJECT GRID 
+   SUBJECT GRID (FLAME BLUE GLOW)
    ========================================= */
 #coreSubjectCards { 
     display: none; 
@@ -230,19 +228,19 @@ h1, h2, h3, .section-title {
 
 .subject-card { 
     background-color: #F5F5F5 !important; 
-    border: 1px solid rgba(32, 126, 134, 0.3) !important; 
+    border: 1px solid rgba(0, 102, 255, 0.3) !important; 
     border-radius: 12px; padding: 35px; text-align: left; 
     box-shadow: 
-        inset 0 0 50px 15px rgba(50, 160, 150, 0.7), 
-        inset 0 0 20px 5px rgba(50, 160, 150, 0.4), 
+        inset 0 0 50px 15px rgba(0, 153, 255, 0.6), 
+        inset 0 0 20px 5px rgba(0, 153, 255, 0.3), 
         0 4px 15px rgba(0,0,0,0.03) !important; 
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 .subject-card:hover {
     transform: translateY(-2px);
     box-shadow: 
-        inset 0 0 60px 18px rgba(50, 160, 150, 0.8), 
-        inset 0 0 25px 8px rgba(50, 160, 150, 0.5), 
+        inset 0 0 60px 18px rgba(0, 153, 255, 0.75), 
+        inset 0 0 25px 8px rgba(0, 153, 255, 0.4), 
         0 8px 25px rgba(0,0,0,0.05) !important;
 }
 .subject-card h3 { font-size: 1.6rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
@@ -252,29 +250,29 @@ h1, h2, h3, .section-title {
 .subject-card li a { color: #999; font-size: 1.4rem; transition: 0.3s; }
 .subject-card li a:hover { color: #111; }
 .list-left { display: flex; align-items: center; gap: 10px; }
-.list-left i { color: #207e86; } 
+.list-left i { color: #0088ff; } 
 
 /* =========================================
    ROADMAP
    ========================================= */
 .roadmap-card { 
     background-color: #F5F5F5 !important; 
-    border: 1px solid rgba(32, 126, 134, 0.3) !important; 
+    border: 1px solid rgba(0, 102, 255, 0.3) !important; 
     border-radius: 24px; 
     padding: 50px; 
     text-align: left; 
     margin-bottom: 40px; 
     box-shadow: 
-        inset 0 0 50px 12px rgba(50, 160, 150, 0.7), 
-        inset 0 0 15px rgba(50, 160, 150, 0.4),          
+        inset 0 0 50px 12px rgba(0, 153, 255, 0.6), 
+        inset 0 0 15px rgba(0, 153, 255, 0.3),          
         0 4px 15px rgba(0, 0, 0, 0.03) !important;          
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .roadmap-card:hover {
     transform: translateY(-4px);
     box-shadow: 
-        inset 0 0 60px 15px rgba(50, 160, 150, 0.8), 
-        inset 0 0 20px rgba(50, 160, 150, 0.5), 
+        inset 0 0 60px 15px rgba(0, 153, 255, 0.75), 
+        inset 0 0 20px rgba(0, 153, 255, 0.4), 
         0 8px 25px rgba(0, 0, 0, 0.05) !important;
 }
 
@@ -287,7 +285,7 @@ h1, h2, h3, .section-title {
 .list-item p { color: #666; font-size: 1.05rem; line-height: 1.6;}
 
 /* =========================================
-   NEW: SEMESTER VIEW (VERTICAL BOXES)
+   SEMESTER VIEW (VERTICAL BOXES)
    ========================================= */
 .vertical-subject-list {
     display: flex;
@@ -300,11 +298,11 @@ h1, h2, h3, .section-title {
 
 .vertical-subject-card {
     background-color: #F5F5F5 !important;
-    border: 1px solid rgba(32, 126, 134, 0.3) !important;
+    border: 1px solid rgba(0, 102, 255, 0.3) !important;
     border-radius: 16px;
     padding: 25px 30px;
     box-shadow: 
-        inset 0 0 40px 10px rgba(50, 160, 150, 0.7), 
+        inset 0 0 40px 10px rgba(0, 153, 255, 0.6), 
         0 4px 15px rgba(0,0,0,0.03) !important;
     text-align: left;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -319,7 +317,7 @@ h1, h2, h3, .section-title {
 .vertical-subject-card:hover {
     transform: translateY(-3px);
     box-shadow: 
-        inset 0 0 50px 12px rgba(50, 160, 150, 0.8), 
+        inset 0 0 50px 12px rgba(0, 153, 255, 0.75), 
         0 8px 25px rgba(0,0,0,0.05) !important;
 }
 
@@ -332,12 +330,12 @@ h1, h2, h3, .section-title {
 }
 
 .vertical-subject-card h3 i {
-    color: #207e86;
+    color: #0088ff;
     font-size: 2rem;
 }
 
 .vertical-subject-card > i {
-    color: #207e86;
+    color: #0088ff;
     font-size: 1.5rem;
     transition: transform 0.3s ease;
 }
@@ -356,11 +354,11 @@ h1, h2, h3, .section-title {
     max-width: 1100px; 
     height: 700px; 
     border-radius: 16px; 
-    border: 1px solid rgba(32, 126, 134, 0.4) !important; 
+    border: 1px solid rgba(0, 102, 255, 0.4) !important; 
     overflow: hidden; 
     z-index: 100;
     box-shadow: 
-        inset 0 0 40px 10px rgba(50, 160, 150, 0.7), 
+        inset 0 0 40px 10px rgba(0, 153, 255, 0.6), 
         0 4px 15px rgba(0,0,0,0.03) !important;
 }
 #pdfFrame { 
@@ -381,18 +379,18 @@ h1, h2, h3, .section-title {
 
 .comet-widget {
     background-color: #F5F5F5 !important;
-    border: 1px solid rgba(32, 126, 134, 0.3) !important;
+    border: 1px solid rgba(0, 102, 255, 0.3) !important;
     border-radius: 16px;
     padding: 35px;
     box-shadow: 
-        inset 0 0 40px 10px rgba(50, 160, 150, 0.7), 
+        inset 0 0 40px 10px rgba(0, 153, 255, 0.6), 
         0 10px 30px rgba(0,0,0,0.04) !important;
     text-align: left;
     transition: box-shadow 0.3s ease;
 }
 .comet-widget:hover {
     box-shadow: 
-        inset 0 0 50px 12px rgba(50, 160, 150, 0.8), 
+        inset 0 0 50px 12px rgba(0, 153, 255, 0.75), 
         0 15px 40px rgba(0,0,0,0.06) !important;
 }
 
@@ -464,7 +462,7 @@ h1, h2, h3, .section-title {
 .comet-icon-btn:hover { color: #111; }
 
 .comet-submit-btn {
-    background: #207e86; 
+    background: #0088ff; 
     color: white;
     border: none;
     border-radius: 12px;
@@ -477,7 +475,7 @@ h1, h2, h3, .section-title {
     cursor: pointer;
     transition: 0.2s ease;
 }
-.comet-submit-btn:hover { background: #1a656c; transform: scale(1.05); }
+.comet-submit-btn:hover { background: #0066cc; transform: scale(1.05); }
 
 .file-name-display {
     font-size: 0.95rem; color: #555; margin-top: 15px; font-weight: 500; display: flex; align-items: center; gap: 5px;
@@ -488,9 +486,9 @@ h1, h2, h3, .section-title {
     position: fixed; right: -400px; top: 0; width: 350px; height: 100%; 
     background-color: #F5F5F5 !important; 
     padding: 40px 30px; transition: 0.4s; z-index: 4000; 
-    border-left: 1px solid rgba(32, 126, 134, 0.3) !important; 
+    border-left: 1px solid rgba(0, 102, 255, 0.3) !important; 
     box-shadow: 
-        inset 0 0 40px 10px rgba(50, 160, 150, 0.7), 
+        inset 0 0 40px 10px rgba(0, 153, 255, 0.6), 
         -5px 0 25px rgba(0,0,0,0.05) !important;
 }
 .about-panel h2 { margin-bottom: 20px;}
@@ -539,7 +537,7 @@ h1, h2, h3, .section-title {
     .comet-widget { padding: 20px 15px; }
     .comet-text-input { font-size: 1.1rem; }
     .comet-dropdowns { width: 100%; justify-content: space-between; }
-    .comet-actions { width: 100%; justify-content: space-between; margin-top: 10px; border-top: 1px solid rgba(82, 199, 196, 0.2); padding-top: 15px;}
+    .comet-actions { width: 100%; justify-content: space-between; margin-top: 10px; border-top: 1px solid rgba(102, 179, 255, 0.2); padding-top: 15px;}
 
     .roadmap-card { padding: 25px; margin-bottom: 30px;}
     .roadmap-card h2 { font-size: 1.5rem; }
