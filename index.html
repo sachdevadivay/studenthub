@@ -11,7 +11,7 @@
 
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <link rel="stylesheet" href="style.css?v=21">
+    <link rel="stylesheet" href="style.css?v=23">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     <span onclick="toggleSidebar()" class="close-sidebar"><i class="ph ph-x"></i></span>
 
     <div class="sidebar-logo">
-        <img src="logo.jpg" alt="NoteVerse Icon" class="logo-icon">
+        <img src="logo.jpg" alt="NoteVerse Icon" class="logo-icon" width="40" height="40">
         <h2><span class="text-gradient">NoteVerse</span></h2>
     </div>
 
@@ -64,9 +64,9 @@
     </a>
 </div>
 
-<div class="topbar">
+<div class="topbar" id="mainTopbar">
     <div class="logo-container" onclick="showHome()">
-        <img src="logo.jpg" alt="NoteVerse Icon" class="logo-icon">
+        <img src="logo.jpg" alt="NoteVerse Icon" class="logo-icon" width="40" height="40">
         <h3><span class="text-gradient">NoteVerse</span></h3>
     </div>
     <span class="menu-btn" onclick="toggleSidebar()"><i class="ph ph-list"></i></span>
@@ -497,6 +497,16 @@
             display.innerHTML = '<i class="ph-fill ph-check-circle" style="color: #207e86;"></i> Attached: ' + this.files[0].name;
         } else {
             display.innerHTML = '';
+        }
+    });
+
+    // NEW: Scroll listener to shrink and slightly frost the topbar when scrolling down
+    window.addEventListener("scroll", function() {
+        const topbar = document.getElementById("mainTopbar");
+        if (window.scrollY > 50) {
+            topbar.classList.add("scrolled");
+        } else {
+            topbar.classList.remove("scrolled");
         }
     });
 </script>
