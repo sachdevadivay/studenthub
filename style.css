@@ -86,7 +86,7 @@ h1, h2, h3, .section-title {
 .sidebar-logo h2 { font-size: 36px; color: #111; margin: 0;}
 
 .sidebar a { display: flex; align-items: center; gap: 12px; padding: 12px 15px; color: #333; text-decoration: none; transition: 0.3s; border-radius: 8px; margin-bottom: 5px; font-weight: 500; }
-.sidebar a:hover { background: #F9F6EE !important; color: #000; } 
+.sidebar a:hover { background: #F9F6EE !important; color: #000; }
 .sidebar a i { font-size: 22px; color: #555; }
 .close-sidebar { position: absolute; top: 20px; left: 20px; font-size: 24px; cursor: pointer; color: #111; }
 .submenu { display: none; padding-left: 15px; border-left: 2px solid #ddd; margin-left: 25px; margin-bottom: 10px; }
@@ -149,22 +149,24 @@ h1, h2, h3, .section-title {
 #coreSubjectCards.open { display: grid !important; animation: fadeIn 0.4s; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-/* THE FIX: MASSIVE INSET SPREAD
-   Using a 10px spread and 40px blur with !important to force the inner rim gradient 
+/* THE FIX: MASSIVE INSET SPREAD & HIGH OPACITY
+   Using layered inset shadows with high opacity (0.7, 0.4) and large blur/spread values to force the dark inner rim gradient
 */
 .subject-card { 
     background-color: #F9F6EE !important; 
     border: 1px solid rgba(82, 199, 196, 0.4) !important; 
     border-radius: 12px; padding: 30px; text-align: left; 
     box-shadow: 
-        inset 0 0 40px 10px rgba(50, 160, 150, 0.25), 
+        inset 0 0 50px 15px rgba(50, 160, 150, 0.7) !important, /* Primary dark inset glow */
+        inset 0 0 20px 5px rgba(50, 160, 150, 0.4) !important, /* Secondary inner glow */
         0 4px 15px rgba(0,0,0,0.03) !important; 
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 .subject-card:hover {
     transform: translateY(-2px);
     box-shadow: 
-        inset 0 0 50px 12px rgba(50, 160, 150, 0.3), 
+        inset 0 0 60px 18px rgba(50, 160, 150, 0.8) !important, 
+        inset 0 0 25px 8px rgba(50, 160, 150, 0.5) !important, 
         0 8px 25px rgba(0,0,0,0.05) !important;
 }
 .subject-card h3 { font-size: 1.6rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
@@ -177,7 +179,7 @@ h1, h2, h3, .section-title {
 .list-left i { color: #207e86; } 
 
 /* =========================================
-   ROADMAP
+   ROADMAP (LAYERED HIGH-OPACITY GRADIENT)
    ========================================= */
 .roadmap-card { 
     background-color: #F9F6EE !important; 
@@ -188,7 +190,8 @@ h1, h2, h3, .section-title {
     margin-bottom: 40px; 
     
     box-shadow: 
-        inset 0 0 50px 12px rgba(50, 160, 150, 0.25), 
+        inset 0 0 50px 12px rgba(50, 160, 150, 0.7) !important, /* Deep inner gradient */
+        inset 0 0 15px rgba(50, 160, 150, 0.4) !important,          
         0 4px 15px rgba(0, 0, 0, 0.03) !important;          
     
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -196,7 +199,8 @@ h1, h2, h3, .section-title {
 .roadmap-card:hover {
     transform: translateY(-4px);
     box-shadow: 
-        inset 0 0 60px 15px rgba(50, 160, 150, 0.3), 
+        inset 0 0 60px 15px rgba(50, 160, 150, 0.8) !important, 
+        inset 0 0 20px rgba(50, 160, 150, 0.5) !important, 
         0 8px 25px rgba(0, 0, 0, 0.05) !important;
 }
 
@@ -222,7 +226,7 @@ h1, h2, h3, .section-title {
     overflow: hidden; 
     z-index: 100;
     box-shadow: 
-        inset 0 0 40px 10px rgba(50, 160, 150, 0.25), 
+        inset 0 0 40px 10px rgba(50, 160, 150, 0.7) !important, /* Deep inner gradient */
         0 4px 15px rgba(0,0,0,0.03) !important;
 }
 #pdfFrame { 
@@ -247,14 +251,14 @@ h1, h2, h3, .section-title {
     border-radius: 16px;
     padding: 24px;
     box-shadow: 
-        inset 0 0 40px 10px rgba(50, 160, 150, 0.25), 
+        inset 0 0 40px 10px rgba(50, 160, 150, 0.7) !important, /* Deep inner gradient */
         0 10px 30px rgba(0,0,0,0.04) !important;
     text-align: left;
     transition: box-shadow 0.3s ease;
 }
 .comet-widget:hover {
     box-shadow: 
-        inset 0 0 50px 12px rgba(50, 160, 150, 0.3), 
+        inset 0 0 50px 12px rgba(50, 160, 150, 0.8) !important, 
         0 15px 40px rgba(0,0,0,0.06) !important;
 }
 
@@ -345,14 +349,14 @@ h1, h2, h3, .section-title {
     font-size: 0.85rem; color: #555; margin-top: 15px; font-weight: 500; display: flex; align-items: center; gap: 5px;
 }
 
-/* ABOUT PANEL */
+/* ABOUT PANEL (HIGH-OPACITY GRADIENT) */
 .about-panel { 
     position: fixed; right: -400px; top: 0; width: 350px; height: 100%; 
     background-color: #F9F6EE !important; 
     padding: 40px 30px; transition: 0.4s; z-index: 4000; 
     border-left: 1px solid rgba(82, 199, 196, 0.4) !important; 
     box-shadow: 
-        inset 0 0 40px 10px rgba(50, 160, 150, 0.25), 
+        inset 0 0 40px 10px rgba(50, 160, 150, 0.7) !important, /* Primary deep gradient */
         -5px 0 25px rgba(0,0,0,0.05) !important;
 }
 .about-panel h2 { margin-bottom: 20px;}
