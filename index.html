@@ -11,7 +11,7 @@
 
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body>
@@ -353,7 +353,7 @@
         }
     }
 
-    // NEW: File Input Listener to show selected file name elegantly
+    // File Input Listener to show selected file name elegantly
     document.getElementById('fileInput').addEventListener('change', function(e) {
         const display = document.getElementById('file-name-display');
         if (this.files && this.files.length > 0) {
@@ -365,4 +365,59 @@
 </script>
 
 <script>
-    const CLOUD_NAME = 
+    const CLOUD_NAME = "djypwcwxc"; 
+    const UPLOAD_PRESET = "noteverse_upload"; 
+
+    const uploadForm = document.getElementById("uploadForm");
+    const submitBtn = document.getElementById("submitBtn");
+
+    uploadForm.addEventListener("submit", async (e) => {
+        e.preventDefault(); 
+        const originalContent = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="ph ph-spinner ph-spin"></i>'; 
+        submitBtn.disabled = true;
+
+        try {
+            const fileName = document.getElementById("fileName").value;
+            const category = document.getElementById("fileCategory").value;
+            const semester = document.getElementById("fileSemester").value;
+            const file = document.getElementById("fileInput").files[0];
+
+            if (!file) {
+                alert("Please attach a file using the paperclip icon!");
+                submitBtn.innerHTML = originalContent;
+                submitBtn.disabled = false;
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("upload_preset", UPLOAD_PRESET);
+            
+            const formattedName = fileName.replace(/\s+/g, '_').toLowerCase();
+            formData.append("public_id", `${category}/sem${semester}/${formattedName}`);
+
+            const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`, {
+                method: "POST",
+                body: formData
+            });
+            const data = await response.json();
+
+            if (data.secure_url) {
+                alert(`Success! "${fileName}" uploaded.\nLink:\n${data.secure_url}`);
+                uploadForm.reset();
+                document.getElementById('file-name-display').innerHTML = ''; 
+            } else {
+                alert(`Upload failed: ${data.error.message}`);
+            }
+        } catch (error) {
+            alert("Something went wrong with the upload. Check your internet connection.");
+        } finally {
+            submitBtn.innerHTML = originalContent;
+            submitBtn.disabled = false;
+        }
+    });
+</script>
+
+</body>
+</html>
