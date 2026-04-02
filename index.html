@@ -11,7 +11,7 @@
 
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <link rel="stylesheet" href="style.css?v=13">
+    <link rel="stylesheet" href="style.css?v=14">
 </head>
 
 <body>
@@ -228,6 +228,7 @@
             
             <form id="uploadForm" class="comet-widget">
                 <input type="text" id="fileName" class="comet-text-input" placeholder="File Name (e.g., Physics Unit 1)" required>
+                
                 <div class="comet-controls">
                     <div class="comet-dropdowns">
                         <div class="comet-select-wrapper">
@@ -254,6 +255,7 @@
                             </select>
                         </div>
                     </div>
+                    
                     <div class="comet-actions">
                         <label for="fileInput" class="comet-icon-btn" title="Attach File">
                             <i class="ph ph-paperclip"></i>
@@ -264,6 +266,7 @@
                         </button>
                     </div>
                 </div>
+                
                 <div id="file-name-display" class="file-name-display"></div>
             </form>
         </section>
@@ -282,7 +285,6 @@
                 <div class="roadmap-card">
                     <h2>Stage 1: CGPA and Communication</h2>
                     <p class="main-desc">Master the essentials to build a strong base for your career.</p>
-                    
                     <div class="indented-list">
                         <div class="list-item">
                             <h4><i class="ph ph-student"></i> CGPA Without Active Backlogs</h4>
@@ -303,7 +305,6 @@
                 <div class="roadmap-card">
                     <h2>Stage 3: Core Subjects</h2>
                     <p class="main-desc">Crucial subjects for acing technical interview questions.</p>
-                    
                     <div class="indented-list simple-list">
                         <div class="list-item"><h4>DBMS</h4><p>Data Base Management System</p></div>
                         <div class="list-item"><h4>SQL</h4><p>Must Know SQL using MYSQL</p></div>
@@ -335,7 +336,11 @@
     }
     function openAbout() { document.getElementById("aboutPanel").style.right = "0"; }
     function closeAbout() { document.getElementById("aboutPanel").style.right = "-400px"; }
-    
+    function openPDF(file) {
+        const viewer = document.getElementById("pdfViewer"); viewer.style.display = "block"; viewer.querySelector("#pdfFrame").src = file;
+        window.scrollTo({ top: viewer.offsetTop - 120, behavior: "smooth" });
+    }
+
     function showHome() {
         document.getElementById("homeView").style.display = "block";
         document.getElementById("roadmapView").style.display = "none";
@@ -353,13 +358,23 @@
     function toggleCoreSubjects() {
         const cardsContainer = document.getElementById("coreSubjectCards");
         const btn = document.getElementById("coreToggleBtn");
+
         cardsContainer.classList.toggle("open");
-        btn.innerHTML = cardsContainer.classList.contains("open") ? 'Hide Subjects <i class="ph ph-caret-up"></i>' : 'View Subjects <i class="ph ph-caret-down"></i>';
+        if (cardsContainer.classList.contains("open")) {
+            btn.innerHTML = 'Hide Subjects <i class="ph ph-caret-up"></i>';
+        } else {
+            btn.innerHTML = 'View Subjects <i class="ph ph-caret-down"></i>';
+        }
     }
 
+    // File Input Listener to show selected file name elegantly
     document.getElementById('fileInput').addEventListener('change', function(e) {
         const display = document.getElementById('file-name-display');
-        display.innerHTML = this.files.length > 0 ? '<i class="ph-fill ph-check-circle" style="color: #207e86;"></i> Attached: ' + this.files[0].name : '';
+        if (this.files && this.files.length > 0) {
+            display.innerHTML = '<i class="ph-fill ph-check-circle" style="color: #207e86;"></i> Attached: ' + this.files[0].name;
+        } else {
+            display.innerHTML = '';
+        }
     });
 </script>
 
