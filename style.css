@@ -104,14 +104,26 @@ h1, h2, h3, .section-title {
     width: 96%;
     max-width: 100%; 
     text-align: center;
-    margin: 0 auto 70px auto;
+    /* Increased gap between sections from 70px to 100px for breathing room */
+    margin: 0 auto 100px auto; 
 }
 
 .hero h1 { font-size: 4.5rem; margin-bottom: 20px; line-height: 1.05; letter-spacing: -1.5px; }
 .hero p { font-size: 1.1rem; color: #555; line-height: 1.6; max-width: 800px; margin: 0 auto; font-weight: 400; }
 .hero-badge { display: inline-block; padding: 8px 20px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 50px; font-size: 13px; color: #666; background: #fff; font-weight: 500;}
 
+/* SPACING FIXES: Added margins to prevent text colliding with boxes */
 .top-channels .section-title { font-size: 3rem; margin-bottom: 40px; letter-spacing: -1px;}
+
+.core-subjects h2 { font-size: 3rem; margin-bottom: 15px; letter-spacing: -1px; }
+.core-subtext { font-size: 1.1rem; color: #555; margin-bottom: 40px; }
+
+.roadmap-header { margin-bottom: 50px; }
+.roadmap-header h1 { font-size: 3rem; margin-bottom: 15px; letter-spacing: -1px; }
+.roadmap-header p { font-size: 1.1rem; color: #555; }
+
+.upload-title { font-size: 3rem; margin-bottom: 15px; letter-spacing: -1px; }
+.upload-subtitle { font-size: 1.1rem; color: #555; margin-bottom: 45px; }
 
 /* YouTube Scroll */
 .channel-scroll-container {
@@ -128,16 +140,16 @@ h1, h2, h3, .section-title {
     flex: 0 0 auto; 
     width: 130px; 
     height: 130px; 
-    border-radius: 20px; /* Curved vertex / Squircle shape */
+    border-radius: 20px; 
     background-color: #F5F5F5 !important; 
     border: 1px solid rgba(32, 126, 134, 0.3) !important; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important; /* Standard outer drop shadow only */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important; 
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .channel-card:hover { 
     transform: translateY(-5px); 
-    box-shadow: 0 8px 25px rgba(0,0,0,0.06) !important; /* Slightly deeper outer shadow on hover */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06) !important; 
 }
 .channel-card i { 
     font-size: 2.8rem; 
@@ -256,8 +268,6 @@ h1, h2, h3, .section-title {
     margin: 0 auto 80px auto; 
     text-align: center;
 }
-.upload-title { font-size: 2.8rem; margin-bottom: 10px; }
-.upload-subtitle { font-size: 1.2rem; color: #555; margin-bottom: 30px; }
 
 .comet-widget {
     background-color: #F5F5F5 !important;
@@ -391,14 +401,15 @@ h1, h2, h3, .section-title {
 
     .hero h1 { font-size: 2.8rem; line-height: 1; letter-spacing: -1px;}
     .hero p { font-size: 0.95rem; }
-    .top-channels .section-title { font-size: 2.2rem; }
-    .core-subjects h2 { font-size: 2.2rem; }
+    
+    .roadmap-header { margin-bottom: 30px; }
     .roadmap-header h1 { font-size: 2.8rem; }
+    .core-subjects h2 { font-size: 2.2rem; }
+    .top-channels .section-title { font-size: 2.2rem; }
     .upload-title { font-size: 2.2rem; }
 
     .logo-icon { height: 26px; }
 
-    /* Adjust Youtube squircle for mobile */
     .channel-card { width: 105px; height: 105px; border-radius: 16px;}
     .channel-card i { font-size: 2.2rem; padding: 0; }
     .channel-card span { font-size: 0.75rem; }
