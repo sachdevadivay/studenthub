@@ -27,84 +27,141 @@ body::after, body::before {
 body::after { background: radial-gradient(circle, #00d4ff 0%, #005ae0 100%); top: 10%; right: 10%; }
 body::before { background: radial-gradient(circle, #5e17eb 0%, #00d4ff 100%); top: 40%; left: 5%; }
 
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(13, 17, 23, 0.8); }
+::-webkit-scrollbar-thumb { background: #00d4ff; border-radius: 10px; }
+
 /* =========================================
    GLOBAL HEADING GRADIENT
    ========================================= */
-h1, h2, h3, h4, .section-title {
+h1, h2, h3, .section-title {
     background: linear-gradient(90deg, #00d4ff, #005ae0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: inline-block;
+    /* REMOVED display: inline-block; which was causing the massive horizontal stretching! */
 }
 
 /* =========================================
-   TOPBAR & SIDEBAR
+   TOPBAR (Now has a glass effect so it doesn't overlap text messily!)
    ========================================= */
 .topbar {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 30px; background: transparent; position: fixed;
-    top: 0; left: 0; width: 100%; z-index: 2500; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(13, 17, 23, 0.85); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 2500; 
 }
-.topbar h3 { font-family: 'Great Vibes', cursive; font-size: 32px; cursor: pointer; }
-.menu-btn { font-size: 28px; cursor: pointer; color: #00d4ff; }
+.topbar h3 { font-family: 'Great Vibes', cursive; font-size: 32px; cursor: pointer; text-shadow: 0 0 10px rgba(0, 212, 255, 0.3); }
+.menu-btn { font-size: 30px; cursor: pointer; color: #00d4ff; transition: 0.3s; }
 
+/* =========================================
+   SIDEBAR
+   ========================================= */
 .sidebar {
     position: fixed; right: -300px; top: 0; width: 280px; height: 100%;
     background: rgba(13, 17, 23, 0.98); backdrop-filter: blur(25px);
     border-left: 1px solid rgba(0, 212, 255, 0.2); padding: 80px 20px;
-    transition: right 0.4s ease; z-index: 3000;
+    transition: right 0.4s ease; z-index: 3000; overflow-y: auto;
 }
 .sidebar.active { right: 0; }
-.sidebar a { display: flex; align-items: center; gap: 12px; padding: 12px 15px; color: white; text-decoration: none; transition: 0.3s; }
-.submenu { display: none; padding-left: 15px; border-left: 2px solid rgba(0, 212, 255, 0.3); margin-left: 25px; }
+.sidebar h2 { font-family: 'Great Vibes', cursive; font-size: 38px; text-align: center; margin-bottom: 30px; }
+.sidebar a { display: flex; align-items: center; gap: 12px; padding: 12px 15px; color: white; text-decoration: none; transition: 0.3s; border-radius: 8px; margin-bottom: 5px; }
+.sidebar a:hover { background: rgba(0, 212, 255, 0.1); color: #00d4ff; }
+.sidebar a i { font-size: 22px; }
+.close-sidebar { position: absolute; top: 20px; left: 20px; font-size: 24px; cursor: pointer; color: white; }
+.submenu { display: none; padding-left: 15px; border-left: 2px solid rgba(0, 212, 255, 0.3); margin-left: 25px; margin-bottom: 10px; }
 .submenu.active { display: block; }
 
 /* =========================================
-   DESKTOP SHARED SIZES (PC)
+   MAIN CONTENT AREA
    ========================================= */
-.main { padding-top: 120px; width: 100%; display: flex; flex-direction: column; align-items: center; }
+.main { padding-top: 120px; display: flex; flex-direction: column; align-items: center; width: 100%; }
 
+/* =========================================
+   DESKTOP DEFAULT SIZES
+   ========================================= */
 .hero, .core-subjects, .roadmap-section, .upload-section, .top-channels {
-    width: 90%; max-width: 1000px; margin: 0 auto 50px auto; text-align: center;
+    width: 90%;
+    max-width: 1000px; 
+    text-align: center;
+    margin: 0 auto 60px auto;
 }
 
-/* YouTube Circles */
-.channel-scroll-container { display: flex; gap: 20px; overflow-x: auto; padding: 10px 0 20px 0; scrollbar-width: none; }
+.hero h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 20px; line-height: 1.2; }
+.hero p { font-size: 1.1rem; color: rgba(255, 255, 255, 0.8); line-height: 1.6; max-width: 650px; margin: 0 auto; }
+.hero-badge { display: inline-block; padding: 8px 20px; margin-bottom: 20px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 50px; font-size: 14px; color: rgba(255, 255, 255, 0.7); background: rgba(255, 255, 255, 0.05); }
+
+.top-channels .section-title { font-size: 2.2rem; margin-bottom: 30px; font-weight: 700; }
+
+/* YouTube Scroll */
+.channel-scroll-container {
+    display: flex; gap: 20px; overflow-x: auto; padding-bottom: 25px;
+    scrollbar-width: none; -ms-overflow-style: none;
+}
+@media(min-width: 1000px) { .channel-scroll-container { justify-content: center; } }
 .channel-scroll-container::-webkit-scrollbar { display: none; }
+
 .channel-card {
     flex: 0 0 auto; width: 130px; height: 130px; border-radius: 50%;
     background: rgba(13, 17, 23, 0.6); backdrop-filter: blur(20px);
     border: 1px solid rgba(0, 212, 255, 0.2); display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 5px; text-decoration: none;
+    align-items: center; justify-content: center; gap: 8px; text-decoration: none;
+    transition: transform 0.3s ease;
 }
+.channel-card:hover { transform: translateY(-5px); border-color: rgba(0, 212, 255, 0.5); }
+.channel-card i { font-size: 2rem; background: rgba(255, 255, 255, 0.05); padding: 10px; border-radius: 50%; }
+.channel-card span { color: white; font-size: 0.8rem; font-weight: 500; }
 
-/* Subject Grid */
+/* Master Toggle Button */
 .master-toggle-btn {
     background: linear-gradient(45deg, #00d4ff, #005ae0);
-    color: white; border: none; padding: 14px 35px; font-size: 1rem; font-weight: 600;
-    border-radius: 50px; cursor: pointer; transition: 0.3s; margin-bottom: 30px;
+    color: white; border: none; padding: 16px 40px; font-size: 1.1rem; font-weight: 600;
+    border-radius: 50px; cursor: pointer; transition: 0.3s; margin-bottom: 40px; display: inline-flex; align-items: center; gap: 10px;
 }
-#coreSubjectCards { display: none; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; width: 100%; }
-#coreSubjectCards.open { display: grid !important; }
+.master-toggle-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5); }
+
+/* Subject Grid */
+#coreSubjectCards { display: none; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; width: 100%; }
+#coreSubjectCards.open { display: grid !important; animation: fadeIn 0.4s; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
 .subject-card { 
     background: rgba(13, 17, 23, 0.6); backdrop-filter: blur(20px); 
     border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 15px; padding: 25px; text-align: left;
 }
+.subject-card h3 { font-size: 1.2rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.subject-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.subject-card li { display: flex; justify-content: space-between; align-items: center; font-size: 0.95rem; color: rgba(255,255,255,0.8); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+.subject-card li:last-child { border-bottom: none; }
+.subject-card li a { color: rgba(255,255,255,0.5); font-size: 1.3rem; transition: 0.3s; }
+.subject-card li a:hover { color: #00d4ff; }
+.list-left { display: flex; align-items: center; gap: 10px; }
 
-/* =========================================
-   PLACEMENT ROADMAP (BOXES RESTORED)
-   ========================================= */
-.roadmap-cards { display: flex; flex-direction: column; gap: 30px; margin-top: 40px; }
+/* Roadmap */
 .roadmap-card {
     background: rgba(13, 17, 23, 0.6); backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 20px;
-    padding: 40px; text-align: left; width: 100%;
+    border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 20px; padding: 40px; text-align: left; margin-bottom: 30px;
 }
 .roadmap-card h2 { font-size: 1.8rem; margin-bottom: 15px; }
-.main-desc { color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.list-item { margin-bottom: 20px; padding-left: 20px; border-left: 2px solid #00d4ff; }
-.list-item h4 { font-size: 1.1rem; margin-bottom: 5px; }
-.list-item p { color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6; }
+.main-desc { color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
+.indented-list { list-style: none; padding-left: 15px; }
+.list-item { margin-bottom: 15px; position: relative; padding-left: 20px; }
+.list-item::before { content: ''; position: absolute; left: -5px; top: 8px; width: 6px; height: 6px; background: #00d4ff; border-radius: 50%; }
+.list-item h4 { font-size: 1.1rem; color: white; margin-bottom: 5px; }
+.list-item p { color: rgba(255,255,255,0.7); font-size: 0.95rem; }
+
+/* Upload Section */
+.upload-section { background: rgba(13, 17, 23, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 20px; padding: 40px; }
+.upload-row { display: flex; gap: 15px; margin: 15px 0; }
+.upload-input { width: 100%; padding: 15px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; outline: none; }
+.upload-input option { background: #0d1117; }
+.upload-btn { width: 100%; padding: 15px; background: linear-gradient(45deg, #00d4ff, #005ae0); border: none; border-radius: 10px; color: white; font-weight: 600; cursor: pointer; }
 
 /* =========================================
    MOBILE RESPONSIVE (THE TOTAL FIX)
@@ -112,30 +169,41 @@ h1, h2, h3, h4, .section-title {
 @media(max-width: 768px) {
     .main { padding-top: 90px; }
 
-    /* Minimize Headings */
-    .hero h1 { font-size: 1.5rem !important; }
-    .hero p { font-size: 0.85rem !important; }
-    .section-title, .core-subjects h2, .roadmap-header h1 { font-size: 1.3rem !important; }
-    
-    /* Responsive Containers */
+    /* Fixed Box Widths */
     .hero, .core-subjects, .roadmap-section, .upload-section, .top-channels {
-        width: 92% !important; margin-bottom: 35px;
+        width: 92%; 
+        margin-bottom: 40px;
     }
 
-    /* Fixed Roadmap for Mobile */
-    .roadmap-card { padding: 20px !important; border-radius: 15px !important; }
-    .roadmap-card h2 { font-size: 1.2rem !important; }
-    .main-desc { font-size: 0.9rem !important; }
-    .list-item h4 { font-size: 1rem !important; }
-    .list-item p { font-size: 0.8rem !important; }
+    /* Fixed Typography */
+    .hero h1 { font-size: 2rem; line-height: 1.2; }
+    .hero p { font-size: 0.95rem; }
+    .top-channels .section-title { font-size: 1.6rem; }
+    .core-subjects h2 { font-size: 1.8rem; }
+    .roadmap-header h1 { font-size: 2rem; }
 
-    /* YouTube Icons */
-    .channel-card { width: 90px !important; height: 90px !important; }
-    .channel-card i { font-size: 1.3rem !important; }
-    .channel-card span { font-size: 0.6rem !important; }
+    /* Fixed YouTube Circles */
+    .channel-card {
+        width: 90px; 
+        height: 90px;
+    }
+    .channel-card i { font-size: 1.5rem; padding: 8px; }
+    .channel-card span { font-size: 0.65rem; }
 
-    /* Upload & Form */
-    .upload-section { padding: 20px !important; }
-    .upload-row { display: flex; flex-direction: column !important; gap: 10px !important; }
-    .upload-input { width: 100% !important; }
+    /* Fixed Subject Cards */
+    #coreSubjectCards { grid-template-columns: 1fr; }
+    .subject-card { padding: 20px; }
+    .subject-card h3 { font-size: 1.1rem; }
+    .subject-card li { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .subject-card li a { align-self: flex-end; }
+
+    /* Fixed Form Boxes */
+    .upload-section { padding: 25px 20px; }
+    .upload-row { flex-direction: column; gap: 15px; margin: 15px 0; }
+    .upload-input { padding: 12px; }
+
+    /* Fixed Roadmap */
+    .roadmap-card { padding: 25px; }
+    .roadmap-card h2 { font-size: 1.4rem; }
+    .main-desc { font-size: 1rem; }
 }
