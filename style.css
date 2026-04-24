@@ -74,7 +74,6 @@ h1, h2, h3, .section-title {
 /* =========================================
    BULLETPROOF CLICK FIXES FOR BUTTONS / SVGS
    ========================================= */
-/* Prevents dynamically generated SVGs from intercepting finger taps */
 .menu-btn *, .master-toggle-btn * {
     pointer-events: none !important;
 }
@@ -102,12 +101,11 @@ h1, h2, h3, .section-title {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(0,0,0,0.05);
-    /* Instead of making the whole bar clickable, keep it none and just allow child clicks */
     pointer-events: none; 
 }
 
 .logo-container, .menu-btn {
-    pointer-events: auto !important; /* Extremely important for clicks */
+    pointer-events: auto !important; 
     position: relative;
     z-index: 9999;
 }
@@ -201,7 +199,7 @@ h1, h2, h3, .section-title {
 .channel-scroll-container::-webkit-scrollbar { display: none; }
 
 /* =========================================
-   YOUTUBE CARDS
+   YOUTUBE CARDS (NAVY BLUE BORDER)
    ========================================= */
 .channel-card {
     flex: 0 0 auto; 
@@ -209,7 +207,7 @@ h1, h2, h3, .section-title {
     height: 130px; 
     border-radius: 20px; 
     background-color: #ffffff !important; 
-    border: 1px solid rgba(0, 102, 255, 0.15) !important; 
+    border: 2px solid #000080 !important; /* CRISP NAVY BLUE BORDER */
     box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important; 
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -230,27 +228,27 @@ h1, h2, h3, .section-title {
     font-size: 0.85rem; font-weight: 600; letter-spacing: -0.3px; 
 }
 
-/* Master Toggle Button (Z-INDEX FIXED) */
+/* Master Toggle Button */
 .master-toggle-btn {
     background: #111111; 
     color: #ffffff; border: none; padding: 14px 35px; font-size: 1rem; font-weight: 500;
     border-radius: 50px; cursor: pointer; transition: 0.3s; margin-bottom: 40px; display: inline-flex; align-items: center; gap: 10px;
     font-family: 'Inter', sans-serif;
     position: relative;
-    z-index: 100; /* Ensures it is always clickable above containers */
+    z-index: 100; 
     pointer-events: auto !important;
 }
 .master-toggle-btn:hover { background: #333333; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); }
 
 
 /* =========================================
-   CREATOR TALKS
+   CREATOR TALKS (NAVY BLUE BORDER)
    ========================================= */
 .creator-talks h2 { font-size: 3rem; margin-bottom: 15px; }
 .creator-subtext { font-size: 1.1rem; color: #555555; margin-bottom: 30px; }
 .creator-box {
     background-color: #ffffff !important;
-    border: 1px solid rgba(0, 102, 255, 0.15) !important;
+    border: 2px solid #000080 !important; /* CRISP NAVY BLUE BORDER */
     border-radius: 12px;
     padding: 30px;
     max-width: 800px;
@@ -263,7 +261,7 @@ h1, h2, h3, .section-title {
 
 
 /* =========================================
-   SUBJECT GRID 
+   SUBJECT GRID (NAVY BLUE BORDER)
    ========================================= */
 #coreSubjectCards { 
     display: none; 
@@ -276,7 +274,7 @@ h1, h2, h3, .section-title {
 
 .subject-card { 
     background-color: #ffffff !important; 
-    border: 1px solid rgba(0, 102, 255, 0.15) !important; 
+    border: 2px solid #000080 !important; /* CRISP NAVY BLUE BORDER */
     border-radius: 12px; padding: 35px; text-align: left; 
     box-shadow: 0 4px 15px rgba(0, 102, 255, 0.05) !important; 
     transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -289,17 +287,17 @@ h1, h2, h3, .section-title {
 .subject-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
 .subject-card li { display: flex; justify-content: space-between; align-items: center; font-size: 1.05rem; color: #555555; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 12px; }
 .subject-card li:last-child { border-bottom: none; padding-bottom: 0;}
-.subject-card li a { color: #999999; font-size: 1.4rem; transition: 0.3s; position: relative; z-index: 10;} /* Make links clickable */
+.subject-card li a { color: #999999; font-size: 1.4rem; transition: 0.3s; position: relative; z-index: 10;} 
 .subject-card li a:hover { color: #0044cc; }
 .list-left { display: flex; align-items: center; gap: 10px; }
 .list-left i { color: #0088ff; } 
 
 /* =========================================
-   ROADMAP 
+   ROADMAP (NAVY BLUE BORDER)
    ========================================= */
 .roadmap-card { 
     background-color: #ffffff !important; 
-    border: 1px solid rgba(0, 102, 255, 0.15) !important; 
+    border: 2px solid #000080 !important; /* CRISP NAVY BLUE BORDER */
     border-radius: 24px; 
     padding: 50px; 
     text-align: left; 
@@ -321,7 +319,7 @@ h1, h2, h3, .section-title {
 .list-item p { color: #555555; font-size: 1.05rem; line-height: 1.6;}
 
 /* =========================================
-   SEMESTER VIEW (VERTICAL BOXES)
+   SEMESTER VIEW VERTICAL BOXES (NAVY BLUE BORDER)
    ========================================= */
 .vertical-subject-list {
     display: flex;
@@ -334,7 +332,7 @@ h1, h2, h3, .section-title {
 
 .vertical-subject-card {
     background-color: #ffffff !important;
-    border: 1px solid rgba(0, 102, 255, 0.15) !important;
+    border: 2px solid #000080 !important; /* CRISP NAVY BLUE BORDER */
     border-radius: 16px;
     padding: 25px 30px;
     box-shadow: 0 4px 15px rgba(0, 102, 255, 0.05) !important;
@@ -379,7 +377,7 @@ h1, h2, h3, .section-title {
 }
 
 /* =========================================
-   PDF VIEWER 
+   PDF VIEWER (NAVY BLUE BORDER)
    ========================================= */
 #pdfViewer { 
     display: none; 
@@ -388,7 +386,7 @@ h1, h2, h3, .section-title {
     max-width: 1100px; 
     height: 700px; 
     border-radius: 16px; 
-    border: 1px solid rgba(0, 102, 255, 0.2) !important; 
+    border: 2px solid #000080 !important; /* CRISP NAVY BLUE BORDER */
     overflow: hidden; 
     z-index: 100;
     box-shadow: 0 4px 20px rgba(0, 102, 255, 0.1) !important;
@@ -401,7 +399,7 @@ h1, h2, h3, .section-title {
 }
 
 /* =========================================
-   COMET STYLED UPLOAD SECTION 
+   COMET STYLED UPLOAD SECTION (NAVY BLUE BORDER)
    ========================================= */
 .upload-container {
     width: 100%; 
@@ -411,7 +409,7 @@ h1, h2, h3, .section-title {
 
 .comet-widget {
     background-color: #ffffff !important;
-    border: 1px solid rgba(0, 102, 255, 0.15) !important;
+    border: 2px solid #000080 !important; /* CRISP NAVY BLUE BORDER */
     border-radius: 16px;
     padding: 35px;
     box-shadow: 0 4px 20px rgba(0, 102, 255, 0.05) !important;
@@ -515,12 +513,12 @@ h1, h2, h3, .section-title {
     font-size: 0.95rem; color: #555555; margin-top: 15px; font-weight: 500; display: flex; align-items: center; gap: 5px;
 }
 
-/* ABOUT PANEL */
+/* ABOUT PANEL (NAVY BLUE BORDER) */
 .about-panel { 
     position: fixed; right: -400px; top: 0; width: 350px; height: 100%; 
     background-color: #ffffff !important; 
     padding: 40px 30px; transition: 0.4s; z-index: 4000; 
-    border-left: 1px solid rgba(0, 102, 255, 0.15) !important; 
+    border-left: 2px solid #000080 !important; /* CRISP NAVY BLUE BORDER */
     box-shadow: -5px 0 25px rgba(0,0,0,0.05) !important;
 }
 .about-panel h2 { margin-bottom: 20px; color: #111111;}
@@ -542,7 +540,6 @@ h1, h2, h3, .section-title {
     .topbar h3 { font-size: 22px; }
     .menu-btn { font-size: 32px; }
 
-    /* ALL containers set to exactly 100% with padding, so text CANNOT spill over */
     .hero, .core-subjects, .roadmap-section, .upload-container, .top-channels, .creator-talks, .semester-section, #pdfViewer {
         width: 100%; 
         max-width: 100vw;
@@ -551,7 +548,6 @@ h1, h2, h3, .section-title {
         box-sizing: border-box;
     }
 
-    /* Dramatically reduced font sizes for mobile screens to prevent wrapping issues */
     .hero h1 { font-size: 1.8rem; line-height: 1.2; letter-spacing: -0.5px; }
     .hero p { font-size: 0.95rem; }
     
