@@ -22,7 +22,7 @@ body {
     z-index: 0;
 }
 
-/* --- SOFT AMBIENT LIGHTING GLOW (Adapted for Light Theme) --- */
+/* --- SOFT AMBIENT LIGHTING GLOW --- */
 body::before {
     content: "";
     position: fixed;
@@ -52,15 +52,17 @@ body::after {
 ::-webkit-scrollbar-track { background: #eef4f9; }
 ::-webkit-scrollbar-thumb { background: #bbccdd; border-radius: 10px; }
 
-/* Typography Overhaul */
+/* Typography Overhaul - Prevent overflow on long words */
 h1, h2, h3, .section-title {
     font-family: 'DM Serif Display', serif; 
     color: #111111; 
     letter-spacing: -0.5px; 
     font-weight: 400; 
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
-/* THEME TEXT GRADIENT - FLAME BLUE (Looks great on light bg) */
+/* THEME TEXT GRADIENT - FLAME BLUE */
 .text-gradient {
     background: linear-gradient(to right, #0044cc, #00aaff);
     -webkit-background-clip: text;
@@ -156,10 +158,12 @@ h1, h2, h3, .section-title {
 .main { padding-top: 130px; display: flex; flex-direction: column; align-items: center; width: 100%; }
 
 .hero, .core-subjects, .roadmap-section, .upload-container, .top-channels, .creator-talks, .semester-section {
-    width: 96%;
+    width: 100%;
     max-width: 1100px; 
+    padding: 0 20px; /* Internal padding prevents content from touching screen edges */
     text-align: center;
     margin: 0 auto 90px auto; 
+    box-sizing: border-box;
 }
 
 .hero h1 { font-size: 4.5rem; margin-bottom: 20px; line-height: 1.05; letter-spacing: -1.5px; }
@@ -180,8 +184,8 @@ h1, h2, h3, .section-title {
 
 /* YouTube Scroll */
 .channel-scroll-container {
-    display: flex; gap: 20px; overflow-x: auto; padding: 10px 0 25px 0;
-    scrollbar-width: none; -ms-overflow-style: none;
+    display: flex; gap: 20px; overflow-x: auto; padding: 10px 5px 25px 5px;
+    scrollbar-width: none; -ms-overflow-style: none; width: 100%;
 }
 @media(min-width: 1000px) { .channel-scroll-container { justify-content: center; } }
 .channel-scroll-container::-webkit-scrollbar { display: none; }
@@ -194,7 +198,7 @@ h1, h2, h3, .section-title {
     width: 130px; 
     height: 130px; 
     border-radius: 20px; 
-    background-color: #ffffff !important; /* Pure White */
+    background-color: #ffffff !important; 
     border: 1px solid rgba(0, 102, 255, 0.15) !important; 
     box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important; 
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; text-decoration: none;
@@ -364,7 +368,7 @@ h1, h2, h3, .section-title {
 #pdfViewer { 
     display: none; 
     margin: 0 auto 60px auto; 
-    width: 96%; 
+    width: 100%; 
     max-width: 1100px; 
     height: 700px; 
     border-radius: 16px; 
@@ -384,7 +388,7 @@ h1, h2, h3, .section-title {
    COMET STYLED UPLOAD SECTION 
    ========================================= */
 .upload-container {
-    width: 96%; 
+    width: 100%; 
     max-width: 1100px; 
     text-align: center;
 }
@@ -506,70 +510,69 @@ h1, h2, h3, .section-title {
 .close-about { position: absolute; top: 20px; right: 25px; font-size: 24px; cursor: pointer; color: #111111; }
 
 /* =========================================
-   COMPREHENSIVE MOBILE RESPONSIVE FIXES
+   BULLETPROOF MOBILE FIXES
    ========================================= */
 @media(max-width: 768px) {
-    /* Adjust padding to fit smaller screens */
-    .main { padding-top: 90px; }
     
-    .topbar { padding: 15px 20px; }
-    .topbar.scrolled { padding: 10px 20px; }
+    /* Ensure the body does not scroll horizontally */
+    html, body { overflow-x: hidden; width: 100%; position: relative; }
 
-    /* Force containers to be fluid on mobile */
-    .hero, .core-subjects, .roadmap-section, .upload-container, .top-channels, .creator-talks, .semester-section, #pdfViewer {
-        width: 92%; 
-        max-width: 100%;
-        margin-bottom: 50px;
-    }
-
-    /* Shrink Fonts */
-    .hero h1 { font-size: 2.2rem; line-height: 1.1; letter-spacing: -1px;}
-    .hero p { font-size: 0.95rem; padding: 0 10px;}
+    .main { padding-top: 90px; overflow-x: hidden; }
     
-    .roadmap-header { margin-bottom: 30px; }
-    .roadmap-header h1 { font-size: 2.2rem; }
-    .roadmap-header p { font-size: 0.95rem; }
-    
-    .core-subjects h2 { font-size: 2rem; }
-    .top-channels .section-title { font-size: 2rem; }
-    .creator-talks h2 { font-size: 2rem; }
-    .upload-title { font-size: 2rem; }
+    .topbar { padding: 12px 15px; }
+    .topbar.scrolled { padding: 10px 15px; }
 
     .logo-icon { width: 30px !important; height: 30px !important; }
-    .topbar h3 { font-size: 24px; }
-    .menu-btn { font-size: 28px; }
+    .topbar h3 { font-size: 22px; }
+    .menu-btn { font-size: 26px; }
 
-    /* Shrink Youtube Cards slightly */
+    /* ALL containers set to exactly 100% with padding, so text CANNOT spill over */
+    .hero, .core-subjects, .roadmap-section, .upload-container, .top-channels, .creator-talks, .semester-section, #pdfViewer {
+        width: 100%; 
+        max-width: 100vw;
+        padding: 0 15px; 
+        margin-bottom: 40px;
+        box-sizing: border-box;
+    }
+
+    /* Dramatically reduced font sizes for mobile screens to prevent wrapping issues */
+    .hero h1 { font-size: 1.8rem; line-height: 1.2; letter-spacing: -0.5px; }
+    .hero p { font-size: 0.95rem; }
+    
+    .roadmap-header h1 { font-size: 1.8rem; }
+    .roadmap-header p { font-size: 0.95rem; }
+    
+    .core-subjects h2 { font-size: 1.8rem; line-height: 1.2; }
+    .top-channels .section-title { font-size: 1.8rem; line-height: 1.2; }
+    .creator-talks h2 { font-size: 1.8rem; line-height: 1.2; }
+    .upload-title { font-size: 1.8rem; line-height: 1.2; }
+
+    .channel-scroll-container { justify-content: flex-start; padding: 10px 5px; }
     .channel-card { width: 105px; height: 105px; border-radius: 16px;}
     .channel-card i { font-size: 2.2rem; padding: 0; }
     .channel-card span { font-size: 0.75rem; }
 
-    /* Force Subject Grid to 1 Column */
-    #coreSubjectCards { grid-template-columns: 1fr; gap: 15px; }
-    #coreSubjectCards.open { display: grid !important; }
-    .subject-card { padding: 20px; }
-    .subject-card h3 { font-size: 1.3rem; }
+    #coreSubjectCards.open { grid-template-columns: 1fr; gap: 15px; }
+    .subject-card { padding: 20px; border-radius: 16px; }
+    .subject-card h3 { font-size: 1.2rem; }
     .subject-card li { flex-direction: column; align-items: flex-start; gap: 8px; font-size: 0.95rem;}
     .subject-card li a { align-self: flex-end; }
     
-    /* Adjust Vertical Semester Boxes */
     .vertical-subject-card { padding: 15px 20px; }
     .vertical-subject-card h3 { font-size: 1.1rem; gap: 10px; }
     .vertical-subject-card h3 i { font-size: 1.5rem; }
 
-    /* Mobile Upload Form Adjustments */
     .comet-widget { padding: 20px 15px; }
     .comet-text-input { font-size: 1.1rem; }
     .comet-dropdowns { width: 100%; justify-content: space-between; gap: 10px;}
     .comet-select-wrapper { padding: 8px 12px; font-size: 0.9rem;}
     .comet-actions { width: 100%; justify-content: space-between; margin-top: 10px; border-top: 1px solid rgba(0, 102, 255, 0.1); padding-top: 15px;}
 
-    /* Adjust Roadmap Boxes */
     .roadmap-card { padding: 25px; margin-bottom: 20px; border-radius: 16px;}
-    .roadmap-card h2 { font-size: 1.5rem; }
+    .roadmap-card h2 { font-size: 1.4rem; }
     .main-desc { font-size: 0.95rem; }
     .list-item h4 { font-size: 1.1rem; }
     .list-item p { font-size: 0.9rem; }
     
-    #pdfViewer { height: 500px; }
-    }
+    #pdfViewer { height: 400px; }
+}
