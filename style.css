@@ -339,25 +339,25 @@ section { margin-bottom: 100px; }
     z-index: 2;
 }
 
-/* Watermark Seal - MOVED TO BOTTOM LEFT */
+/* Watermark Seal */
 .gc-watermark {
     position: absolute;
-    bottom: -60px; /* Anchors to bottom */
-    left: -40px;   /* Anchors to left */
-    width: 320px;
-    height: 320px;
+    bottom: -160px; /* Pulls it way down to surround the signature */
+    left: -100px;   /* Pulls it exactly to the bottom-left corner */
+    width: 500px;   /* Massively enlarged */
+    height: 500px;  /* Massively enlarged */
     border: 4px dashed rgba(220, 38, 38, 0.2);
     border-radius: 50%;
-    z-index: 0;    /* Forces it behind the text */
+    z-index: 0; 
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: none; /* Stops it from blocking clicks */
+    pointer-events: none; 
 }
 
 .gc-watermark-inner {
-    width: 270px;
-    height: 270px;
+    width: 420px;   /* Massively enlarged */
+    height: 420px;  /* Massively enlarged */
     border: 2px solid rgba(220, 38, 38, 0.15);
     border-radius: 50%;
     background: repeating-radial-gradient(
@@ -367,6 +367,7 @@ section { margin-bottom: 100px; }
         rgba(220, 38, 38, 0.05) 10px,
         rgba(220, 38, 38, 0.05) 20px
     );
+}
 }
 
 /* Detail Rows */
@@ -491,4 +492,202 @@ section { margin-bottom: 100px; }
     .gc-detail-row::before { border-width: 10px; margin-right: 10px; }
     .gc-row-text p { font-size: 0.9rem; }
     .gc-watermark { display: none; } 
+}
+/* =========================================
+   EXACT GITHUB HEATMAP STYLES
+========================================= */
+/* Center the heatmap container */
+#cal-heatmap {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Force ALL empty cells to GitHub Grey with rounded corners */
+svg.cal-heatmap-container rect.graph-rect {
+    fill: #ebedf0 !important;
+    stroke: rgba(27,31,35,0.06) !important;
+    stroke-width: 1px !important;
+    rx: 3px !important;
+    ry: 3px !important;
+}
+
+/* GitHub Green Colors for Active Days */
+svg.cal-heatmap-container rect.q1 { fill: #9be9a8 !important; } /* Light Green */
+svg.cal-heatmap-container rect.q2 { fill: #40c463 !important; } /* Med Green */
+svg.cal-heatmap-container rect.q3 { fill: #30a14e !important; } /* Dark Green */
+svg.cal-heatmap-container rect.q4 { fill: #216e39 !important; } /* Darkest Green */
+svg.cal-heatmap-container rect.q5 { fill: #216e39 !important; } /* Fallback */
+
+/* Hide default library borders */
+svg.cal-heatmap-container .graph-domain {
+    stroke: none !important;
+}
+
+/* Style the Month text labels */
+svg.cal-heatmap-container text.graph-label {
+    font-family: 'Inter', sans-serif !important;
+    fill: #57606a !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+}
+
+/* =========================================
+   CIRCULAR DSA FLOATING BUTTON
+========================================= */
+.dsa-circle-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* This makes it a perfect circle */
+    background: linear-gradient(135deg, #a855f7, #6d28d9);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 15px rgba(109, 40, 217, 0.4);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-family: 'Inter', monospace;
+    z-index: 1000;
+    transition: all 0.2s ease;
+}
+
+/* Hover effect so it pops up slightly when hovered */
+.dsa-circle-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(109, 40, 217, 0.6);
+}
+
+
+/* =========================================
+   HIDE "BACK TO DASHBOARD" BUTTONS
+========================================= */
+.back-nav {
+    display: none !important;
+}
+
+/* =========================================
+   SUBJECT DROPDOWN ACCORDIONS
+========================================= */
+.subject-accordion-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.subject-accordion-item:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.subject-accordion-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    color: #0f172a;
+}
+
+/* Hidden by default, triggered by JS */
+.accordion-content {
+    display: none;
+    padding: 0 25px 25px 25px;
+    background: #ffffff;
+}
+
+.subject-dropdown-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 5px;
+    padding-top: 15px;
+    border-top: 1px dashed #e2e8f0;
+}
+
+.dropdown-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    border-radius: 8px;
+    color: #475569;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.dropdown-action-btn:hover {
+    background: #f0f9ff;
+    border-color: #4facfe;
+    color: #0284c7;
+}
+/* --- DYNAMIC PDF CARD STYLING --- */
+
+/* The Main Card Container */
+/* Make sure the main card is square */
+.document-card {
+    position: relative;
+    display: inline-block;
+    width: 240px;          
+    height: 240px; /* <-- CHANGED TO 240px */       
+    border-radius: 12px;
+    overflow: hidden;      
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-decoration: none; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-right: 15px; 
+    background-color: #f8f9fa; 
+}
+
+.document-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* The Canvas (where the PDF is drawn) */
+/* Force the PDF to beautifully fill the square without stretching */
+.pdf-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* <-- This forces it to fill the square perfectly */    
+    object-position: top center; /* <-- This keeps the top of the page visible */ 
+}
+/* The Dark Gradient Overlay */
+.document-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
+    padding: 40px 15px 15px 15px; 
+    box-sizing: border-box;
+}
+
+/* The Card Title Text */
+.document-overlay h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
 }

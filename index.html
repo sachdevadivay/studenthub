@@ -5,27 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NoteVerse</title>
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Icons & Heatmap Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/cal-heatmap/3.3.6/cal-heatmap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/cal-heatmap/3.3.6/cal-heatmap.css" />
 
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
 </head>
 <body>
 
-    <!-- Ambient Background -->
     <div class="bg-glow glow-top-left"></div>
     <div class="bg-glow glow-top-right"></div>
 
-    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-logo" onclick="showHome()">
             <div class="logo-mark"><i class="ph-fill ph-sparkle"></i></div>
@@ -67,7 +69,6 @@
         <button class="mobile-menu-btn mobile-only" onclick="toggleMobileMenu()"><i class="ph ph-list"></i></button>
     </nav>
 
-    <!-- MOBILE MENU -->
     <div class="mobile-menu" id="mobileMenu">
         <button class="close-menu" onclick="toggleMobileMenu()"><i class="ph ph-x"></i></button>
         
@@ -97,19 +98,13 @@
         </div>
     </div>
 
-    <!-- MAIN APP WRAPPER -->
     <main class="app-container" id="mainContent">
 
-        <!-- ================= HOME VIEW ================= -->
         <div id="homeView">
             <header class="hero-section">
                 <div class="hero-badge"><i class="ph ph-sparkle"></i> The standard for engineering excellence</div>
                 <h1 class="hero-title">Master Your<br><span class="text-gradient">Engineering</span> Journey</h1>
                 <p class="hero-subtitle">Access premium study materials, structured placement roadmaps, and curated resources to ace your exams and interviews.</p>
-                <div class="hero-buttons">
-                    <button class="btn-primary large" onclick="document.getElementById('coreSubjects').scrollIntoView({behavior: 'smooth'})"><i class="ph ph-magnifying-glass"></i> Browse Notes</button>
-                    <button class="btn-outline large" onclick="openRoadmap()">View Roadmap</button>
-                </div>
             </header>
 
             <section class="features-section">
@@ -135,15 +130,107 @@
             </section>
 
             <section class="core-subjects-section" id="coreSubjects">
-                <h2 class="section-heading">Core Subjects</h2>
-                <p class="section-subheading">Master the fundamentals required for top product companies.</p>
+                <h2 class="section-heading centered">Core Subjects</h2>
+                <p class="section-subheading centered">Master the fundamentals required for top product companies.</p>
+                
                 <div class="subjects-grid">
-                    <div class="subject-card pastel-blue" onclick="showSubjectFiles(null, 'Notes', 'Data Structures')"><div class="subject-icon"><i class="ph ph-code"></i></div><div class="subject-info"><h3>Data Structures</h3><span class="explore-link">Explore notes <i class="ph ph-arrow-right"></i></span></div></div>
-                    <div class="subject-card pastel-mint" onclick="showSubjectFiles(null, 'Notes', 'Database Systems')"><div class="subject-icon"><i class="ph ph-database"></i></div><div class="subject-info"><h3>Database Systems</h3><span class="explore-link">Explore notes <i class="ph ph-arrow-right"></i></span></div></div>
-                    <div class="subject-card pastel-purple" onclick="showSubjectFiles(null, 'Notes', 'Operating Systems')"><div class="subject-icon"><i class="ph ph-cpu"></i></div><div class="subject-info"><h3>Operating Systems</h3><span class="explore-link">Explore notes <i class="ph ph-arrow-right"></i></span></div></div>
-                    <div class="subject-card pastel-peach" onclick="showSubjectFiles(null, 'Notes', 'Computer Networks')"><div class="subject-icon"><i class="ph ph-share-network"></i></div><div class="subject-info"><h3>Computer Networks</h3><span class="explore-link">Explore notes <i class="ph ph-arrow-right"></i></span></div></div>
-                    <div class="subject-card pastel-blue" onclick="showSubjectFiles(null, 'Notes', 'Object-Oriented Programming')"><div class="subject-icon"><i class="ph ph-cube"></i></div><div class="subject-info"><h3>Object-Oriented Prog.</h3><span class="explore-link">Explore notes <i class="ph ph-arrow-right"></i></span></div></div>
-                    <div class="subject-card pastel-mint" onclick="showSubjectFiles(null, 'Notes', 'Aptitude & Reasoning')"><div class="subject-icon"><i class="ph ph-brain"></i></div><div class="subject-info"><h3>Aptitude & Reasoning</h3><span class="explore-link">Explore notes <i class="ph ph-arrow-right"></i></span></div></div>
+                    
+                    <div class="subject-card pastel-blue" style="flex-direction: column; align-items: stretch; height: auto; padding: 25px;">
+                        <div onclick="toggleAccordion(this)" style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; width: 100%;">
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <div class="subject-icon" style="margin: 0;"><i class="ph ph-code"></i></div>
+                                <h3 style="margin: 0; font-size: 1.1rem; color: #0f172a;">Data Structures</h3>
+                            </div>
+                            <i class="ph-bold ph-caret-down acc-caret" style="transition: transform 0.3s ease; color: #64748b;"></i>
+                        </div>
+                        <div class="accordion-content" style="display: none; width: 100%; padding-top: 20px; margin-top: 15px; border-top: 1px solid rgba(0,0,0,0.08);">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <button onclick="showSubjectFiles(null, 'Notes', 'Data Structures')" class="dropdown-action-btn" style="background: white;"><i class="ph ph-file-text"></i> Notes</button>
+                                <button onclick="showSubjectFiles(null, 'PYQs', 'Data Structures')" class="dropdown-action-btn" style="background: white;"><i class="ph ph-files"></i> PYQs</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subject-card pastel-mint" style="flex-direction: column; align-items: stretch; height: auto; padding: 25px;">
+                        <div onclick="toggleAccordion(this)" style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; width: 100%;">
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <div class="subject-icon" style="margin: 0;"><i class="ph ph-database"></i></div>
+                                <h3 style="margin: 0; font-size: 1.1rem; color: #0f172a;">Database Systems</h3>
+                            </div>
+                            <i class="ph-bold ph-caret-down acc-caret" style="transition: transform 0.3s ease; color: #64748b;"></i>
+                        </div>
+                        <div class="accordion-content" style="display: none; width: 100%; padding-top: 20px; margin-top: 15px; border-top: 1px solid rgba(0,0,0,0.08);">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <button onclick="showSubjectFiles(null, 'Notes', 'Database Systems')" class="dropdown-action-btn" style="background: white;"><i class="ph ph-file-text"></i> Notes</button>
+                                <button onclick="showSubjectFiles(null, 'PYQs', 'Database Systems')" class="dropdown-action-btn" style="background: white;"><i class="ph ph-files"></i> PYQs</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subject-card pastel-purple" style="flex-direction: column; align-items: stretch; height: auto; padding: 25px;">
+                        <div onclick="toggleAccordion(this)" style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; width: 100%;">
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <div class="subject-icon" style="margin: 0;"><i class="ph ph-cpu"></i></div>
+                                <h3 style="margin: 0; font-size: 1.1rem; color: #0f172a;">Operating Systems</h3>
+                            </div>
+                            <i class="ph-bold ph-caret-down acc-caret" style="transition: transform 0.3s ease; color: #64748b;"></i>
+                        </div>
+                        <div class="accordion-content" style="display: none; width: 100%; padding-top: 20px; margin-top: 15px; border-top: 1px solid rgba(0,0,0,0.08);">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <button onclick="showSubjectFiles(null, 'Notes', 'Operating Systems')" class="dropdown-action-btn" style="background: white;"><i class="ph ph-file-text"></i> Notes</button>
+                                <button onclick="showSubjectFiles(null, 'PYQs', 'Operating Systems')" class="dropdown-action-btn" style="background: white;"><i class="ph ph-files"></i> PYQs</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subject-card pastel-peach" style="flex-direction: column; align-items: stretch; height: auto; padding: 25px;">
+                        <div onclick="toggleAccordion(this)" style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; width: 100%;">
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <div class="subject-icon" style="margin: 0;"><i class="ph ph-share-network"></i></div>
+                                <h3 style="margin: 0; font-size: 1.1rem; color: #0f172a;">Computer Networks</h3>
+                            </div>
+                            <i class="ph-bold ph-caret-down acc-caret" style="transition: transform 0.3s ease; color: #64748b;"></i>
+                        </div>
+                        <div class="accordion-content" style="display: none; width: 100%; padding-top: 20px; margin-top: 15px; border-top: 1px solid rgba(0,0,0,0.08);">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <button onclick="showSubjectFiles(null, 'Notes', 'Computer Networks')" class="dropdown-action-btn" style="background: white;"><i class="ph ph-file-text"></i> Notes</button>
+                                <button onclick="showSubjectFiles(null, 'PYQs', 'Computer Networks')" class="dropdown-action-btn" style="background: white;"><i class="ph ph-files"></i> PYQs</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subject-card pastel-blue" style="flex-direction: column; align-items: stretch; height: auto; padding: 25px;">
+                        <div onclick="toggleAccordion(this)" style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; width: 100%;">
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <div class="subject-icon" style="margin: 0;"><i class="ph ph-cube"></i></div>
+                                <h3 style="margin: 0; font-size: 1.1rem; color: #0f172a;">Object-Oriented Prog.</h3>
+                            </div>
+                            <i class="ph-bold ph-caret-down acc-caret" style="transition: transform 0.3s ease; color: #64748b;"></i>
+                        </div>
+                        <div class="accordion-content" style="display: none; width: 100%; padding-top: 20px; margin-top: 15px; border-top: 1px solid rgba(0,0,0,0.08);">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <button onclick="showSubjectFiles(null, 'Notes', 'Object-Oriented Programming')" class="dropdown-action-btn" style="background: white;"><i class="ph ph-file-text"></i> Notes</button>
+                                <button onclick="showSubjectFiles(null, 'PYQs', 'Object-Oriented Programming')" class="dropdown-action-btn" style="background: white;"><i class="ph ph-files"></i> PYQs</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="subject-card pastel-mint" style="flex-direction: column; align-items: stretch; height: auto; padding: 25px;">
+                        <div onclick="toggleAccordion(this)" style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; width: 100%;">
+                            <div style="display: flex; align-items: center; gap: 15px;">
+                                <div class="subject-icon" style="margin: 0;"><i class="ph ph-brain"></i></div>
+                                <h3 style="margin: 0; font-size: 1.1rem; color: #0f172a;">Aptitude & Reasoning</h3>
+                            </div>
+                            <i class="ph-bold ph-caret-down acc-caret" style="transition: transform 0.3s ease; color: #64748b;"></i>
+                        </div>
+                        <div class="accordion-content" style="display: none; width: 100%; padding-top: 20px; margin-top: 15px; border-top: 1px solid rgba(0,0,0,0.08);">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                <button onclick="showSubjectFiles(null, 'Notes', 'Aptitude & Reasoning')" class="dropdown-action-btn" style="background: white;"><i class="ph ph-file-text"></i> Notes</button>
+                                <button onclick="showSubjectFiles(null, 'PYQs', 'Aptitude & Reasoning')" class="dropdown-action-btn" style="background: white;"><i class="ph ph-files"></i> PYQs</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
@@ -159,34 +246,22 @@
                     <div class="yt-card"><div class="yt-header"><div class="yt-avatar pastel-mint">HS</div><div class="yt-title-area"><h3>Harkirat Singh</h3><span class="subs-badge">100xDevs</span></div></div><p class="yt-desc">Open source, full-stack web development, and DevOps.</p><a href="https://www.youtube.com/@harkiratsingh" target="_blank" class="yt-btn"><i class="ph-fill ph-youtube-logo text-red"></i> Visit Channel</a></div>
                 </div>
             </section>
-
-            <section class="cta-section">
-                <h2>Ready to step up?</h2>
-                <p>Join students using NoteVerse to structure their preparation and land their dream roles.</p>
-                <button class="btn-primary large" onclick="signInWithGithub()">Get Started Free <i class="ph ph-arrow-right"></i></button>
-            </section>
         </div>
-
-       <!-- ================= PROFILE / HEATMAP VIEW ================= -->
-        <div id="profileView" style="display: none;">
+       <div id="profileView" style="display: none;">
             <div class="back-nav" style="margin-bottom: 20px;"><button class="btn-outline" onclick="showHome()"><i class="ph ph-arrow-left"></i> Back to Dashboard</button></div>
 
-            <!-- RPG GUILD CARD -->
             <div class="guild-card-wrapper">
                 <div class="guild-card">
-                    <!-- Top Rank Badge -->
                     <div class="gc-top-badge">
                         Guild Card: Rank <span id="profileRankTop">F</span>
                     </div>
 
                     <div class="gc-content">
-                        <!-- Left Side (Details) -->
                         <div class="gc-left-col">
                             <h1 class="gc-name" id="profileNameGuild">Student Name</h1>
                             <div class="gc-name-underline"></div>
 
                             <div class="gc-details">
-                                <!-- Red Magic Seal Watermark -->
                                 <div class="gc-watermark">
                                     <div class="gc-watermark-inner"></div>
                                 </div>
@@ -214,11 +289,9 @@
                                 </div>
                             </div>
                             
-                            <!-- Signature -->
                             <div class="gc-signature">Verified</div>
                         </div>
 
-                        <!-- Right Side (Portrait & Rank) -->
                         <div class="gc-right-col">
                             <div class="gc-portrait-box">
                                 <img id="profileAvatarGuild" src="https://github.com/github.png" alt="Profile" onerror="this.src='https://github.com/github.png'">
@@ -236,7 +309,6 @@
                 </div>
             </div>
 
-            <!-- Heatmap Section Below Card -->
             <div class="features-grid" style="margin-top: 40px;">
                 <div class="feature-card outline-card" style="grid-column: 1 / -1; display: flex; flex-direction: column; align-items: center; padding: 40px 20px;">
                     <h3 style="margin-bottom: 20px;">Consistency Heatmap</h3>
@@ -247,7 +319,6 @@
             </div>
         </div>
 
-        <!-- ================= DYNAMIC SEMESTER VIEWS (GROUPED HORIZONTAL SCROLL) ================= -->
         <div id="semester1View" style="display: none;">
             <div class="back-nav"><button class="btn-outline" onclick="showHome()"><i class="ph ph-arrow-left"></i> Back to Dashboard</button></div>
             <h1 class="hero-title">Semester 1 <span class="text-gradient" id="sem1TitleType">Notes</span></h1>
@@ -262,7 +333,6 @@
             <div class="vertical-subject-list"></div>
         </div>
 
-        <!-- ================= ROADMAP VIEW ================= -->
         <div id="roadmapView" style="display: none;">
             <div class="back-nav"><button class="btn-outline" onclick="showHome()"><i class="ph ph-arrow-left"></i> Back to Dashboard</button></div>
             <h1 class="hero-title">Placement <span class="text-gradient">Roadmap</span></h1>
@@ -276,14 +346,12 @@
             </div>
         </div>
 
-        <!-- ================= FULL DSA MASTERY VIEW ================= -->
         <div id="dsaMasteryView" style="display: none;">
             <div class="back-nav"><button class="btn-outline" onclick="showHome()"><i class="ph ph-arrow-left"></i> Back to Dashboard</button></div>
             <h1 class="hero-title">Master <span class="text-gradient">DSA</span></h1>
             <p class="hero-subtitle">The Definitive 150. Organized strictly by Paradigm and Data Structure, covering every major algorithmic pattern.</p>
 
             <div class="accordion-container">
-                <!-- 1. ARRAYS & STRINGS -->
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)"><div class="acc-title"><span class="acc-icon pastel-blue"><i class="ph ph-squares-four"></i></span> Arrays & Strings</div><i class="ph ph-caret-down acc-caret"></i></button>
                     <div class="accordion-content">
@@ -321,7 +389,6 @@
                     </div>
                 </div>
 
-                <!-- 2. LINKED LISTS -->
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)"><div class="acc-title"><span class="acc-icon pastel-mint"><i class="ph ph-circles-three"></i></span> Linked Lists</div><i class="ph ph-caret-down acc-caret"></i></button>
                     <div class="accordion-content">
@@ -348,7 +415,6 @@
                     </div>
                 </div>
 
-                <!-- 3. STACKS & QUEUES -->
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)"><div class="acc-title"><span class="acc-icon pastel-purple"><i class="ph ph-stack"></i></span> Stacks & Queues</div><i class="ph ph-caret-down acc-caret"></i></button>
                     <div class="accordion-content">
@@ -369,7 +435,6 @@
                     </div>
                 </div>
 
-                <!-- 4. TREES & TRIES -->
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)"><div class="acc-title"><span class="acc-icon pastel-blue"><i class="ph ph-tree-structure"></i></span> Trees & Tries</div><i class="ph ph-caret-down acc-caret"></i></button>
                     <div class="accordion-content">
@@ -404,7 +469,6 @@
                     </div>
                 </div>
 
-                <!-- 5. HEAPS (PRIORITY QUEUES) -->
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)"><div class="acc-title"><span class="acc-icon pastel-peach"><i class="ph ph-pyramid"></i></span> Heaps (Priority Queues)</div><i class="ph ph-caret-down acc-caret"></i></button>
                     <div class="accordion-content">
@@ -423,7 +487,6 @@
                     </div>
                 </div>
 
-                <!-- 6. GRAPHS -->
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)"><div class="acc-title"><span class="acc-icon pastel-purple"><i class="ph ph-graph"></i></span> Graphs</div><i class="ph ph-caret-down acc-caret"></i></button>
                     <div class="accordion-content">
@@ -456,7 +519,6 @@
                     </div>
                 </div>
 
-                <!-- 7. BACKTRACKING -->
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)"><div class="acc-title"><span class="acc-icon pastel-blue"><i class="ph ph-git-branch"></i></span> Backtracking</div><i class="ph ph-caret-down acc-caret"></i></button>
                     <div class="accordion-content">
@@ -477,7 +539,6 @@
                     </div>
                 </div>
 
-                <!-- 8. DYNAMIC PROGRAMMING -->
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)"><div class="acc-title"><span class="acc-icon pastel-mint"><i class="ph ph-table"></i></span> Dynamic Programming</div><i class="ph ph-caret-down acc-caret"></i></button>
                     <div class="accordion-content">
@@ -503,7 +564,6 @@
                     </div>
                 </div>
 
-                <!-- 9. GREEDY & INTERVALS -->
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)"><div class="acc-title"><span class="acc-icon pastel-purple"><i class="ph ph-fast-forward"></i></span> Greedy & Intervals</div><i class="ph ph-caret-down acc-caret"></i></button>
                     <div class="accordion-content">
@@ -524,7 +584,6 @@
                     </div>
                 </div>
 
-                <!-- 10. BIT MANIPULATION & MATH -->
                 <div class="accordion-item">
                     <button class="accordion-header" onclick="toggleAccordion(this)"><div class="acc-title"><span class="acc-icon pastel-peach"><i class="ph ph-calculator"></i></span> Bit Manipulation & Math</div><i class="ph ph-caret-down acc-caret"></i></button>
                     <div class="accordion-content">
@@ -543,7 +602,6 @@
             </div>
         </div>
 
-        <!-- ================= PDF VIEWER ================= -->
         <section id="pdfViewer" style="display: none; margin-top: 40px;">
             <div class="pdf-container">
                 <iframe id="pdfFrame"></iframe>
@@ -552,7 +610,6 @@
 
     </main>
 
-    <!-- ================= FOOTER ================= -->
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-brand">
@@ -578,14 +635,15 @@
         </div>
     </footer>
 
-    <!-- MASTER DSA FLOATING BUTTON -->
-    <button class="fab-button" onclick="showDSAMastery()">
-        <i class="ph-bold ph-code"></i> Master DSA
+    <button class="dsa-circle-btn" onclick="showDSAMastery()" title="Master DSA">
+        &lt;/&gt;
     </button>
 
-    <!-- ================= SUPABASE & APP LOGIC ================= -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
+        // Global variable to hold heatmap data until the profile is opened
+        let globalActivityData = {};
+
         // --- UI Functions ---
         function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
         function toggleSubMenu(id, event) {
@@ -607,11 +665,135 @@
         function showHome() { hideAllViews(); document.getElementById("homeView").style.display = "block"; }
         function openRoadmap() { hideAllViews(); document.getElementById("roadmapView").style.display = "block"; }
         function showDSAMastery() { hideAllViews(); document.getElementById("dsaMasteryView").style.display = "block"; }
-        function showProfile() { hideAllViews(); document.getElementById("profileView").style.display = "block"; }
         
-        function openPDF(file) {
+        // MOVED HEATMAP RENDER HERE: Only draws when profile is actually visible
+        function showProfile() { 
+            hideAllViews(); 
+            document.getElementById("profileView").style.display = "block"; 
+            drawHeatmap(); 
+        }
+        
+       // 1. The Actual Viewer (Hidden behind the paywall)
+        function viewPDF(file) {
             const viewer = document.getElementById("pdfViewer"); 
-            if(viewer) { viewer.style.display = "block"; viewer.querySelector("#pdfFrame").src = file; window.scrollTo({ top: viewer.offsetTop - 80, behavior: "smooth" }); }
+            if(viewer) { 
+                viewer.style.display = "block"; 
+                viewer.querySelector("#pdfFrame").src = file; 
+                window.scrollTo({ top: viewer.offsetTop - 80, behavior: "smooth" }); 
+            }
+        }
+
+        // 2. The Smart Interceptor
+        function openPDF(file, subject = "Premium") {
+            // MAGIC UX FEATURE: Check if they already bought the subject bundle OR this specific file!
+            if (localStorage.getItem('unlocked_subject_' + subject) === 'true' || 
+                localStorage.getItem('unlocked_file_' + file) === 'true') {
+                viewPDF(file); // Instantly open if they own the bundle or file
+                return;
+            }
+
+            const popup = document.createElement("div");
+            popup.id = "pdfPaymentPopup";
+            popup.style.position = "fixed";
+            popup.style.top = "0"; popup.style.left = "0"; popup.style.width = "100%"; popup.style.height = "100%";
+            popup.style.backgroundColor = "rgba(0,0,0,0.7)"; 
+            popup.style.zIndex = "9999";
+            popup.style.display = "flex"; 
+            popup.style.alignItems = "center"; 
+            popup.style.justifyContent = "center";
+            popup.style.backdropFilter = "blur(4px)"; 
+            
+            // Design the dual-option popup
+            popup.innerHTML = `
+                <div style="background: white; padding: 35px 30px; border-radius: 16px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+                    <div style="width: 60px; height: 60px; background: #e0e7ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="ph-fill ph-lock-key" style="font-size: 2rem; color: #4f46e5;"></i>
+                    </div>
+                    <h2 style="margin-bottom: 10px; font-family: 'Inter', sans-serif; font-size: 1.5rem; color: #0f172a;">Unlock Materials</h2>
+                    <p style="color: #64748b; margin-bottom: 25px; line-height: 1.5;">Choose how you want to unlock this content.</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 25px;">
+                        
+                        <button id="pay10Btn" onclick="processPayment(10, '${file}', '${subject}', 'single')" style="padding: 15px; background: #f8fafc; border: 2px solid #e2e8f0; color: #0f172a; border-radius: 12px; cursor: pointer; text-align: left; transition: 0.2s; display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <strong style="display: block; font-size: 1.05rem;">This PDF Only</strong>
+                                <span style="font-size: 0.85rem; color: #64748b;">Unlock just this document</span>
+                            </div>
+                            <span style="font-size: 1.2rem; font-weight: bold; color: #4f46e5;">₹10</span>
+                        </button>
+
+                        <button id="pay50Btn" onclick="processPayment(50, '${file}', '${subject}', 'subject')" style="padding: 15px; background: #eef2ff; border: 2px solid #4f46e5; color: #0f172a; border-radius: 12px; cursor: pointer; text-align: left; transition: 0.2s; display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <strong style="display: block; font-size: 1.05rem; color: #4f46e5;">Entire ${subject}</strong>
+                                <span style="font-size: 0.85rem; color: #64748b;">Unlock all PDFs in this subject</span>
+                            </div>
+                            <span style="font-size: 1.2rem; font-weight: bold; color: #4f46e5;">₹50</span>
+                        </button>
+                    </div>
+
+                    <button onclick="document.getElementById('pdfPaymentPopup').remove()" style="padding: 12px 20px; border: none; background: transparent; cursor: pointer; color: #64748b; font-weight: 500; width: 100%; text-decoration: underline;">Cancel</button>
+                </div>
+            `;
+            document.body.appendChild(popup);
+        }
+
+        // 3. The Unified Payment Processor
+        async function processPayment(amount, file, subject, purchaseType) {
+            const btnId = amount === 10 ? 'pay10Btn' : 'pay50Btn';
+            const btn = document.getElementById(btnId);
+            const originalContent = btn.innerHTML; 
+            
+            if(btn) { btn.innerHTML = "<div style='text-align:center; width:100%; font-weight:bold;'>Connecting...</div>"; btn.style.opacity = "0.7"; }
+
+            try {
+                const response = await fetch('https://tcijpueblweradmiphpd.supabase.co/functions/v1/create-order', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ amount: amount }) 
+                });
+
+                const order = await response.json();
+
+                if (order.id) {
+                    const options = {
+                        "key": "rzp_test_Svr9dcgbJa0AGO", 
+                        "amount": order.amount,
+                        "currency": "INR",
+                        "name": "NoteVerse Premium",
+                        "description": purchaseType === 'subject' ? `Unlock All ${subject} Notes` : "Unlock Single Document",
+                        "order_id": order.id, 
+                        "handler": function (response) {
+                            document.getElementById('pdfPaymentPopup').remove(); 
+                            
+                            if (purchaseType === 'subject') {
+                                // Save digital receipt for the WHOLE SUBJECT
+                                localStorage.setItem('unlocked_subject_' + subject, 'true');
+                                alert(`Success! All ${subject} PDFs are now permanently unlocked on this device.`);
+                            } else {
+                                // Save digital receipt for THIS SPECIFIC FILE
+                                localStorage.setItem('unlocked_file_' + file, 'true');
+                                alert("Payment Successful! This document is now permanently unlocked on this device.");
+                            }
+                            
+                            viewPDF(file); 
+                        },
+                        "theme": { "color": "#4f46e5" } 
+                    };
+
+                    const rzp = new Razorpay(options);
+                    rzp.on('payment.failed', function (response){
+                        alert("Payment Failed. Please try again.");
+                    });
+                    rzp.open();
+                } else {
+                    alert("Failed to connect to the payment gateway.");
+                }
+            } catch (error) {
+                console.error("Payment error:", error);
+                alert("Something went wrong connecting to the server.");
+            } finally {
+                if(btn) { btn.innerHTML = originalContent; btn.style.opacity = "1"; }
+            }
         }
 
         function toggleAccordion(btn) {
@@ -631,7 +813,6 @@
         let dbClient = null;
         if (window.supabase) { dbClient = window.supabase.createClient(nvSupabaseUrl, nvSupabaseKey); }
 
-        // --- Fetch & Group Files by Subject ---
         async function showCategory(semNumber, categoryType) {
             hideAllViews();
             const viewId = (semNumber === 1) ? "semester1View" : "semester2View";
@@ -691,25 +872,23 @@
 
                     files.forEach(file => {
                         const card = document.createElement('div');
-                        card.className = 'feature-card outline-card clickable';
+                        
+                        // NEW DYNAMIC CANVAS CARD CODE START
+                        card.className = 'document-card';
                         card.style.flex = "0 0 auto"; 
-                        card.style.width = "260px"; 
-                        card.style.minWidth = "260px";
-                        card.style.minHeight = "180px";
-                        card.style.padding = "20px";
-                        card.style.display = "flex";
-                        card.style.flexDirection = "column";
-                        card.style.justifyContent = "center";
-                        card.style.alignItems = "center";
-                        card.style.textAlign = "center";
-                        card.onclick = () => openPDF(file.file_url || "#");
+                        card.style.cursor = "pointer";
+                        card.style.width = "240px";
+                        card.style.height = "240px";
+                        card.onclick = () => openPDF(file.file_url || "#", subject);
                         
                         card.innerHTML = `
-                            <div style="width: 100%; height: 120px; background: linear-gradient(135deg, #a855f7, #6d28d9); border-radius: 12px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 4px 15px rgba(109, 40, 217, 0.3);">
-                                <i class="ph-bold ph-file-pdf" style="font-size: 3rem;"></i>
+                            <canvas class="pdf-preview" data-pdf-url="${file.file_url || ''}"></canvas>
+                            <div class="document-overlay">
+                                <h3>${file.title}</h3>
                             </div>
-                            <h3 style="font-size: 1.1rem; font-family: 'Inter', sans-serif; margin: 0; font-weight: 600;">${file.title}</h3>
                         `;
+                        // NEW DYNAMIC CANVAS CARD CODE END
+                        
                         scrollRow.appendChild(card);
                     });
 
@@ -718,12 +897,20 @@
                     listContainer.appendChild(subjectSection);
                 }
 
+                // IMPORTANT TRIGGER: Run the PDF engine after the cards render
+                setTimeout(() => {
+                    if (typeof loadAllPDFCovers === 'function') {
+                        loadAllPDFCovers();
+                    }
+                }, 100);
+
             } catch (err) {
                 listContainer.innerHTML = `<p style='color: #ef4444; text-align: center;'>Error: ${err.message}</p>`;
             }
         }
 
-        // --- Auth & Profile ---
+        function showSubjectFiles(sem, cat, subj) { showCategory(1, 'Notes'); }
+
         async function signInWithGithub() { if (dbClient) await dbClient.auth.signInWithOAuth({ provider: 'github' }); }
         async function signInWithGoogle() { if (dbClient) await dbClient.auth.signInWithOAuth({ provider: 'google' }); }
         async function signOut() { if (dbClient) { await dbClient.auth.signOut(); window.location.reload(); } }
@@ -748,19 +935,6 @@
                             <button class="btn-outline" style="padding: 8px 15px; font-size: 0.85rem;" onclick="signOut()">Sign Out</button>
                         `;
                     }
-                    const mobileAuth = document.getElementById('mobileAuthContainer');
-                    if(mobileAuth) {
-                        mobileAuth.innerHTML = `
-                            <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; padding-bottom: 20px; border-bottom: 1px solid #f1f5f9;">
-                                <img src="${avatarUrl}" alt="Profile" style="width: 60px; height: 60px; border-radius: 50%; border: 2px solid #4f46e5; object-fit: cover;" onclick="showProfile(); toggleMobileMenu();">
-                                <span style="font-weight: 600; font-size: 1.2rem; color: #0f172a;">${name}</span>
-                                <button class="btn-outline" style="width: 100%; justify-content: center;" onclick="signOut()">Sign Out</button>
-                                <button class="btn-primary" style="width: 100%; justify-content: center;" onclick="showProfile(); toggleMobileMenu();">View Profile</button>
-                            </div>
-                        `;
-                    }
-
-                    // Populate Guild Card Data
                     const profileAvatarGuild = document.getElementById('profileAvatarGuild');
                     const profileNameGuild = document.getElementById('profileNameGuild');
                     if(profileAvatarGuild) profileAvatarGuild.src = avatarUrl;
@@ -786,8 +960,7 @@
         function updateProfileStats(solvedCount, activityData) {
             const countEl = document.getElementById('totalSolvedCount');
             if (countEl) countEl.innerText = solvedCount;
-            
-            // RPG Guild Card Logic
+
             let rank = "F";
             if (solvedCount >= 10) rank = "E";
             if (solvedCount >= 25) rank = "D";
@@ -796,15 +969,15 @@
             if (solvedCount >= 100) rank = "A";
             if (solvedCount >= 125) rank = "S";
             if (solvedCount >= 150) rank = "SS";
-            
+
             const rankTop = document.getElementById('profileRankTop');
             const rankPermit = document.getElementById('profileRankPermit');
             const rankLarge = document.getElementById('profileRankLarge');
-            
+
             if (rankTop) rankTop.innerText = rank;
             if (rankPermit) rankPermit.innerText = rank;
             if (rankLarge) rankLarge.innerText = rank;
-            
+
             if (rankLarge) {
                 if (rank === "SS" || rank === "S") rankLarge.style.color = "#b91c1c";
                 else if (rank === "A" || rank === "B") rankLarge.style.color = "#6d28d9";
@@ -812,21 +985,34 @@
                 else rankLarge.style.color = "#1a1a1a";
             }
 
-            const hm = document.getElementById('cal-heatmap');
-            if(!hm) return;
-            hm.innerHTML = ""; 
-            let parsedData = {};
-            if(activityData && typeof activityData === 'object' && !Array.isArray(activityData)) parsedData = activityData;
+            // Save the data, but DO NOT draw it yet
+            if(activityData && typeof activityData === 'object' && !Array.isArray(activityData)) {
+                globalActivityData = activityData;
+            } else {
+                globalActivityData = {};
+            }
 
+            // If profile is already open, draw it now
+            if (document.getElementById("profileView").style.display === "block") {
+                drawHeatmap();
+            }
+        }
+
+        // Dedicated function to draw the heatmap ONLY when it's visible
+        function drawHeatmap() {
+            const hm = document.getElementById('cal-heatmap');
+            if(!hm || typeof CalHeatMap === 'undefined') return;
+            hm.innerHTML = ""; // Clear old grid
+            
             try {
                 var cal = new CalHeatMap();
                 cal.init({
                     itemSelector: "#cal-heatmap",
                     domain: "month",
-                    subDomain: "x_day",
-                    data: parsedData, 
+                    subDomain: "x_day", 
+                    data: globalActivityData, 
                     start: new Date(new Date().setMonth(new Date().getMonth() - 5)), 
-                    cellSize: 13,
+                    cellSize: 14,
                     cellPadding: 3,
                     domainGutter: 15,
                     range: 6,
@@ -835,11 +1021,56 @@
                     tooltip: true
                 });
             } catch (err) {
-                console.error("Heatmap failed to load:", err);
+                console.warn("Heatmap issue safely bypassed.");
             }
         }
 
         checkSession();
     </script>
+
+    
+
+<script>
+    // Tell the library where its background worker is located
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+    async function loadAllPDFCovers() {
+        // Find every single card on your website that has the 'pdf-preview' class
+        const canvases = document.querySelectorAll('.pdf-preview');
+        
+        for (let canvas of canvases) {
+            const pdfUrl = canvas.getAttribute('data-pdf-url');
+            if (!pdfUrl) continue;
+
+            try {
+                // Fetch the PDF and get Page 1
+                const loadingTask = pdfjsLib.getDocument(pdfUrl);
+                const pdf = await loadingTask.promise;
+                const page = await pdf.getPage(1);
+                
+                // Set resolution (1.5 is crisp and clear)
+                const viewport = page.getViewport({ scale: 1.5 });
+                const context = canvas.getContext('2d');
+                
+                // Match the canvas size to the PDF page
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+                
+                // Draw it!
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                await page.render(renderContext).promise;
+
+            } catch (error) {
+                console.error("Failed to load PDF cover for:", pdfUrl, error);
+            }
+        }
+    }
+
+    // Run this engine the moment the website finishes loading
+    document.addEventListener('DOMContentLoaded', loadAllPDFCovers);
+</script>
 </body>
 </html>
